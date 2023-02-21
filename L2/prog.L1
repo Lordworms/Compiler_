@@ -1,0 +1,200 @@
+(@main
+	(@encode 1 0
+	r10 <- rdi
+	:NNNNNNNNNNN_global_1
+	goto :NNNNNNNNNNN_global_0
+	:NNNNNNNNNNN_global_0
+	r10 <- r10
+	r10 <<= 1
+	r10 <- r10
+	r10 <- r10
+	r10 += 1
+	r10 <- r10
+	rax <- r10
+	return
+)
+	(@decode 1 0
+	r10 <- rdi
+	:NNNNNNNNNNN_global_3
+	goto :NNNNNNNNNNN_global_2
+	:NNNNNNNNNNN_global_2
+	r10 <- r10
+	r10 >>= 1
+	rax <- r10
+	return
+)
+	(@main 0 7
+	:NNNNNNNNNNN_global_9
+	goto :NNNNNNNNNNN_global_4
+	:NNNNNNNNNNN_global_8
+	r10 <- mem rsp 40
+	rdi <- r10
+	call print 1
+	r10 <- rax
+	return
+	:NNNNNNNNNNN_global_10
+	r10 <- mem rsp 8
+	r10 <- r10
+	r10 += 2
+	r10 <- r10
+	mem rsp 8 <- r10
+	r10 <- 1
+	mem rsp 0 <- r10
+	r10 <- 1
+	r10 <- mem rsp 16
+	r10 <- r10
+	r10 -= 2
+	r10 <- r10
+	mem rsp 16 <- r10
+	r10 <- mem rsp 8
+	r11 <- mem rsp 32
+	cjump r10 < r11 :NNNNNNNNNNN_global_6
+	goto :NNNNNNNNNNN_global_8
+	:NNNNNNNNNNN_global_6
+	r10 <- mem rsp 0
+	rdi <- r10
+	mem rsp -8 <- :NNNNNNNNNNN_decode_0
+	call @decode 1
+	:NNNNNNNNNNN_decode_0
+	r10 <- rax
+	r11 <- r10
+	r10 <- r11
+	r10 += 1
+	r8 <- r10
+	r10 <- 1
+	r10 <- 0
+	r10 += r11
+	r10 <- r10
+	r10 *= 8
+	r10 <- r10
+	r10 += 16
+	r9 <- mem rsp 40
+	r9 <- r9
+	r9 += r10
+	r10 <- mem r9 0
+	rax <- r10
+	r10 <- 1
+	r10 <- 0
+	r10 += r8
+	r10 <- r10
+	r10 *= 8
+	r9 <- r10
+	r9 += 16
+	r10 <- mem rsp 40
+	r10 <- r10
+	r10 += r9
+	r10 <- mem r10 0
+	r9 <- r10
+	cjump r9 < rax :NNNNNNNNNNN_global_11
+	goto :NNNNNNNNNNN_global_7
+	:NNNNNNNNNNN_global_7
+	r10 <- mem rsp 0
+	r10 <- r10
+	r10 += 2
+	r10 <- r10
+	mem rsp 0 <- r10
+	r10 <- mem rsp 0
+	r11 <- mem rsp 16
+	cjump r10 < r11 :NNNNNNNNNNN_global_6
+	goto :NNNNNNNNNNN_global_10
+	:NNNNNNNNNNN_global_11
+	r10 <- 1
+	r10 <- 0
+	r10 += r8
+	r10 <- r10
+	r10 *= 8
+	r8 <- r10
+	r8 += 16
+	r10 <- mem rsp 40
+	r10 <- r10
+	r10 += r8
+	mem r10 0 <- rax
+	r10 <- 1
+	r10 <- 0
+	r10 += r11
+	r10 <- r10
+	r10 *= 8
+	r10 <- r10
+	r10 += 16
+	r11 <- mem rsp 40
+	r11 <- r11
+	r11 += r10
+	mem r11 0 <- r9
+	goto :NNNNNNNNNNN_global_7
+	:NNNNNNNNNNN_global_5
+	r10 <- 1
+	r10 <- mem rsp 48
+	rdi <- r10
+	mem rsp -8 <- :NNNNNNNNNNN_decode_1
+	call @decode 1
+	:NNNNNNNNNNN_decode_1
+	r11 <- rax
+	r10 <- 0
+	r10 += r11
+	r10 <- r10
+	r10 *= 8
+	r10 <- r10
+	r10 += 16
+	r11 <- mem rsp 40
+	r11 <- r11
+	mem rsp 24 <- r11
+	r11 <- mem rsp 24
+	r11 += r10
+	mem rsp 24 <- r11
+	call input 0
+	r10 <- rax
+	r11 <- mem rsp 24
+	mem r11 0 <- r10
+	r10 <- mem rsp 48
+	r10 <- r10
+	r10 += 2
+	r10 <- r10
+	mem rsp 48 <- r10
+	r11 <- mem rsp 32
+	r10 <- mem rsp 48
+	cjump r10 < r11 :NNNNNNNNNNN_global_5
+	goto :NNNNNNNNNNN_global_6
+	:NNNNNNNNNNN_global_4
+	call input 0
+	r10 <- rax
+	r10 <- r10
+	mem rsp 32 <- r10
+	r10 <- mem rsp 32
+	r10 <- r10
+	r10 -= 2
+	r10 <- r10
+	mem rsp 16 <- r10
+	r10 <- mem rsp 32
+	r10 <- r10
+	r10 >>= 1
+	r10 <- r10
+	r10 <- r10
+	r10 <<= 1
+	r10 <- r10
+	r10 <- r10
+	r10 += 1
+	r10 <- r10
+	r10 <- r10
+	r10 += 2
+	r10 <- r10
+	rdi <- r10
+	rsi <- 1
+	call allocate 2
+	r10 <- rax
+	r10 <- r10
+	mem rsp 40 <- r10
+	r10 <- mem rsp 40
+	r10 <- r10
+	r10 += 8
+	r11 <- mem rsp 32
+	mem r10 0 <- r11
+	r10 <- 1
+	mem rsp 0 <- r10
+	r10 <- 1
+	r10 <- 1
+	mem rsp 48 <- r10
+	r10 <- 1
+	mem rsp 8 <- r10
+	goto :NNNNNNNNNNN_global_5
+)
+)

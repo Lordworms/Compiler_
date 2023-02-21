@@ -1,0 +1,140 @@
+
+
+define int64 @encode(int64 %i){
+    :entry
+    %i <- %i << 1
+    %i <- %i + 1
+    return %i
+}
+define int64 @decode(int64 %i){
+    :entry
+    %i <- %i >> 1
+    return %i
+}
+define void @main() {
+    :entry
+    int64[][] %m1
+    int64[][] %m2
+    int64[][] %out
+    int64 %row1
+    int64 %col1
+    int64 %row2
+    int64 %col2
+    int64 %i
+    int64 %j
+    int64 %i_d
+    int64 %j_d
+    int64 %x
+    int64 %flag
+    int64 %d_row
+    int64 %d_col
+    %row1<- call input()
+    %row1<- call @encode(%row1)
+    %d_row<-call @decode(%row1)
+    %col1<- call input()
+    %col1<- call @encode(%col1)
+    %d_col<-call @decode(%col1)
+    %m1<- new Array(%d_row,%d_col)
+    %i<-1
+    %j<-1
+    br :inner_loop_1
+    :inner_loop_1
+        %x<-call input()
+        %j_d<- call @decode(%j)
+        %i_d<- call @decode(%i)
+        %m1[%i_d][%j_d]<-%x
+        %j<-%j+2
+        %flag<- %j<%d_col
+        br %flag :inner_loop_1 :outer_loop_1
+    :outer_loop_1
+        %j<-1
+        %i<-%i+2
+        %flag<-%i<%d_row
+        br %flag :inner_loop_1 :break_1
+    :break_1
+    %row2<- call input()
+    %row2<- call @encode(%row2)
+    %d_row<-call @decode(%row2)
+    %col2<- call input()
+    %col2<- call @encode(%col2)
+    %d_col<-call @decode(%col2)
+    %m2<- new Array(%d_row,%d_col)
+
+    %i<-1
+    %j<-1
+    br :inner_loop_2
+    :inner_loop_2
+        %x<-call input()
+        %j_d<- call @decode(%j)
+        %i_d<- call @decode(%i)
+        %m2[%i_d][%j_d]<-%x
+        %j<-%j+2
+        %flag<- %j<%d_col
+        br %flag :inner_loop_2 :outer_loop_2
+    :outer_loop_2
+        %j<-1
+        %i<-%i+2
+        %flag<-%i<%d_row
+        br %flag :inner_loop_2 :break_2
+    :break_2
+    %out <- call @multiply(%m1, %m2)
+    call print(%out)
+    return
+}
+define int64[][] @multiply(int64[][] %m1, int64[][] %m2){
+    :entry
+    int64[][] %out
+    int64 %i
+    int64 %j
+    int64 %k
+    int64 %row_1
+    int64 %col_1
+    int64 %row_2
+    int64 %col_2
+    int64 %res
+    int64 %v1
+    int64 %v2
+    int64 %ii
+    int64 %jj
+    int64 %kk
+    int64 %flag
+    %row_1<- length %m1 0
+    %col_1<- length %m1 1
+    %row_2<- length %m2 0
+    %col_2<- length %m2 1
+    %i<-1
+    %j<-1
+    %k<-1
+    %res<-0
+    %out<- new Array(%row_1,%col_2)
+    br :inner_loop
+    :inner_loop
+        %ii<-call @decode(%i)
+        %jj<-call @decode(%j)
+        %kk<-call @decode(%k)
+        %v1<-%m1[%ii][%kk]
+        %v2<-%m2[%kk][%jj]
+        %v1<-call @decode(%v1)
+        %v2<-call @decode(%v2)
+        %v1<-%v1*%v2
+        %res<-%res+%v1
+        %k<-%k+2
+        %flag<-%k<%row_2
+        br %flag :inner_loop :middle_loop
+    :middle_loop
+        %res<-call @encode(%res)
+        %out[%ii][%jj]<-%res
+        %res<-0
+        %k<-1
+        %j<-%j+2
+        %flag<- %j<%col_2
+        br %flag :inner_loop :outer_loop
+    :outer_loop
+        %j<-1
+        %i<-%i+2
+        %flag<- %i<%row_1
+        br %flag :inner_loop :break
+    :break
+    
+    return %out
+}

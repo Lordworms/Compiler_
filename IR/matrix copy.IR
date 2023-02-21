@@ -1,0 +1,98 @@
+
+
+define int64 @encode(int64 %i){
+    :entry
+    %i <- %i << 1
+    %i <- %i + 1
+    return %i
+}
+
+define int64 @decode(int64 %i){
+    :entry
+    %i <- %i >> 1
+    return %i
+}
+define void @main() {
+    :entry
+    int64[][] %m1
+    int64[][] %m2
+    int64 %row1
+    int64 %col1
+    int64 %row2
+    int64 %col2
+    int64 %i
+    int64 %j
+    int64 %i_d
+    int64 %j_d
+    int64 %x
+    int64 %flag
+    %row1<- call input()
+    %col1<- call input()
+    %row2<- call input()
+    %col2<- call input()
+    %i<-1
+    %j<-1
+    :inner_loop
+        %x<-call input()
+        %i_d<- call @decode(%i)
+        %j_d<- call @decode(%j)
+        %m1[%i_d][%j_d]<-%x
+        %flag<- %j<%col1
+        %j<-%j+2
+        br %flag :inner_loop :outer_loop
+    :outer_loop
+        %j<-1
+        %i<-%i+2
+        %flag<-%i<%row1
+        br %flag :inner_loop :break
+    :break
+    call print(%m1)
+    %out <- call @multiply(2, %m1, %m2)
+    call print(%out)
+    return
+}
+define int64[][] @multiply(int64 %n, int64[][] %m1, int64[][] %m2){
+    :entry
+    int64[][] %out
+    int64 %i
+    int64 %j
+    int64 %k
+    int64 %m1entry
+    int64 %m2entry
+    int64 %continue
+    int64 %n_encoded
+    int64 %n_enc
+    int64 %accum
+    %n_enc <- call @encode(%n)
+    %out <- new Array(%n_enc, %n_enc)
+    %i<- 0
+    br :row_loop
+    :row_loop
+    %j<- 0
+    br :column_loop
+    :column_loop
+    %accum <- 0
+    %k <- %n
+    br :dot_loop
+    :dot_loop
+    %m1entry<- %m1[%i][%k]
+    %m1entry <- call @decode(%m1entry)
+    %m2entry <- %m2[%k][%j]
+    %m2entry <- call @decode(%m2entry)
+    %m1entry <- %m1entry + %m2entry
+    %m1entry <- call @encode(%m1entry)
+    %out[%i][%j]  <- %m1entry
+    %k <- %k + 1
+    %continue <- %k < %n
+    br %k :dot_loop :finished_dot
+    :finished_dot
+    %j <- %j + 1
+    %continue <- %j < %n
+    br %continue :column_loop :finished_column
+    :finished_column
+    %i <- %i + 1
+    %continue <- %i < %n
+    br %continue :row_loop :return
+    :return
+    return %out
+}

@@ -1,0 +1,74 @@
+define int64 @encode(int64 %i){
+    :entry
+    %i <- %i << 1
+    %i <- %i + 1
+    return %i
+}
+define int64 @decode(int64 %i){
+    :entry
+    %i <- %i >> 1
+    return %i
+}
+define void @main()
+{
+    :entry
+    int64 %i
+    int64 %j
+    int64 %k
+    int64 %n
+    int64 %x
+    int64 %t
+    int64[] %arr
+    int64 %ii
+    int64 %jj
+    int64 %flag
+    int64 %len
+    int64 %v1
+    int64 %v2
+    %n<-call input()
+    %len<-%n-2
+    %arr<- new Array(%n)
+    //%n<-call @encode(%n)
+    //%len<-call @encode(%len)
+    %i<-1
+    %j<-1
+    %k<-1
+    %t<-1
+    br :init_label
+    :init_label
+        %x<- call input()
+        %ii<-call @decode(%k)
+        %arr[%ii]<-%x
+        %k<-%k+2
+        %flag<- %k<%n
+        br %flag :init_label :inner_loop
+    :inner_loop
+        //call print(%arr)
+        %ii<-call @decode(%i)
+        %jj<-%ii+1
+        %v1<-%arr[%ii]
+        %v2<-%arr[%jj]
+        //call print(%v1)
+        //call print(%v2)
+        %flag<- %v1>%v2
+        br %flag :swap :aft_swap
+        :aft_swap
+        %i<-%i+2
+        %flag<-%i<%len
+        br %flag :inner_loop :outer_loop
+        :swap
+            %arr[%jj]<-%v1
+            %arr[%ii]<-%v2
+            //call print(%arr)
+            br :aft_swap 
+    :outer_loop
+        %t<-%t+2
+        %flag<-%t<%n
+        %i<-1
+        %j<-1
+        %len<-%len-2
+        br %flag :inner_loop :ret
+    :ret
+    call print(%arr)
+    return
+}

@@ -1,0 +1,166 @@
+(@main
+(@encode 1
+	%i <- rdi
+	:NNNNNNNNNNN_global_1
+	goto :NNNNNNNNNNN_global_0
+	:NNNNNNNNNNN_global_0
+	%newVar22_0 <- %i
+	%newVar22_0 <<= 1
+	%i <- %newVar22_0
+	%newVar22_1 <- %i
+	%newVar22_1 += 1
+	%i <- %newVar22_1
+	rax <-%i
+	return
+)
+
+(@decode 1
+	%i <- rdi
+	:NNNNNNNNNNN_global_3
+	goto :NNNNNNNNNNN_global_2
+	:NNNNNNNNNNN_global_2
+	%newVar22_2 <- %i
+	%newVar22_2 >>= 1
+	rax <-%newVar22_2
+	return
+)
+
+(@main 0
+	:NNNNNNNNNNN_global_9
+	goto :NNNNNNNNNNN_global_4
+	:NNNNNNNNNNN_global_8
+	rdi <- %arr
+	call print 1
+	%newVar22_3 <- rax
+	return
+	:NNNNNNNNNNN_global_10
+	%newVar22_4 <- %t
+	%newVar22_4 += 2
+	%t <- %newVar22_4
+	%i <- 1
+	%j <- 1
+	%newVar22_5 <- %len
+	%newVar22_5 -= 2
+	%len <- %newVar22_5
+	cjump %t < %n:NNNNNNNNNNN_global_6
+	goto :NNNNNNNNNNN_global_8
+	:NNNNNNNNNNN_global_6
+	rdi <- %i
+	mem rsp -8 <- :NNNNNNNNNNN_decode_0
+	call @decode 1
+	:NNNNNNNNNNN_decode_0
+	%newVar22_6 <- rax
+	%ii <- %newVar22_6
+	%newVar22_7 <- %ii
+	%newVar22_7 += 1
+	%jj <- %newVar22_7
+	%newVar2 <- 1
+	%newVar22_8 <- 0
+	%newVar22_8 += %ii
+	%newVar22_9 <- %newVar22_8
+	%newVar22_9 *= 8
+	%newVar22_10 <- %newVar22_9
+	%newVar22_10 += 16
+	%newVar22_11 <- %arr
+	%newVar22_11 += %newVar22_10
+	%newVar22_12 <- mem %newVar22_11 0
+	%v1 <- %newVar22_12
+	%newVar6 <- 1
+	%newVar22_13 <- 0
+	%newVar22_13 += %jj
+	%newVar22_14 <- %newVar22_13
+	%newVar22_14 *= 8
+	%newVar22_15 <- %newVar22_14
+	%newVar22_15 += 16
+	%newVar22_16 <- %arr
+	%newVar22_16 += %newVar22_15
+	%newVar22_17 <- mem %newVar22_16 0
+	%v2 <- %newVar22_17
+	cjump %v2 < %v1:NNNNNNNNNNN_global_11
+	goto :NNNNNNNNNNN_global_7
+	:NNNNNNNNNNN_global_7
+	%newVar22_18 <- %i
+	%newVar22_18 += 2
+	%i <- %newVar22_18
+	cjump %i < %len:NNNNNNNNNNN_global_6
+	goto :NNNNNNNNNNN_global_10
+	:NNNNNNNNNNN_global_11
+	%newVar10 <- 1
+	%newVar22_19 <- 0
+	%newVar22_19 += %jj
+	%newVar22_20 <- %newVar22_19
+	%newVar22_20 *= 8
+	%newVar22_21 <- %newVar22_20
+	%newVar22_21 += 16
+	%newVar22_22 <- %arr
+	%newVar22_22 += %newVar22_21
+	mem %newVar22_22 0<- %v1
+	%newVar14 <- 1
+	%newVar22_23 <- 0
+	%newVar22_23 += %ii
+	%newVar22_24 <- %newVar22_23
+	%newVar22_24 *= 8
+	%newVar22_25 <- %newVar22_24
+	%newVar22_25 += 16
+	%newVar22_26 <- %arr
+	%newVar22_26 += %newVar22_25
+	mem %newVar22_26 0<- %v2
+	goto :NNNNNNNNNNN_global_7
+	:NNNNNNNNNNN_global_5
+	%newVar18 <- 1
+	rdi <- %k
+	mem rsp -8 <- :NNNNNNNNNNN_decode_1
+	call @decode 1
+	:NNNNNNNNNNN_decode_1
+	%newVar22_27 <- rax
+	%newVar22_28 <- 0
+	%newVar22_28 += %newVar22_27
+	%newVar22_29 <- %newVar22_28
+	%newVar22_29 *= 8
+	%newVar22_30 <- %newVar22_29
+	%newVar22_30 += 16
+	%newVar22_31 <- %arr
+	%newVar22_31 += %newVar22_30
+	call input 0
+	%newVar22_32 <- rax
+	mem %newVar22_31 0<- %newVar22_32
+	%newVar22_33 <- %k
+	%newVar22_33 += 2
+	%k <- %newVar22_33
+	cjump %k < %n:NNNNNNNNNNN_global_5
+	goto :NNNNNNNNNNN_global_6
+	:NNNNNNNNNNN_global_4
+	call input 0
+	%newVar22_34 <- rax
+	%n <- %newVar22_34
+	%newVar22_35 <- %n
+	%newVar22_35 -= 2
+	%len <- %newVar22_35
+	%newVar22_36 <- %n
+	%newVar22_36 >>= 1
+	%newVar20 <- %newVar22_36
+	%newVar22_37 <- %newVar20
+	%newVar22_37 <<= 1
+	%newVar20 <- %newVar22_37
+	%newVar22_38 <- %newVar20
+	%newVar22_38 += 1
+	%newVar20 <- %newVar22_38
+	%newVar22_39 <- %newVar20
+	%newVar22_39 += 2
+	%newVar20 <- %newVar22_39
+	rdi <- %newVar20
+	rsi <- 1
+	call allocate 2
+	%newVar22_40 <- rax
+	%arr <- %newVar22_40
+	%newVar22_41 <- %arr
+	%newVar22_41 += 8
+	mem %newVar22_41 0<- %n
+	%i <- 1
+	%j <- 1
+	%k <- 1
+	%t <- 1
+	goto :NNNNNNNNNNN_global_5
+)
+
+)
