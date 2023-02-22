@@ -1,9 +1,7 @@
-define void @main ( ){
+define void @main () {
 
   :entry
-  int64 [][]%a
-  %a<- new Array(5,5)
-  %a[1][1]<-5
-  return 
+    call tensor-error(5, 5, 3, 9)
 
+    return
 }

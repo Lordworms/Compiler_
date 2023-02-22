@@ -1,35 +1,6 @@
 define @main(){
 	:entry
-	%a_global_0 <- 5>> 1
-	%a_global_1 <- 5>> 1
-	%a_global_2 <- %a_global_0
-	%a_global_2 <- %a_global_2 * %a_global_1
-	%a_global_2 <- %a_global_2 + 3
-	%a_global_2 <- %a_global_2 << 1
-	%a_global_2 <- %a_global_2 + 1
-	%a <- call allocate(%a_global_2,1)
-	%a_global_3 <- %a + 8
-	store %a_global_3 <- 5
-	%a_global_3 <- %a_global_3 + 8
-	store %a_global_3 <- 5
-	%a_global_3 <- %a_global_3 + 8
-	store %a_global_3 <- 5
-	%a_global_4 <- %a + 16
-	%a_global_5<- load %a_global_4
-	%a_global_5 <- %a_global_5 >> 1
-	%a_global_4 <- %a_global_4 + 8
-	%a_global_6<- load %a_global_4
-	%a_global_6 <- %a_global_6 >> 1
-	%a_global_4 <- %a_global_4 + 8
-	%a_global_7 <- 1
-	%a_global_8 <- %a_global_7 * %a_global_6
-	%a_global_9 <- %a_global_8 * 8
-	%a_global_9 <- %a_global_9 * 1
-	%a_global_4 <- %a_global_4 + %a_global_9
-	%a_global_9 <- %a_global_7 * 8
-	%a_global_9 <- %a_global_9 * 1
-	%a_global_4 <- %a_global_4 + %a_global_9
-	store %a_global_4<-5
+	call tensor-error(5,5,3,9)
 	return
 
 }

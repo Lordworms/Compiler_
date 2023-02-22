@@ -290,10 +290,10 @@ namespace IR
         res+="call ";
         res+=this->callee->print();
         res+="(";
-        for(auto arg:this->args)
+        for(ll i=0;i<this->args.size();++i)
         {
-            res+=arg->print();
-            res+=' ';
+            if(i)res+=',';
+            res+=args[i]->print();
         }
         res+=')';
         return res;
