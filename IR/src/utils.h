@@ -1,6 +1,7 @@
 #pragma once
 #include "IR.h"
 #include <fstream>
+#include <algorithm>
 namespace IR
 {
     #define OUT *this->out

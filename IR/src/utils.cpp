@@ -423,7 +423,7 @@ void CodeVisitor::print_var_newArray(Item* dst,Item* src)
 void CodeVisitor::print_var_newTuple(Item* dst,Item* src)
 {
     auto tuple=dynamic_cast<NewTup_item*>(src);
-    OUT<<dst->print()<<" <- call allocate("<<tuple->print()<<",1)\n";
+    OUT<<'\t'<<dst->print()<<" <- call allocate("<<tuple->siz->print()<<",1)\n";
 }
 void CodeVisitor::visit(Instruction_ret* ins)
 {

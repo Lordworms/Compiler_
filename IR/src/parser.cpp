@@ -98,6 +98,7 @@ namespace IR {
     //some IR str
     struct str_new:TAOCPP_PEGTL_STRING("new"){};
     struct str_tuple:TAOCPP_PEGTL_STRING("tuple"){};
+    struct str_Tuple:TAOCPP_PEGTL_STRING("Tuple"){};
     struct str_array:TAOCPP_PEGTL_STRING("Array"){};
     struct str_length:TAOCPP_PEGTL_STRING("length"){};
     struct str_left_brac:TAOCPP_PEGTL_STRING("["){};
@@ -208,7 +209,7 @@ namespace IR {
     pegtl::seq<
         str_new,
         seps,
-        str_tuple,
+        str_Tuple,
         seps,
         pegtl::one <'('>,
         seps,
