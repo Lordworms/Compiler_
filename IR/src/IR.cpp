@@ -148,6 +148,7 @@ namespace IR
     Var_item::Var_item()
     {
         this->type=iType::var_item;
+        this->anno=nullptr;
     }
     Var_item::Var_item(std::string str)
     {

@@ -60,6 +60,6 @@ int main(
    * Parse the input file.
    */
   auto p = IR::parse_file(argv[optind]);
-  
+  IR::gen_code(p);
   return 0;
 }

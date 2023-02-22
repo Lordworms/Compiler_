@@ -1,6 +1,13 @@
-define void @main()
-{
+define void @main ( ){
+
   :entry
-  tuple %a
-  return 
+  br :myLabel1
+
+  :myLabel1
+  br :true
+
+  :true
+  call print(1)
+  return
+
 }

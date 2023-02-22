@@ -1,8 +1,11 @@
 #pragma once
 #include "IR.h"
+#include <fstream>
 namespace IR
 {
-    
+    #define OUT *this->out
+    #define WIDTH 8
+    class Var_Label_transformer;
     class Var_Label_transformer
     {
         public:
@@ -10,6 +13,7 @@ namespace IR
             std::string longest_var;
             std::string longest_label;
             int label_cnt,var_cnt;
+            Var_Label_transformer();
             Var_Label_transformer(std::string prefix);
             std::string find_longest_label(Program& p);
             std::string find_longest_var(Program& p);
@@ -18,7 +22,7 @@ namespace IR
             void transform_label(Program& p);
             void transform_var(Program& p);
     };
-    BasicBlock* fetch_and_remove(std::set<BasicBlock*>& bb_list,bool traced_entry);
+    BasicBlock* fetch_and_remove(std::vector<BasicBlock*>& bb_list,bool traced_entry);
     BasicBlock* get_next_bb(std::set<BasicBlock*>&,std::set<BasicBlock*>&);
     class Trace
     {
@@ -33,9 +37,13 @@ namespace IR
             TraceGenerator();
             std::vector<Trace*> gen_trace(std::vector<BasicBlock*>bb_list);
     };
-    class CodeVisitor:Ins_visitor
+    class CodeVisitor:public Ins_visitor
     {
         public:
+            std::ofstream *out;
+            CodeVisitor();
+            CodeVisitor(Var_Label_transformer & trans,std::ofstream *out);
+            Var_Label_transformer trans;
             void visit(Instruction_ret* ins);
             void visit(Instruction_var_ret* ins);
             void visit(Instruction_branch_condi* ins);
@@ -44,8 +52,28 @@ namespace IR
             void visit(Instruction_label* ins);
             void visit(Instruction_call* ins);
             void visit(Instruction_declare* ins);
+            Item* get_addr(Item* var);
+            void print_encode(Item* v);
+            void print_decode(Item* v);
+            void print_op(Item* dst,Item* op1,OpType op,Item* op2);
+            void print_var_length(Item* dst,Item* length);
+            void print_load(Item* dst,Item* src);
+            void print_store(Item* dst,Item* src);
+            void print_arrele_all(Arrele_item* dst,Item* src);
+            void print_var_common(Var_item* dst,Item* src);
+            void print_var_op(Item* dst,Item* src);
+            void print_var_newArray(Item* dst,Item* src);
+            void print_var_newTuple(Item* dst,Item* src);
+            void print_var_Arrele(Item* dst,Item* src);
+            void print_var_call(Item* dst,Item* src);
+            
     };
-    
+    ll encode(ll x);
+    ll decode(ll x);
+
+    /*
+        set union operator
+    */
     template<class T>
     void set_union(std::set<T>&a,std::set<T>&b,std::set<T>&res)
     {

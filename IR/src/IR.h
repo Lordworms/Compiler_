@@ -90,6 +90,7 @@ namespace IR
   class Var_item:public Item
   {
     public:
+      Item* anno;
       std::string var_name;
       Var_item();
       std::string print()override;
