@@ -1,8 +1,9 @@
 define void @main ( ){
 
   :entry
-  tuple %p
-  %p <- new Tuple(5)
+  int64 [][]%a
+  %a<- new Array(5,5)
+  %a[1][1]<-5
   return 
 
 }

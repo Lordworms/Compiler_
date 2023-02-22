@@ -93,6 +93,7 @@ namespace IR
       Item* anno;
       std::string var_name;
       Var_item();
+      Var_item(std::string name,Item* an);
       std::string print()override;
       Var_item(std::string name);
       Var_item* copy()override;

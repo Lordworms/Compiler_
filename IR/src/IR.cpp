@@ -150,6 +150,12 @@ namespace IR
         this->type=iType::var_item;
         this->anno=nullptr;
     }
+    Var_item::Var_item(std::string name,Item* an)
+    {
+        this->type=iType::var_item;
+        this->anno=an;
+        this->var_name=name;
+    }
     Var_item::Var_item(std::string str)
     {
         this->type=iType::var_item;

@@ -168,12 +168,12 @@ void CodeVisitor::print_decode(Item* v)
 }
 void CodeVisitor::print_load(Item* dst,Item* src)
 {
-    OUT<<dst->print()<<"<- load "<<src->print()<<'\n';
+    OUT<<'\t'<<dst->print()<<"<- load "<<src->print()<<'\n';
 }
 
 void CodeVisitor::print_store(Item* dst,Item* src)
 {
-    OUT<<"store "<<dst->print()<<"<-"<<src->print()<<'\n';
+    OUT<<"\tstore "<<dst->print()<<"<-"<<src->print()<<'\n';
 }
 void CodeVisitor::print_var_common(Var_item* dst,Item* src)
 {
@@ -335,7 +335,7 @@ void CodeVisitor::print_var_newArray(Item* dst,Item* src)
         inst+=" <- ";
         inst+=new_arr->dims[i]->print();
         inst+=">> 1\n";
-        OUT<<inst;
+        OUT<<'\t'<<inst;
     }
     //get total length
     auto total_length_var=new Var_item(this->trans.new_var_name(""));
@@ -379,7 +379,7 @@ void CodeVisitor::print_var_newArray(Item* dst,Item* src)
     inst+=",1)\n";
     OUT<<'\t'<<inst;
 
-    //
+    //set variable
     auto ptr=new Var_item(this->trans.new_var_name(""));
     inst.clear();
     inst+=ptr->print();
@@ -390,7 +390,7 @@ void CodeVisitor::print_var_newArray(Item* dst,Item* src)
     inst+='\n';
     OUT<<'\t'<<inst;
 
-    ll encode_dim = decode(new_arr->dims.size());
+    ll encode_dim = encode(new_arr->dims.size());
     inst.clear();
     inst += "store ";
     inst += ptr->print();

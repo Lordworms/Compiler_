@@ -590,11 +590,12 @@ namespace IR {
       pegtl::seq< pegtl::at<Instruction_call_void_rule>,Instruction_call_void_rule>,  
       pegtl::seq< pegtl::at<Instruction_call_ret_rule>,Instruction_call_ret_rule>      
     > {};
+  struct variable_decalre:variable_rule{};
   struct Instruction_declare_rule:
     pegtl::seq<
        all_anno_rule,
        seps,
-       variable_rule
+       variable_decalre
     >{};  
    //all Instruction rule
    struct Instruction_common_rule:
@@ -812,7 +813,9 @@ namespace IR {
             F->args.push_back(F->name_var_map[func_name]);
             return;
         }
-        Var_item *var = new Var_item(func_name);
+        auto anno=parsed_items.back();
+        parsed_items.pop_back();
+        Var_item *var = new Var_item(func_name,anno);
         F->name_var_map[func_name] = var;
         F->args.push_back(var);
     }
@@ -872,6 +875,17 @@ namespace IR {
 //   }};
 
   //used for AOP
+
+ template<> struct action < variable_decalre > {
+  template< typename Input >
+  static void apply( const Input & in, Program & p){
+      auto F=p.functions.back();
+      auto anno=parsed_items.back();
+      auto new_var=new Var_item(in.string(),anno);
+      F->name_var_map[in.string()]=new_var;
+      parsed_items.push_back(new_var);
+  }
+  };
 
   template<> struct action < plus_rule > {
   template< typename Input >
@@ -1010,6 +1024,37 @@ namespace IR {
      }
      std::reverse(args.begin(),args.end());
      parsed_items.push_back(new NewArr_item(args));
+  }
+  }; 
+  
+  template<> struct action < arr_ele_all_rule > {
+  template< typename Input >
+  static void apply( const Input & in, Program & p){
+     std::vector<Item*>offsets;
+     Item* addr=parsed_items.front();
+     parsed_items.pop_front();
+     while(parsed_items.size()>1)
+     {
+        offsets.push_back(parsed_items.front());
+        parsed_items.pop_front();
+     }
+     parsed_items.push_front(new Arrele_item(addr,offsets)); 
+  }
+  }; 
+  template<> struct action < var_arr_ele_rule > {
+  template< typename Input >
+  static void apply( const Input & in, Program & p){
+     std::vector<Item*>offsets;
+   
+     while(parsed_items.size()>2)
+     {
+        offsets.push_back(parsed_items.back());
+        parsed_items.pop_back();
+     }
+     std::reverse(offsets.begin(),offsets.end());
+     Item* addr=parsed_items.back();
+     parsed_items.back();
+     parsed_items.push_back(new Arrele_item(addr,offsets)); 
   }
   }; 
   template<> struct action < var_new_tuple_rule > {
