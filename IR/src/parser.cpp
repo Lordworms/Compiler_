@@ -303,9 +303,16 @@ namespace IR {
         seps,
         variable_rule,
         seps,
-        var_num_rule,
+        constant_number,
         seps
     > {};
+  struct length_get_one_rule:
+  pegtl::seq<
+      str_length,
+      seps,
+      variable_rule,
+      seps
+  > {};
   //used for op items
   struct plus_rule:
   pegtl::seq<
@@ -503,7 +510,10 @@ namespace IR {
     seps,
     str_arrow,
     seps,
-    length_get_rule
+    pegtl::sor<
+      length_get_rule,
+      length_get_one_rule
+    >
     > {};    
   struct Instruction_assignment_rule:
   pegtl::sor<
@@ -1075,6 +1085,16 @@ namespace IR {
     parsed_items.push_back(new Length_item(arr,dim)); 
   } 
   }; 
+  template<> struct action <length_get_one_rule > {
+  template< typename Input >
+  static void apply( const Input & in, Program & p){
+    auto arr=parsed_items.back();
+    parsed_items.pop_back();
+    while(parsed_items.back()==arr)parsed_items.pop_back();
+    parsed_items.push_back(new Length_item(arr,nullptr)); 
+  } 
+  }; 
+  
   /*
     Instruction rules
   */

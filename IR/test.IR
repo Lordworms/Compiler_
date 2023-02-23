@@ -1,13 +1,11 @@
 define void @main ( ){
 
   :entry
-  int64 %arLen
-  int64[][][] %ar
-  br :myLabel1
-
-  :myLabel1
-  %ar <- new Array(3,3,3)
-  call print(%ar)
+  int64 %l
+  tuple %t
+  %t <- new Tuple(7)
+  %l <- length %t
+  call print(%l)
   return
 
 }

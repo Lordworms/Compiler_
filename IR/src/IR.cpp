@@ -243,7 +243,14 @@ namespace IR
     {
         this->type=iType::length_item;
         this->base=b;
-        this->dim=d;
+        if(d==nullptr)
+        {
+            this->dim=new Constant_item(0);
+        }
+        else
+        {
+            this->dim=d;
+        }
     }
     /*
         print function for items

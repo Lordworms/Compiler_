@@ -202,6 +202,7 @@ void CodeVisitor::print_var_length(Item* var,Item* src)
     if(anno_type->a_type==AnnoType::tuple_anno)
     {
         this->print_load(var,addr);
+        this->print_encode(var);
         return;
     }
     auto new_addr=new Var_item(this->trans.new_var_name(""));
