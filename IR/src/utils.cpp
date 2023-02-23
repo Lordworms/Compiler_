@@ -359,18 +359,25 @@ void CodeVisitor::print_var_newArray(Item* dst,Item* src)
         OUT<<'\t'<<inst;
     }
 
-    inst.clear();
-    inst+=total_length_var->print();
-    inst+=" <- ";
-    inst+=total_length_var->print();
-    inst+=" + ";
-    inst+=std::to_string(new_arr->dims.size()+1);
-    inst+='\n';
+    // inst.clear();
+    // inst+=total_length_var->print();
+    // inst+=" <- ";
+    // inst+=total_length_var->print();
+    // inst+=" + ";
+    // inst+=std::to_string(new_arr->dims.size()+1);
+    // inst+='\n';
 
-    OUT<<'\t'<<inst;
+    // OUT<<'\t'<<inst;
 
     print_encode(total_length_var);
-
+    inst.clear();
+    inst+=total_length_var->print();
+    inst+="<-";
+    inst+=total_length_var->print();
+    inst+=" + ";
+    inst+=std::to_string(2*new_arr->dims.size());
+    inst+='\n';
+    OUT<<'\t'<<inst;
     //call allocate
     inst.clear();
     inst+=dst->print();
@@ -385,19 +392,19 @@ void CodeVisitor::print_var_newArray(Item* dst,Item* src)
     inst+=ptr->print();
     inst+=" <- ";
     inst+=dst->print();
-    inst+=" + ";
-    inst+=std::to_string(WIDTH);
+    //inst+=" + ";
+    //inst+=std::to_string(WIDTH);
     inst+='\n';
     OUT<<'\t'<<inst;
 
-    ll encode_dim = encode(new_arr->dims.size());
-    inst.clear();
-    inst += "store ";
-    inst += ptr->print();
-    inst += " <- ";
-    inst += std::to_string(encode_dim);
-    inst += "\n";
-    OUT<<'\t'<<inst;
+    // ll encode_dim = encode(new_arr->dims.size());
+    // inst.clear();
+    // inst += "store ";
+    // inst += ptr->print();
+    // inst += " <- ";
+    // inst += std::to_string(encode_dim);
+    // inst += "\n";
+    // OUT<<'\t'<<inst;
 
     for (ll i = 0; i <new_arr->dims.size(); i++) {
         //ptr+8

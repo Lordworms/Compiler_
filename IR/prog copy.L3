@@ -1,0 +1,23 @@
+define @main(){
+	:entry
+	br :myLabel1
+
+	:myLabel1
+	%arLen_global_0 <- 3>> 1
+	%arLen_global_1 <- 3>> 1
+	%arLen_global_2 <- %arLen_global_0
+	%arLen_global_2 <- %arLen_global_2 * %arLen_global_1
+	%arLen_global_2 <- %arLen_global_2 + 3
+	%arLen_global_2 <- %arLen_global_2 << 1
+	%arLen_global_2 <- %arLen_global_2 + 1
+	%ar <- call allocate(%arLen_global_2,1)
+	%arLen_global_3 <- %ar + 8
+	store %arLen_global_3 <- 5
+	%arLen_global_3 <- %arLen_global_3 + 8
+	store %arLen_global_3 <- 3
+	%arLen_global_3 <- %arLen_global_3 + 8
+	store %arLen_global_3 <- 3
+	call print(%ar)
+	return
+
+}

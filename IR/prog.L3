@@ -1,6 +1,26 @@
 define @main(){
 	:entry
-	call tensor-error(5,5,3,9)
+	br :myLabel1
+
+	:myLabel1
+	%arLen_global_0 <- 3>> 1
+	%arLen_global_1 <- 3>> 1
+	%arLen_global_2 <- 3>> 1
+	%arLen_global_3 <- %arLen_global_0
+	%arLen_global_3 <- %arLen_global_3 * %arLen_global_1
+	%arLen_global_3 <- %arLen_global_3 * %arLen_global_2
+	%arLen_global_3 <- %arLen_global_3 << 1
+	%arLen_global_3 <- %arLen_global_3 + 1
+	%arLen_global_3<-%arLen_global_3 + 6
+	%ar <- call allocate(%arLen_global_3,1)
+	%arLen_global_4 <- %ar
+	%arLen_global_4 <- %arLen_global_4 + 8
+	store %arLen_global_4 <- 3
+	%arLen_global_4 <- %arLen_global_4 + 8
+	store %arLen_global_4 <- 3
+	%arLen_global_4 <- %arLen_global_4 + 8
+	store %arLen_global_4 <- 3
+	call print(%ar)
 	return
 
 }
