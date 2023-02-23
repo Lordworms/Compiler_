@@ -1063,7 +1063,7 @@ namespace IR {
      }
      std::reverse(offsets.begin(),offsets.end());
      Item* addr=parsed_items.back();
-     parsed_items.back();
+     parsed_items.pop_back();
      parsed_items.push_back(new Arrele_item(addr,offsets)); 
   }
   }; 

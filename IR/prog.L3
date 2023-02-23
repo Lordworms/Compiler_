@@ -3,20 +3,25 @@ define @main(){
 	br :myLabel1
 
 	:myLabel1
-	%arLen_global_0 <- 3>> 1
-	%arLen_global_1 <- %arLen_global_0
-	%arLen_global_1 <- %arLen_global_1 << 1
-	%arLen_global_1 <- %arLen_global_1 + 1
-	%arLen_global_1<-%arLen_global_1 + 2
-	%ar <- call allocate(%arLen_global_1,1)
-	%arLen_global_2 <- %ar
-	%arLen_global_2 <- %arLen_global_2 + 8
-	store %arLen_global_2 <- 3
-	%arLen_global_3 <- 0 * 8
-	%arLen_global_4 <- %arLen_global_3 + 8
-	%arLen_global_5 <- %ar + %arLen_global_4
-	%arLen<- load %arLen_global_5
-	call print(%arLen)
+	%arElement_global_0 <- 3>> 1
+	%arElement_global_1 <- %arElement_global_0
+	%arElement_global_1 <- %arElement_global_1 << 1
+	%arElement_global_1 <- %arElement_global_1 + 1
+	%arElement_global_1<-%arElement_global_1 + 2
+	%ar <- call allocate(%arElement_global_1,1)
+	%arElement_global_2 <- %ar
+	%arElement_global_2 <- %arElement_global_2 + 8
+	store %arElement_global_2 <- 3
+	%arElement_global_3 <- %ar + 16
+	%arElement_global_4<- load %arElement_global_3
+	%arElement_global_4 <- %arElement_global_4 >> 1
+	%arElement_global_3 <- %arElement_global_3 + 8
+	%arElement_global_5 <- 1
+	%arElement_global_6 <- %arElement_global_5 * 8
+	%arElement_global_6 <- %arElement_global_6 * 0
+	%arElement_global_3 <- %arElement_global_3 + %arElement_global_6
+	%arElement<- load %arElement_global_3
+	call print(%arElement)
 	return
 
 }
