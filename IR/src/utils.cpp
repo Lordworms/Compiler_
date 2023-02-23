@@ -227,7 +227,8 @@ Item* CodeVisitor::get_addr(Item* var)
         Constant_item cons(WIDTH);
         auto addr=new Var_item(this->trans.new_var_name(""));
         auto offset=new Var_item(this->trans.new_var_name(""));
-        this->print_op(offset,addr,OpType::plus,&cons);
+        this->print_op(addr,base,OpType::plus,&cons);
+        this->print_op(offset,arr_acc->eles[0],OpType::multy,&cons);
         this->print_op(addr,addr,OpType::plus,offset);
         return addr;
     }
