@@ -12,7 +12,7 @@ define @main(){
 	%arElement_global_2 <- %ar
 	%arElement_global_2 <- %arElement_global_2 + 8
 	store %arElement_global_2 <- 3
-	%arElement_global_3 <- %ar + 16
+	%arElement_global_3 <- %ar + 8
 	%arElement_global_4<- load %arElement_global_3
 	%arElement_global_4 <- %arElement_global_4 >> 1
 	%arElement_global_3 <- %arElement_global_3 + 8

@@ -235,7 +235,7 @@ Item* CodeVisitor::get_addr(Item* var)
     {   
         ll ndims = arr_acc->eles.size();
         auto * addr = new Var_item(this->trans.new_var_name(""));
-        Constant_item init2BytesLen(2*WIDTH);
+        Constant_item init2BytesLen(WIDTH);
         this->print_op(addr,arr_acc->base,OpType::plus,&init2BytesLen);
         std::vector<Var_item *> decodeArrDimLen (ndims);
         Constant_item constOne(1);
