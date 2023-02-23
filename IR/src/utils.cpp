@@ -206,13 +206,14 @@ void CodeVisitor::print_var_length(Item* var,Item* src)
         return;
     }
     auto new_addr=new Var_item(this->trans.new_var_name(""));
-    Constant_item byte_off(2*WIDTH);
-    this->print_op(new_addr,_src->base,OpType::plus,&byte_off);
-    auto off=new Var_item(this->trans.new_var_name(""));
-    Constant_item bytes_off(WIDTH);
-    this->print_op(off,_src->dim,OpType::multy,&bytes_off);
-    this->print_op(new_addr,new_addr,OpType::plus,off);
-    this->print_load(var,new_addr);
+    Constant_item dd(((Constant_item*)_src->dim)->value);
+    Constant_item byte(WIDTH);
+    this->print_op(new_addr,&dd,OpType::multy,&byte);
+    auto new_addr_1=new Var_item(this->trans.new_var_name(""));
+    auto new_addr_2=new Var_item(this->trans.new_var_name(""));
+    this->print_op(new_addr_1,new_addr,OpType::plus,&byte);
+    this->print_op(new_addr_2,addr,OpType::plus,new_addr_1);
+    this->print_load(var,new_addr_2);
 }
 //get address
 Item* CodeVisitor::get_addr(Item* var)

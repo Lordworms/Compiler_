@@ -1,10 +1,22 @@
 define @main(){
 	:entry
-	%t <- call allocate(7,1)
-	%l<- load %t
-	%l <- %l << 1
-	%l <- %l + 1
-	call print(%l)
+	br :myLabel1
+
+	:myLabel1
+	%arLen_global_0 <- 3>> 1
+	%arLen_global_1 <- %arLen_global_0
+	%arLen_global_1 <- %arLen_global_1 << 1
+	%arLen_global_1 <- %arLen_global_1 + 1
+	%arLen_global_1<-%arLen_global_1 + 2
+	%ar <- call allocate(%arLen_global_1,1)
+	%arLen_global_2 <- %ar
+	%arLen_global_2 <- %arLen_global_2 + 8
+	store %arLen_global_2 <- 3
+	%arLen_global_3 <- 0 * 8
+	%arLen_global_4 <- %arLen_global_3 + 8
+	%arLen_global_5 <- %ar + %arLen_global_4
+	%arLen<- load %arLen_global_5
+	call print(%arLen)
 	return
 
 }
