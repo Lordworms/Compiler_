@@ -807,7 +807,7 @@ namespace LA {
         {
             p.mainF = F;
         }
-        F->retType=parsed_items.back();
+        F->retType=(TypeAnno_item*)parsed_items.back();
         parsed_items.pop_back();
     }
   };
