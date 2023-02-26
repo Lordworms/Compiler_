@@ -64,6 +64,7 @@ namespace LA
             enforce basic block
         
         */
+        adding_basic_block(p,&trans);
         /*
             gen code
         */
@@ -71,7 +72,7 @@ namespace LA
         out.open("prog.IR");
         for(auto F:p.functions)
         {
-            out<<"define "<<F->retType->print()<<" "<<F->name<<" (";
+            out<<"define "<<F->retType->print()<<" "<<"@"<<F->name<<" (";
             print_args(out,F);
             out<<"){\n";
             for(auto ins:F->insts)
