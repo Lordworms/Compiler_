@@ -11,6 +11,10 @@ namespace LA
     TypeAnno_item tuple_anno_ex(AnnoType::tuple_anno);
     TypeAnno_item code_anno_ex(AnnoType::code_anno);
 
+    Fname_item fname_print("print");
+    Fname_item fname_input("input");
+    Fname_item fname_allocate("allocate");
+    Fname_item fname_tensor("tensor-error");
     std::string get_anno_str(AnnoType t)
     {
         switch (t)
@@ -169,6 +173,14 @@ namespace LA
         this->callee=calleee;
         this->type=iType::call_item;
     }
+    Call_item::Call_item(bool isRuntime,bool isonFuncname,std::vector<Item*>& argss,Item* calleee)
+    {
+        this->isRuntime=isRuntime;
+        this->args=argss;
+        this->callee=calleee;
+        this->type=iType::call_item;
+        this->is_on_func_name=isonFuncname;
+    }
     TypeAnno_item::TypeAnno_item(AnnoType at,ll d)
     {
         this->type=iType::type_anno_item;
@@ -207,11 +219,13 @@ namespace LA
     {
         this->fname=name;
         this->fptr=nullptr;
+        this->type=fname_item;
     }
     Fname_item::Fname_item(std::string name,Function* fp)
     {
         this->fname=name;
         this->fptr=fp;
+        this->type=fname_item;
     }
     /*
         print function for items
@@ -242,7 +256,10 @@ namespace LA
     }
     std::string Var_item::print()
     {
-        return this->var_name;
+        std::string res;
+        if(GEN_IR)res+="%";
+        res+=this->var_name;
+        return res;
     }
     std::string Constant_item::print()
     {
@@ -255,7 +272,7 @@ namespace LA
     std::string Call_item::print()
     {
         std::string res;
-        //res+="call ";
+        if(GEN_IR)res+="call ";
         res+=this->callee->print();
         res+="(";
         for(ll i=0;i<this->args.size();++i)
@@ -313,7 +330,12 @@ namespace LA
     }
     std::string Fname_item::print()
     {
-        std::string res=this->fname;
+        std::string res;
+        if(GEN_IR)
+        {
+            res+="@";
+        }
+        res+=this->fname;
         return res;
     }
     /*
@@ -453,6 +475,11 @@ namespace LA
     {
         this->type=InsType::ins_call;
         this->caller=var_ret;
+    }
+    Instruction_call::Instruction_call(Item* caller)
+    {
+        this->type=InsType::ins_call;
+        this->caller=caller;
     }
     Instruction_branch_condi::Instruction_branch_condi()
     {

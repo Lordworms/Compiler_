@@ -60,6 +60,6 @@ int main(
    * Parse the input file.
    */
   auto p = LA::parse_file(argv[optind]);
-  //LA::gen_code(p);
+  LA::gen_code(p);
   return 0;
 }

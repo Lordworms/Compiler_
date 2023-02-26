@@ -12,6 +12,7 @@
 namespace LA
 {
   static bool dflag=true;
+  static bool GEN_IR=true;
   #define debug if(dflag)std::cout
   inline static bool isPrint=false;
   using ll=long long;
@@ -76,7 +77,7 @@ namespace LA
 // */
 //   class BasicBlock;
   class Function;
-  enum iType{var_item,constant_item,label_item,call_item,type_anno_item,op_item,new_arr_item,new_tup_item,length_item,arr_ele_item};
+  enum iType{var_item,constant_item,label_item,call_item,type_anno_item,op_item,new_arr_item,new_tup_item,length_item,arr_ele_item,fname_item};
   enum OpType{plus,minus,multy,bit_and,left_shift,right_shift,eq,le,lt,gt,ge};
   enum AnnoType{void_anno,tuple_anno,int64_anno,tensor_anno,code_anno};
   
@@ -127,8 +128,10 @@ namespace LA
       std::vector<Item*>args;
       Item* callee;
       bool isRuntime;
+      bool is_on_func_name;
       Call_item();
       Call_item(bool isRuntime,std::vector<Item*>& argss,Item* calleee);
+      Call_item(bool isRuntime,bool isonFuncname,std::vector<Item*>& argss,Item* calleee);
       Call_item* copy()override;
       std::string print()override;
   };
@@ -157,6 +160,7 @@ namespace LA
   {
     public:
       Item* base;
+      ll line_number;
       std::vector<Item*>eles;
       Arrele_item();
       std::string print()override;
@@ -209,6 +213,11 @@ namespace LA
   extern TypeAnno_item int64_anno_ex;
   extern TypeAnno_item tuple_anno_ex;
   extern TypeAnno_item code_anno_ex;
+
+  extern Fname_item fname_print;
+  extern Fname_item fname_input;
+  extern Fname_item fname_allocate;
+  extern Fname_item fname_tensor;
   /*
    * Instruction interface.
    */
@@ -312,6 +321,7 @@ namespace LA
       void apply(Ins_visitor& vis)override;
       Instruction_call();
       Instruction_call(bool runtime,Item* var);
+      Instruction_call(Item* caller);
       Instruction_call* copy()override;
   };
   class Instruction_declare:public Instruction
@@ -347,7 +357,7 @@ namespace LA
       std::set<Item*>var_set;
       std::set<Constant_item*>need_encode;
       std::vector<Instruction*>insts;
-      Item* retType;
+      TypeAnno_item* retType;
       Function();
   };
   /*

@@ -38,12 +38,15 @@ namespace LA
             void visit(Instruction_call* ins);
             void visit(Instruction_declare* ins);
             void arr_ele_all(Arrele_item* a);
+            void add_length_decode(Length_item* length);
+            void add_op_decode(Op_item* op);
+            void add_encode_instruction(Item* v);
             Item* add_decode_instruction(Item* var);
     };
    
     ll encode(ll x);
     ll decode(ll x);
-
+    
     /*
         set union operator
     */

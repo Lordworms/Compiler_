@@ -132,7 +132,41 @@ void Var_Label_transformer::transform_var(Program& p)
         }  
         else//dst is variable
         {
-
+            switch (ins->s->type)
+            {
+                case iType::label_item:
+                case iType::call_item:
+                case iType::constant_item:
+                case iType::var_item:
+                case iType::fname_item:
+                case iType::new_arr_item:
+                case iType::new_tup_item:
+                {
+                    this->new_ints.push_back(ins);
+                    break;
+                }
+                case iType::arr_ele_item:
+                {
+                    this->arr_ele_all(dynamic_cast<Arrele_item*>(ins->s));
+                    this->new_ints.push_back(ins);
+                    break;
+                }
+                case iType::op_item:
+                {
+                    this->add_op_decode(dynamic_cast<Op_item*>(ins->s));
+                    this->new_ints.push_back(ins);
+                    this->add_encode_instruction(ins->d);
+                }
+                case iType::length_item:
+                {
+                    this->add_length_decode(dynamic_cast<Length_item*>(ins->s));
+                    this->new_ints.push_back(ins);
+                }
+                default:
+                {
+                    break;
+                }
+            }
         } 
     }
     void EncodeVisitor::visit(Instruction_label* ins)
@@ -180,6 +214,53 @@ void Var_Label_transformer::transform_var(Program& p)
                 a->eles[i]=this->add_decode_instruction(off);
             }
         }
+    }
+    void EncodeVisitor::add_length_decode(Length_item* length)
+    {
+        if(length->dim->type==iType::var_item)
+        {
+            auto new_var=add_decode_instruction(length->dim);
+            length->dim=new_var;
+        }
+        else if(length->dim->type==iType::constant_item)
+        {
+            auto cons=dynamic_cast<Constant_item*>(length->dim);
+            cons->decode_itself();
+        }
+        else
+        {
+            std::cout<<"error type for length decode!\n";
+        }
+    }
+    void EncodeVisitor::add_op_decode(Op_item* op)
+    {
+        if(op->op1->type==iType::var_item)
+        {
+            auto new_var=add_decode_instruction(op->op1);
+            op->op1=new_var;
+        }
+        else if(op->op1->type==iType::constant_item)
+        {
+            auto cons=dynamic_cast<Constant_item*>(op->op1);
+            cons->decode_itself();
+        }
+        if(op->op2->type==iType::var_item)
+        {
+            auto new_var=add_decode_instruction(op->op2);
+            op->op2=new_var;
+        }
+        else if(op->op2->type==iType::constant_item)
+        {
+            auto cons=dynamic_cast<Constant_item*>(op->op2);
+            cons->decode_itself();
+        }
+    }
+    void EncodeVisitor::add_encode_instruction(Item* v)
+    {   
+        auto sr=new Instruction_assignment(new Op_item(v,new Constant_item(1),OpType::right_shift),v);
+        auto plus=new Instruction_assignment(new Op_item(v,new Constant_item(1),OpType::plus),v);
+        this->new_ints.push_back(sr);
+        this->new_ints.push_back(plus);
     }
 /*
     other interfaces
