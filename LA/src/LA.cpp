@@ -267,6 +267,11 @@ namespace LA
     }
     std::string Label_item::print()
     {
+        std::string res;
+        if(GEN_IR)
+        {
+            res+=':';
+        }
         return this->label_name;
     }
     std::string Call_item::print()

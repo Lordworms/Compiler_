@@ -77,7 +77,7 @@ namespace LA
             out<<"){\n";
             for(auto ins:F->insts)
             {
-                out<<ins->print();
+                out<<'\t'<<ins->print();
             }
             out<<"}\n";
         }
