@@ -272,7 +272,8 @@ namespace LA
         {
             res+=':';
         }
-        return this->label_name;
+        res+=this->label_name;
+        return res;
     }
     std::string Call_item::print()
     {

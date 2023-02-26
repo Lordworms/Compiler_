@@ -20,7 +20,7 @@ namespace pegtl = tao::TAO_PEGTL_NAMESPACE;
 using namespace pegtl;
 namespace LA {
     std::deque<Item *> parsed_items;
-
+    std::map<std::string,Fname_item*>str_fname_mp;
   /*
     basic variable
   */
@@ -143,6 +143,9 @@ namespace LA {
    //label Item
    struct Label_rule:
     label {};
+  //source var
+  struct var_src_rule:
+    variable{};
   //combination of var num and label
   struct var_num_rule:
   pegtl::sor<
@@ -556,35 +559,47 @@ namespace LA {
       >{};
 
 //Instruction call rule    
-  struct  call_runtime_rule:
+  // struct  call_runtime_rule:
+  // pegtl::seq<
+  //     //str_call, 
+  //     seps,
+  //     runtime_rule,seps,
+  //     pegtl::one< '(' >,
+  //     seps,
+  //     args_rule,seps,
+  //     pegtl::one< ')' >,
+  //     seps   
+  // > {};            
+  // struct  call_user_rule:
+  // pegtl::seq<
+  //     //str_call,
+  //     seps,
+  //     var_label_rule,
+  //     seps,
+  //     pegtl::one< '(' >,
+  //     seps,
+  //     args_rule,
+  //     seps,
+  //     pegtl::one< ')' >,
+  //     seps
+  // > {}; 
+  struct callee_rule:variable{};
+  struct call_full_rule:
   pegtl::seq<
-      //str_call, 
-      seps,
-      runtime_rule,seps,
-      pegtl::one< '(' >,
-      seps,
-      args_rule,seps,
-      pegtl::one< ')' >,
-      seps   
-  > {};            
-  struct  call_user_rule:
-  pegtl::seq<
-      //str_call,
-      seps,
-      var_label_rule,
-      seps,
-      pegtl::one< '(' >,
-      seps,
-      args_rule,
-      seps,
-      pegtl::one< ')' >,
-      seps
-  > {}; 
+    seps,
+    callee_rule,
+    seps,
+    pegtl::one<'('>,
+    seps,
+    args_rule,
+    seps,
+    pegtl::one<')'>,
+    seps
+  >{};
   struct  Instruction_call_void_rule:      
   pegtl::seq<
       pegtl::sor<
-      call_runtime_rule, 
-      call_user_rule
+      call_full_rule
       >
   > {}; 
   struct  Instruction_call_ret_rule:     
@@ -593,7 +608,7 @@ namespace LA {
       seps,
       str_arrow,
       seps,
-      pegtl::sor<call_runtime_rule, call_user_rule>
+      call_full_rule
   > {}; 
   struct Instruction_call_rule:
     pegtl::sor<
@@ -611,8 +626,8 @@ namespace LA {
    struct Instruction_common_rule:
     pegtl::sor<
         pegtl::seq< pegtl::at<Instruction_return_rule>                  , Instruction_return_rule               >,
-        pegtl::seq< pegtl::at<Instruction_assignment_rule>              , Instruction_assignment_rule           >,
         pegtl::seq< pegtl::at<Instruction_call_rule>                    , Instruction_call_rule            >,
+        pegtl::seq< pegtl::at<Instruction_assignment_rule>              , Instruction_assignment_rule           >,
         pegtl::seq< pegtl::at<Instruction_declare_rule>                    , Instruction_declare_rule            >,
         pegtl::seq< pegtl::at<Instruction_branch_rule>                  , Instruction_branch_rule              >,
         pegtl::seq< pegtl::at<Instruction_label_rule>                   , Instruction_label_rule                >
@@ -795,6 +810,32 @@ namespace LA {
       parsed_items.push_back(label);
     }
   };
+  
+  template<> struct action < var_src_rule > {
+  template< typename Input >
+  static void apply( const Input & in, Program & p){
+        auto var_name=in.string();
+        auto F=p.functions.back();
+        if(F->name_var_map.find(var_name)!=F->name_var_map.end())
+        {
+            parsed_items.push_back(F->name_var_map[var_name]);
+        }
+        else
+        {
+           Fname_item* fname;
+           if(str_fname_mp.find(var_name)!=str_fname_mp.end())
+           {  
+              fname=str_fname_mp[var_name];
+           }
+           else
+           {
+              fname=new Fname_item(var_name);
+              str_fname_mp[var_name]=fname;
+           }
+           parsed_items.push_back(fname);
+        }
+    }
+  };
   template<> struct action < function_name > {
   template< typename Input >
   static void apply( const Input & in, Program & p)
@@ -803,6 +844,16 @@ namespace LA {
         auto F = new Function();
         F->name = func_name;
         p.functions.push_back(F);
+        Fname_item* fname;
+        if(str_fname_mp.find(func_name)!=str_fname_mp.end())
+        {
+            fname=str_fname_mp[func_name];
+        }
+        else
+        {
+            fname=new Fname_item(func_name);
+            str_fname_mp[func_name]=fname;
+        }
         if (func_name == "@main") 
         {
             p.mainF = F;
@@ -836,35 +887,69 @@ namespace LA {
     Item actions
   
   */
-  template<> struct action < runtime_rule > {
+  // template<> struct action < runtime_rule > {
+  // template< typename Input >
+  // static void apply( const Input & in, Program & p){
+  //     auto func_name=in.string();
+  //     if (func_name==runtime_print.label_name) 
+  //     {
+  //         parsed_items.push_back(&runtime_print);
+  //     } 
+  //   //   else if (func_name == runtime_allocate.label_name) 
+  //   //   {
+  //   //       parsed_items.push_back(&runtime_allocate);
+  //   //   } 
+  //     else if (func_name == runtime_input.label_name) 
+  //     {
+  //         parsed_items.push_back(&runtime_input);
+  //     } 
+  //     else if (func_name == runtime_tensor.label_name) 
+  //     {
+  //         parsed_items.push_back(&runtime_tensor);
+  //     }
+  //     else
+  //     {
+  //       std::cout<<"error runtime type!\n";
+  //     }
+  //     return;
+  //   }
+  // };
+  
+    template<> struct action < callee_rule > {
   template< typename Input >
   static void apply( const Input & in, Program & p){
-      auto func_name=in.string();
-      if (func_name==runtime_print.label_name) 
+      auto var_name=in.string();
+      auto F=p.functions.back();
+      if(F->name_var_map.find(var_name)!=F->name_var_map.end())
       {
-          parsed_items.push_back(&runtime_print);
-      } 
-    //   else if (func_name == runtime_allocate.label_name) 
-    //   {
-    //       parsed_items.push_back(&runtime_allocate);
-    //   } 
-      else if (func_name == runtime_input.label_name) 
-      {
-          parsed_items.push_back(&runtime_input);
-      } 
-      else if (func_name == runtime_tensor.label_name) 
-      {
-          parsed_items.push_back(&runtime_tensor);
+          parsed_items.push_back(F->name_var_map[var_name]);
       }
-      else
+      else 
       {
-        std::cout<<"error runtime type!\n";
+         if(var_name=="print")
+         {
+            parsed_items.push_back(&LA::fname_print);
+         }
+         else if(var_name=="input")
+         {
+            parsed_items.push_back(&LA::fname_input);
+         }
+         else
+         {
+            if(str_fname_mp.find(var_name)!=str_fname_mp.end())
+            {
+              parsed_items.push_back(str_fname_mp[var_name]);
+            }
+            else
+            {
+              auto fname=new Fname_item(var_name);
+              str_fname_mp[var_name]=fname;
+              parsed_items.push_back(fname);
+            }
+         }
       }
-      return;
     }
   };
-
-
   //load and store items
 //   template<> struct action < load_rule > {
 //   template< typename Input >
