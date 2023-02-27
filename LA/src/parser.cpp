@@ -284,7 +284,7 @@ namespace LA {
    
   struct var_num_label_rule:
   pegtl::sor<
-      variable_rule,
+      var_src_rule,
       Label_rule,
       Label_call_rule,
       constant_number
@@ -625,10 +625,10 @@ namespace LA {
    //all Instruction rule
    struct Instruction_common_rule:
     pegtl::sor<
-        pegtl::seq< pegtl::at<Instruction_return_rule>                  , Instruction_return_rule               >,
         pegtl::seq< pegtl::at<Instruction_call_rule>                    , Instruction_call_rule            >,
         pegtl::seq< pegtl::at<Instruction_assignment_rule>              , Instruction_assignment_rule           >,
         pegtl::seq< pegtl::at<Instruction_declare_rule>                    , Instruction_declare_rule            >,
+        pegtl::seq< pegtl::at<Instruction_return_rule>                  , Instruction_return_rule               >,
         pegtl::seq< pegtl::at<Instruction_branch_rule>                  , Instruction_branch_rule              >,
         pegtl::seq< pegtl::at<Instruction_label_rule>                   , Instruction_label_rule                >
     > {};
@@ -719,10 +719,10 @@ namespace LA {
               parsed_items.push_back(F->name_var_map[var_name]);
               return;
           }
-          auto *var = new Var_item(var_name);
-          F->name_var_map[var_name] = var;
-          F->var_set.insert(var);
-          parsed_items.push_back(var);
+          else
+          {
+            return;
+          }
     }
   };
   
@@ -1139,7 +1139,7 @@ namespace LA {
             F->need_encode.erase(dynamic_cast<Constant_item*>(off));
         }
      }
-     parsed_items.push_front(new Arrele_item(addr,offsets)); 
+     parsed_items.push_front(new Arrele_item(addr,offsets,in.position().line)); 
   }
   }; 
   template<> struct action < var_arr_ele_rule > {
@@ -1160,7 +1160,7 @@ namespace LA {
      std::reverse(offsets.begin(),offsets.end());
      Item* addr=parsed_items.back();
      parsed_items.pop_back();
-     parsed_items.push_back(new Arrele_item(addr,offsets)); 
+     parsed_items.push_back(new Arrele_item(addr,offsets,in.position().line)); 
   }
   }; 
   template<> struct action < var_new_tuple_rule > {

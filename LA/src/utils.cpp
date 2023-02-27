@@ -114,7 +114,8 @@ void Var_Label_transformer::transform_var(Program& p)
         else if(ins->condition->type==iType::var_item)
         {
             auto cons=dynamic_cast<Var_item*>(ins->condition);
-            this->add_decode_instruction(cons);
+            auto new_condi=this->add_decode_instruction(cons);
+            ins->condition=new_condi;
         }
         this->new_ints.push_back(ins);
         
@@ -156,11 +157,13 @@ void Var_Label_transformer::transform_var(Program& p)
                     this->add_op_decode(dynamic_cast<Op_item*>(ins->s));
                     this->new_ints.push_back(ins);
                     this->add_encode_instruction(ins->d);
+                    break;
                 }
                 case iType::length_item:
                 {
                     this->add_length_decode(dynamic_cast<Length_item*>(ins->s));
                     this->new_ints.push_back(ins);
+                    break;
                 }
                 default:
                 {
@@ -180,14 +183,15 @@ void Var_Label_transformer::transform_var(Program& p)
     void EncodeVisitor::visit(Instruction_declare* ins)
     {   
         this->new_ints.push_back(ins);
-        if(ins->anno_type==&LA::int64_anno_ex)
+        auto anno=dynamic_cast<TypeAnno_item*>(ins->anno_type);
+        if(anno->a_type==AnnoType::int64_anno)
         {
             auto cons=new Constant_item(1);
             cons->is_encoded=true;
             auto assign=new Instruction_assignment(cons,ins->var);
             this->new_ints.push_back(assign);
         }
-        else if(ins->anno_type==&LA::void_anno_ex||ins->anno_type==&LA::code_anno_ex||ins->anno_type==&LA::tuple_anno_ex)
+        else if(anno->a_type==AnnoType::tuple_anno||anno->a_type==AnnoType::code_anno|anno->a_type==AnnoType::tensor_anno)
         {
             auto cons=new Constant_item(0);
             cons->is_encoded=false;
@@ -257,7 +261,7 @@ void Var_Label_transformer::transform_var(Program& p)
     }
     void EncodeVisitor::add_encode_instruction(Item* v)
     {   
-        auto sr=new Instruction_assignment(new Op_item(v,new Constant_item(1),OpType::right_shift),v);
+        auto sr=new Instruction_assignment(new Op_item(v,new Constant_item(1),OpType::left_shift),v);
         auto plus=new Instruction_assignment(new Op_item(v,new Constant_item(1),OpType::plus),v);
         this->new_ints.push_back(sr);
         this->new_ints.push_back(plus);

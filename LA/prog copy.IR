@@ -1,0 +1,13 @@
+define void @main (){
+	:_global_0
+	code %fp
+	%fp <- 0
+	%fp <- @myF
+	call %fp()
+	return
+}
+define void @myF (){
+	:_global_1
+	call print(3)
+	return
+}

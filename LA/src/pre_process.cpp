@@ -27,7 +27,7 @@ namespace LA
         auto dec_new_var_inst=new Instruction_declare(&LA::int64_anno_ex,new_var);
         insts.push_back(dec_new_var_inst);
         //assign
-        auto assign_inst=new Instruction_assignment(new Op_item(new_var,new Constant_item(0),OpType::eq),new_var);
+        auto assign_inst=new Instruction_assignment(new Op_item(arr_acc->base,new Constant_item(0),OpType::eq),new_var);
         insts.push_back(assign_inst);
         //branch
         auto br_inst=new Instruction_branch_condi(new_label_true,new_label_false,new_var);
@@ -36,7 +36,9 @@ namespace LA
         auto true_label_inst=new Instruction_label(new_label_true);
         insts.push_back(true_label_inst);
         //call tensor
-        std::vector<Item*>args={new Constant_item(arr_acc->line_number)};
+        auto tensor_num=new Constant_item(arr_acc->line_number);
+        tensor_num->encode_itself();
+        std::vector<Item*>args={tensor_num};
         auto caller=new Call_item(true,true,args,(Item*)&fname_tensor);
         auto call_tensor=new Instruction_call(caller);
         insts.push_back(call_tensor);
@@ -60,10 +62,13 @@ namespace LA
             encode offset
         */
         auto encode_off_0=this->add_encode_instruction_new(v->eles[0]);
+
         /*
             overflow_flag<-encoded offset >= new_len_var
         */
         auto overflow_flag=new Var_item(this->trans->new_var_name(""));
+        auto declare_overflow_flag=new Instruction_declare(&LA::int64_anno_ex,overflow_flag);
+        insts.push_back(declare_overflow_flag);
         auto assign_flow=new Instruction_assignment(new Op_item(encode_off_0,new_len_var,OpType::ge),overflow_flag);
         insts.push_back(assign_flow);
 
@@ -78,7 +83,10 @@ namespace LA
             :true
             call tensor-error
        */
+       auto new_label_true_inst=new Instruction_label(new_label_true);
+       insts.push_back(new_label_true_inst);
        auto line_number=new Constant_item(v->line_number);
+       line_number->encode_itself();
        std::vector<Item*>args={line_number,new_len_var,encode_off_0};
        auto caller=new Call_item(true,true,args,&LA::fname_tensor);
        auto call_inst=new Instruction_call(caller);
@@ -104,9 +112,17 @@ namespace LA
         */
         //define four things
         auto dim_var=new Var_item(this->trans->new_var_name(""));
+        auto declare_dim_var=new Instruction_declare(&LA::int64_anno_ex,dim_var);
+        insts.push_back(declare_dim_var);
         auto arr_len=new Var_item(this->trans->new_var_name(""));
+        auto declare_arr_len=new Instruction_declare(&LA::int64_anno_ex,arr_len);
+        insts.push_back(declare_arr_len);
         auto overflow_flag=new Var_item(this->trans->new_var_name(""));
+        auto declare_overflow_flag=new Instruction_declare(&LA::int64_anno_ex,overflow_flag);
+        insts.push_back(declare_overflow_flag);
         auto encode_off_i=new Var_item(this->trans->new_var_name(""));
+        auto declare_encode_off_i=new Instruction_declare(&LA::int64_anno_ex,encode_off_i);
+        insts.push_back(declare_encode_off_i);
         auto false_label_final=new Label_item(this->trans->new_label_name(""));
         auto true_label_final=new Label_item(this->trans->new_label_name(""));//true means overflow
         for(ll dim=0;dim<arr_acc->eles.size();++dim)
@@ -130,7 +146,7 @@ namespace LA
             auto dim_var=new Constant_item(dim);
             auto length_q=new Length_item(arr_acc->base,dim_var);
             auto assign_length_inst=new Instruction_assignment(length_q,arr_len);
-
+            insts.push_back(assign_length_inst);
             /*
                 encode_off<-encode(arr->offset[i])
             */
@@ -207,7 +223,9 @@ namespace LA
     Var_item* PreCheck::add_encode_instruction_new(Item* v)
     {   
         auto new_var=new Var_item(this->trans->new_var_name(""));
-        auto sr=new Instruction_assignment(new Op_item(v,new Constant_item(1),OpType::right_shift),new_var);
+        auto declare=new Instruction_declare(&LA::int64_anno_ex,new_var);
+        this->insts.push_back(declare);
+        auto sr=new Instruction_assignment(new Op_item(v,new Constant_item(1),OpType::left_shift),new_var);
         auto plus=new Instruction_assignment(new Op_item(new_var,new Constant_item(1),OpType::plus),new_var);
         this->insts.push_back(sr);
         this->insts.push_back(plus);
@@ -251,6 +269,13 @@ namespace LA
                     startBB=true;
                 }
                 inst_list.push_back(ins);
+            }
+            if(inst_list.empty())
+            {
+                startBB=false;
+                auto new_label=new Label_item(trans->new_label_name(""));
+                auto label_inst=new Instruction_label(new_label);
+                inst_list.push_back(label_inst);
             }
             if(!startBB)
             {

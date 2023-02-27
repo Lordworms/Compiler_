@@ -1,12 +1,33 @@
-define void @main ( ){
-
-  :entry
-  tuple %p
-  int64 %v
-  %p <- new Tuple(7)
-  %p[0] <- 5
-  %v <- %p[0]
-  call print(%v)
-  return 
-
+define void  @main() {
+	:false_globalL_0
+	int64 %v1
+	%v1 <- 1
+	int64 %v2
+	%v2 <- 1
+	%v1 <- 3
+	%v2 <- 5
+	int64 %check
+	%check <- 1
+	int64 %v3
+	%v3 <- 1
+	int64 %check_newV_0
+	%check_newV_0 <- %v1 >> 1
+	int64 %check_newV_1
+	%check_newV_1 <- %v2 >> 1
+	%v3 <- %check_newV_0 + %check_newV_1
+	%v3 <- %v3 << 1
+	%v3 <- %v3 + 1
+	int64 %check_newV_2
+	%check_newV_2 <- %v3 >> 1
+	%check <- %check_newV_2 > 1
+	%check <- %check << 1
+	%check <- %check + 1
+	int64 %check_newV_3
+	%check_newV_3 <- %check >> 1
+	br %check_newV_3 :true :false
+	:true
+	call print(%v3)
+	br :false
+	:false
+	return
 }

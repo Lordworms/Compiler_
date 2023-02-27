@@ -1,172 +1,99 @@
 (@main
-	(@encode 1 0
-	r10 <- rdi
-	:NNNNNNNNNNN_global_1
-	goto :NNNNNNNNNNN_global_0
-	:NNNNNNNNNNN_global_0
+	(@main 0 8
+	:endBody1_init_global_42_global_6
+	r10 <- 0
+	mem rsp 40 <- r10
+	r10 <- 0
+	mem rsp 48 <- r10
+	r10 <- 0
+	mem rsp 56 <- r10
+	r10 <- 1
+	mem rsp 0 <- r10
+	r10 <- 601
+	mem rsp 0 <- r10
+	r10 <- mem rsp 0
+	r10 <- r10
+	r10 >>= 1
+	r10 <- r10
+	r11 <- mem rsp 0
+	r11 <- r11
+	r11 >>= 1
+	r10 <- r10
+	r10 *= r11
+	r10 <- r10
 	r10 <- r10
 	r10 <<= 1
 	r10 <- r10
 	r10 <- r10
 	r10 += 1
 	r10 <- r10
-	rax <- r10
-	return
-)
-	(@decode 1 0
-	r10 <- rdi
-	:NNNNNNNNNNN_global_3
-	goto :NNNNNNNNNNN_global_2
-	:NNNNNNNNNNN_global_2
+	r10 <- r10
+	r10 += 4
+	r10 <- r10
+	rdi <- r10
+	rsi <- 1
+	call allocate 2
+	r10 <- rax
+	r10 <- r10
+	mem rsp 56 <- r10
+	r10 <- mem rsp 56
+	r10 <- r10
+	r10 <- r10
+	r10 += 8
+	r10 <- r10
+	r11 <- mem rsp 0
+	mem r10 0 <- r11
+	r10 <- r10
+	r10 += 8
+	r10 <- r10
+	r11 <- mem rsp 0
+	mem r10 0 <- r11
+	r10 <- mem rsp 0
 	r10 <- r10
 	r10 >>= 1
-	rax <- r10
-	return
-)
-	(@main 0 7
-	:NNNNNNNNNNN_global_9
-	goto :NNNNNNNNNNN_global_4
-	:NNNNNNNNNNN_global_8
-	r10 <- mem rsp 40
-	rdi <- r10
-	call print 1
-	r10 <- rax
-	return
-	:NNNNNNNNNNN_global_10
-	r10 <- mem rsp 8
 	r10 <- r10
-	r10 += 2
+	r11 <- mem rsp 0
+	r11 <- r11
+	r11 >>= 1
 	r10 <- r10
-	mem rsp 8 <- r10
-	r10 <- 1
-	mem rsp 0 <- r10
-	r10 <- 1
-	r10 <- mem rsp 16
+	r10 *= r11
 	r10 <- r10
-	r10 -= 2
 	r10 <- r10
-	mem rsp 16 <- r10
-	r10 <- mem rsp 8
-	r11 <- mem rsp 32
-	cjump r10 < r11 :NNNNNNNNNNN_global_6
-	goto :NNNNNNNNNNN_global_8
-	:NNNNNNNNNNN_global_6
-	r10 <- mem rsp 0
-	rdi <- r10
-	mem rsp -8 <- :NNNNNNNNNNN_decode_0
-	call @decode 1
-	:NNNNNNNNNNN_decode_0
-	r10 <- rax
-	r11 <- r10
-	r10 <- r11
+	r10 <<= 1
+	r10 <- r10
+	r10 <- r10
 	r10 += 1
-	r8 <- r10
-	r10 <- 1
-	r10 <- 0
-	r10 += r11
 	r10 <- r10
-	r10 *= 8
 	r10 <- r10
-	r10 += 16
-	r9 <- mem rsp 40
-	r9 <- r9
-	r9 += r10
-	r10 <- mem r9 0
-	rax <- r10
-	r10 <- 1
-	r10 <- 0
-	r10 += r8
+	r10 += 4
 	r10 <- r10
-	r10 *= 8
-	r9 <- r10
-	r9 += 16
-	r10 <- mem rsp 40
-	r10 <- r10
-	r10 += r9
-	r10 <- mem r10 0
-	r9 <- r10
-	cjump r9 < rax :NNNNNNNNNNN_global_11
-	goto :NNNNNNNNNNN_global_7
-	:NNNNNNNNNNN_global_7
-	r10 <- mem rsp 0
-	r10 <- r10
-	r10 += 2
-	r10 <- r10
-	mem rsp 0 <- r10
-	r10 <- mem rsp 0
-	r11 <- mem rsp 16
-	cjump r10 < r11 :NNNNNNNNNNN_global_6
-	goto :NNNNNNNNNNN_global_10
-	:NNNNNNNNNNN_global_11
-	r10 <- 1
-	r10 <- 0
-	r10 += r8
-	r10 <- r10
-	r10 *= 8
-	r8 <- r10
-	r8 += 16
-	r10 <- mem rsp 40
-	r10 <- r10
-	r10 += r8
-	mem r10 0 <- rax
-	r10 <- 1
-	r10 <- 0
-	r10 += r11
-	r10 <- r10
-	r10 *= 8
-	r10 <- r10
-	r10 += 16
-	r11 <- mem rsp 40
-	r11 <- r11
-	r11 += r10
-	mem r11 0 <- r9
-	goto :NNNNNNNNNNN_global_7
-	:NNNNNNNNNNN_global_5
-	r10 <- 1
-	r10 <- mem rsp 48
 	rdi <- r10
-	mem rsp -8 <- :NNNNNNNNNNN_decode_1
-	call @decode 1
-	:NNNNNNNNNNN_decode_1
-	r11 <- rax
-	r10 <- 0
-	r10 += r11
-	r10 <- r10
-	r10 *= 8
-	r10 <- r10
-	r10 += 16
-	r11 <- mem rsp 40
-	r11 <- r11
-	mem rsp 24 <- r11
-	r11 <- mem rsp 24
-	r11 += r10
-	mem rsp 24 <- r11
-	call input 0
+	rsi <- 1
+	call allocate 2
 	r10 <- rax
-	r11 <- mem rsp 24
-	mem r11 0 <- r10
-	r10 <- mem rsp 48
-	r10 <- r10
-	r10 += 2
 	r10 <- r10
 	mem rsp 48 <- r10
-	r11 <- mem rsp 32
 	r10 <- mem rsp 48
-	cjump r10 < r11 :NNNNNNNNNNN_global_5
-	goto :NNNNNNNNNNN_global_6
-	:NNNNNNNNNNN_global_4
-	call input 0
-	r10 <- rax
 	r10 <- r10
-	mem rsp 32 <- r10
-	r10 <- mem rsp 32
 	r10 <- r10
-	r10 -= 2
+	r10 += 8
 	r10 <- r10
-	mem rsp 16 <- r10
-	r10 <- mem rsp 32
+	r11 <- mem rsp 0
+	mem r10 0 <- r11
+	r10 <- r10
+	r10 += 8
+	r10 <- r10
+	r11 <- mem rsp 0
+	mem r10 0 <- r11
+	r10 <- mem rsp 0
 	r10 <- r10
 	r10 >>= 1
+	r10 <- r10
+	r11 <- mem rsp 0
+	r11 <- r11
+	r11 >>= 1
+	r10 <- r10
+	r10 *= r11
 	r10 <- r10
 	r10 <- r10
 	r10 <<= 1
@@ -175,7 +102,7 @@
 	r10 += 1
 	r10 <- r10
 	r10 <- r10
-	r10 += 2
+	r10 += 4
 	r10 <- r10
 	rdi <- r10
 	rsi <- 1
@@ -185,16 +112,3287 @@
 	mem rsp 40 <- r10
 	r10 <- mem rsp 40
 	r10 <- r10
+	r10 <- r10
 	r10 += 8
-	r11 <- mem rsp 32
+	r10 <- r10
+	r11 <- mem rsp 0
+	mem r10 0 <- r11
+	r10 <- r10
+	r10 += 8
+	r10 <- r10
+	r11 <- mem rsp 0
 	mem r10 0 <- r11
 	r10 <- 1
-	mem rsp 0 <- r10
-	r10 <- 1
-	r10 <- 1
-	mem rsp 48 <- r10
+	mem rsp 24 <- r10
 	r10 <- 1
 	mem rsp 8 <- r10
-	goto :NNNNNNNNNNN_global_5
+	r10 <- 1
+	mem rsp 32 <- r10
+	r10 <- 1
+	mem rsp 16 <- r10
+	r10 <- 9
+	mem rsp 8 <- r10
+	r10 <- 9
+	mem rsp 24 <- r10
+	r10 <- 1
+	mem rsp 16 <- r10
+	goto :endBody1_init_global_42_global_1
+	:endBody1_init_global_42_global_1
+	r10 <- 1
+	r10 <- mem rsp 16
+	r10 <- r10
+	r10 >>= 1
+	r11 <- mem rsp 8
+	r11 <- r11
+	r11 >>= 1
+	r10 <- r10 < r11
+	r10 <- r10
+	r10 <- r10
+	r10 <<= 1
+	r10 <- r10
+	r10 <- r10
+	r10 += 1
+	r10 <- r10
+	r10 <- r10
+	r10 >>= 1
+	cjump r10 = 1 :endBody1_init_global_42_global_4
+	goto :endBody1_init_global_42_global_0
+	:endBody1_init_global_42_global_4
+	r10 <- 1
+	mem rsp 32 <- r10
+	goto :endBody1_init_global_42_global_5
+	:endBody1_init_global_42_global_5
+	r10 <- 1
+	r10 <- mem rsp 32
+	r11 <- r10
+	r11 >>= 1
+	r10 <- mem rsp 24
+	r10 <- r10
+	r10 >>= 1
+	r10 <- r11 < r10
+	r10 <- r10
+	r10 <- r10
+	r10 <<= 1
+	r10 <- r10
+	r10 <- r10
+	r10 += 1
+	r10 <- r10
+	r10 <- r10
+	r10 >>= 1
+	cjump r10 = 1 :endBody1_init_global_42_global_2
+	goto :endBody1_init_global_42_global_3
+	:endBody1_init_global_42_global_2
+	r10 <- mem rsp 56
+	rdi <- r10
+	r10 <- mem rsp 48
+	rsi <- r10
+	r10 <- mem rsp 40
+	rdx <- r10
+	r10 <- mem rsp 16
+	rcx <- r10
+	r10 <- mem rsp 32
+	r8 <- r10
+	mem rsp -8 <- :endBody1_init_global_42_computeAndPrint_0
+	call @computeAndPrint 5
+	:endBody1_init_global_42_computeAndPrint_0
+	r10 <- rax
+	r10 <- mem rsp 32
+	r10 <- r10
+	r10 >>= 1
+	r10 <- r10
+	r10 += 1
+	r10 <- r10
+	mem rsp 32 <- r10
+	r10 <- mem rsp 32
+	r10 <- r10
+	r10 <<= 1
+	r10 <- r10
+	mem rsp 32 <- r10
+	r10 <- mem rsp 32
+	r10 <- r10
+	r10 += 1
+	r10 <- r10
+	mem rsp 32 <- r10
+	goto :endBody1_init_global_42_global_5
+	:endBody1_init_global_42_global_3
+	r10 <- mem rsp 16
+	r10 <- r10
+	r10 >>= 1
+	r10 <- r10
+	r10 += 1
+	r10 <- r10
+	mem rsp 16 <- r10
+	r10 <- mem rsp 16
+	r10 <- r10
+	r10 <<= 1
+	r10 <- r10
+	mem rsp 16 <- r10
+	r10 <- mem rsp 16
+	r10 <- r10
+	r10 += 1
+	r10 <- r10
+	mem rsp 16 <- r10
+	goto :endBody1_init_global_42_global_1
+	:endBody1_init_global_42_global_0
+	return
+)
+	(@computeAndPrint 5 4
+	r10 <- rdi
+	mem rsp 0 <- r10
+	r10 <- rsi
+	mem rsp 8 <- r10
+	r10 <- rdx
+	mem rsp 24 <- r10
+	r10 <- rcx
+	r11 <- r8
+	mem rsp 16 <- r11
+	:endBody1_init_global_42_global_7
+	r11 <- mem rsp 0
+	rdi <- r11
+	rsi <- r10
+	mem rsp -8 <- :endBody1_init_global_42_initMatrix_1
+	call @initMatrix 2
+	:endBody1_init_global_42_initMatrix_1
+	r10 <- rax
+	r10 <- mem rsp 8
+	rdi <- r10
+	r10 <- mem rsp 16
+	rsi <- r10
+	mem rsp -8 <- :endBody1_init_global_42_initMatrix_2
+	call @initMatrix 2
+	:endBody1_init_global_42_initMatrix_2
+	r10 <- rax
+	r10 <- mem rsp 0
+	rdi <- r10
+	r10 <- mem rsp 8
+	rsi <- r10
+	r10 <- mem rsp 24
+	rdx <- r10
+	mem rsp -8 <- :endBody1_init_global_42_matrixMultiplication_3
+	call @matrixMultiplication 3
+	:endBody1_init_global_42_matrixMultiplication_3
+	r10 <- rax
+	r10 <- 1
+	r10 <- mem rsp 0
+	rdi <- r10
+	mem rsp -8 <- :endBody1_init_global_42_totalSum_4
+	call @totalSum 1
+	:endBody1_init_global_42_totalSum_4
+	r10 <- rax
+	r10 <- r10
+	rdi <- r10
+	call print 1
+	r10 <- rax
+	r10 <- mem rsp 8
+	rdi <- r10
+	mem rsp -8 <- :endBody1_init_global_42_totalSum_5
+	call @totalSum 1
+	:endBody1_init_global_42_totalSum_5
+	r10 <- rax
+	r10 <- r10
+	rdi <- r10
+	call print 1
+	r10 <- rax
+	r10 <- mem rsp 24
+	rdi <- r10
+	mem rsp -8 <- :endBody1_init_global_42_totalSum_6
+	call @totalSum 1
+	:endBody1_init_global_42_totalSum_6
+	r10 <- rax
+	r10 <- r10
+	rdi <- r10
+	call print 1
+	r10 <- rax
+	return
+)
+	(@initMatrix 2 87
+	r10 <- rdi
+	mem rsp 664 <- r10
+	r10 <- rsi
+	mem rsp 304 <- r10
+	:endBody1_init_global_42_global_17
+	r10 <- 1
+	mem rsp 368 <- r10
+	r10 <- 1
+	mem rsp 240 <- r10
+	r10 <- 1
+	mem rsp 256 <- r10
+	r10 <- 0
+	mem rsp 520 <- r10
+	r10 <- mem rsp 520
+	r10 *= 8
+	mem rsp 520 <- r10
+	r10 <- mem rsp 520
+	r10 <- r10
+	mem rsp 232 <- r10
+	r10 <- mem rsp 232
+	r10 += 8
+	mem rsp 232 <- r10
+	r10 <- mem rsp 664
+	r10 <- r10
+	mem rsp 344 <- r10
+	r10 <- mem rsp 232
+	r11 <- mem rsp 344
+	r11 += r10
+	mem rsp 344 <- r11
+	r10 <- mem rsp 344
+	r10 <- mem r10 0
+	mem rsp 312 <- r10
+	r10 <- mem rsp 312
+	r10 <- r10
+	mem rsp 256 <- r10
+	r10 <- 1
+	mem rsp 400 <- r10
+	r10 <- mem rsp 400
+	r10 *= 8
+	mem rsp 400 <- r10
+	r10 <- mem rsp 400
+	r10 <- r10
+	mem rsp 280 <- r10
+	r10 <- mem rsp 280
+	r10 += 8
+	mem rsp 280 <- r10
+	r10 <- mem rsp 664
+	r10 <- r10
+	mem rsp 376 <- r10
+	r11 <- mem rsp 280
+	r10 <- mem rsp 376
+	r10 += r11
+	mem rsp 376 <- r10
+	r10 <- mem rsp 376
+	r10 <- mem r10 0
+	mem rsp 544 <- r10
+	r10 <- mem rsp 544
+	r10 <- r10
+	mem rsp 240 <- r10
+	r10 <- 1
+	mem rsp 368 <- r10
+	goto :endBody1_init_global_42_global_13
+	:endBody1_init_global_42_global_13
+	r10 <- 1
+	mem rsp 152 <- r10
+	r10 <- mem rsp 368
+	r10 <- r10
+	mem rsp 408 <- r10
+	r10 <- mem rsp 408
+	r10 >>= 1
+	mem rsp 408 <- r10
+	r10 <- mem rsp 256
+	r10 <- r10
+	mem rsp 272 <- r10
+	r10 <- mem rsp 272
+	r10 >>= 1
+	mem rsp 272 <- r10
+	r11 <- mem rsp 272
+	r10 <- mem rsp 408
+	r10 <- r10 < r11
+	mem rsp 168 <- r10
+	r10 <- mem rsp 168
+	r10 <- r10
+	mem rsp 152 <- r10
+	r10 <- mem rsp 152
+	r10 <- r10
+	mem rsp 248 <- r10
+	r10 <- mem rsp 248
+	r10 <<= 1
+	mem rsp 248 <- r10
+	r10 <- mem rsp 248
+	r10 <- r10
+	mem rsp 152 <- r10
+	r10 <- mem rsp 152
+	r10 <- r10
+	mem rsp 144 <- r10
+	r10 <- mem rsp 144
+	r10 += 1
+	mem rsp 144 <- r10
+	r10 <- mem rsp 144
+	r10 <- r10
+	mem rsp 152 <- r10
+	r10 <- mem rsp 152
+	r10 <- r10
+	mem rsp 536 <- r10
+	r10 <- mem rsp 536
+	r10 >>= 1
+	mem rsp 536 <- r10
+	r10 <- mem rsp 536
+	cjump r10 = 1 :endBody1_init_global_42_global_12
+	goto :endBody1_init_global_42_global_18
+	:endBody1_init_global_42_global_12
+	r10 <- 1
+	mem rsp 488 <- r10
+	r10 <- 1
+	mem rsp 488 <- r10
+	goto :endBody1_init_global_42_global_16
+	:endBody1_init_global_42_global_16
+	r10 <- 1
+	mem rsp 288 <- r10
+	r10 <- mem rsp 488
+	r10 <- r10
+	mem rsp 104 <- r10
+	r10 <- mem rsp 104
+	r10 >>= 1
+	mem rsp 104 <- r10
+	r10 <- mem rsp 240
+	r10 <- r10
+	mem rsp 80 <- r10
+	r10 <- mem rsp 80
+	r10 >>= 1
+	mem rsp 80 <- r10
+	r11 <- mem rsp 80
+	r10 <- mem rsp 104
+	r10 <- r10 < r11
+	mem rsp 392 <- r10
+	r10 <- mem rsp 392
+	r10 <- r10
+	mem rsp 288 <- r10
+	r10 <- mem rsp 288
+	r10 <- r10
+	mem rsp 128 <- r10
+	r10 <- mem rsp 128
+	r10 <<= 1
+	mem rsp 128 <- r10
+	r10 <- mem rsp 128
+	r10 <- r10
+	mem rsp 288 <- r10
+	r10 <- mem rsp 288
+	r10 <- r10
+	mem rsp 328 <- r10
+	r10 <- mem rsp 328
+	r10 += 1
+	mem rsp 328 <- r10
+	r10 <- mem rsp 328
+	r10 <- r10
+	mem rsp 288 <- r10
+	r10 <- mem rsp 288
+	r10 <- r10
+	mem rsp 136 <- r10
+	r10 <- mem rsp 136
+	r10 >>= 1
+	mem rsp 136 <- r10
+	r10 <- mem rsp 136
+	cjump r10 = 1 :endBody1_init_global_42_global_20
+	goto :endBody1_init_global_42_global_19
+	:endBody1_init_global_42_global_20
+	r10 <- 1
+	mem rsp 352 <- r10
+	r10 <- mem rsp 304
+	r10 <- r10
+	mem rsp 224 <- r10
+	r10 <- mem rsp 224
+	r10 >>= 1
+	mem rsp 224 <- r10
+	r10 <- mem rsp 368
+	r10 <- r10
+	mem rsp 72 <- r10
+	r10 <- mem rsp 72
+	r10 >>= 1
+	mem rsp 72 <- r10
+	r10 <- mem rsp 224
+	r10 <- r10
+	mem rsp 64 <- r10
+	r11 <- mem rsp 64
+	r10 <- mem rsp 72
+	r11 += r10
+	mem rsp 64 <- r11
+	r10 <- mem rsp 64
+	r10 <- r10
+	mem rsp 352 <- r10
+	r10 <- mem rsp 352
+	r10 <- r10
+	mem rsp 56 <- r10
+	r10 <- mem rsp 56
+	r10 <<= 1
+	mem rsp 56 <- r10
+	r10 <- mem rsp 56
+	r10 <- r10
+	mem rsp 352 <- r10
+	r10 <- mem rsp 352
+	r10 <- r10
+	mem rsp 40 <- r10
+	r10 <- mem rsp 40
+	r10 += 1
+	mem rsp 40 <- r10
+	r10 <- mem rsp 40
+	r10 <- r10
+	mem rsp 352 <- r10
+	r10 <- mem rsp 352
+	r10 <- r10
+	mem rsp 200 <- r10
+	r10 <- mem rsp 200
+	r10 >>= 1
+	mem rsp 200 <- r10
+	r10 <- mem rsp 488
+	r10 <- r10
+	mem rsp 48 <- r10
+	r10 <- mem rsp 48
+	r10 >>= 1
+	mem rsp 48 <- r10
+	r10 <- mem rsp 200
+	r10 <- r10
+	mem rsp 88 <- r10
+	r11 <- mem rsp 48
+	r10 <- mem rsp 88
+	r10 += r11
+	mem rsp 88 <- r10
+	r10 <- mem rsp 88
+	r10 <- r10
+	mem rsp 352 <- r10
+	r10 <- mem rsp 352
+	r10 <- r10
+	mem rsp 112 <- r10
+	r10 <- mem rsp 112
+	r10 <<= 1
+	mem rsp 112 <- r10
+	r10 <- mem rsp 112
+	r10 <- r10
+	mem rsp 352 <- r10
+	r10 <- mem rsp 352
+	r10 <- r10
+	mem rsp 296 <- r10
+	r10 <- mem rsp 296
+	r10 += 1
+	mem rsp 296 <- r10
+	r10 <- mem rsp 296
+	r10 <- r10
+	mem rsp 352 <- r10
+	r10 <- mem rsp 368
+	r10 <- r10
+	mem rsp 424 <- r10
+	r10 <- mem rsp 424
+	r10 >>= 1
+	mem rsp 424 <- r10
+	r10 <- mem rsp 424
+	r10 <- r10
+	mem rsp 456 <- r10
+	r10 <- mem rsp 488
+	r10 <- r10
+	mem rsp 176 <- r10
+	r10 <- mem rsp 176
+	r10 >>= 1
+	mem rsp 176 <- r10
+	r10 <- mem rsp 176
+	r10 <- r10
+	mem rsp 472 <- r10
+	r10 <- mem rsp 664
+	cjump r10 = 0 :endBody1_init_global_42_global_8
+	goto :endBody1_init_global_42_global_14
+	:endBody1_init_global_42_global_8
+	rdi <- 149
+	call tensor-error 1
+	r10 <- rax
+	mem rsp 320 <- r10
+	goto :endBody1_init_global_42_global_14
+	:endBody1_init_global_42_global_14
+	r10 <- 1
+	mem rsp 496 <- r10
+	r10 <- 0
+	mem rsp 648 <- r10
+	r10 <- mem rsp 648
+	r10 *= 8
+	mem rsp 648 <- r10
+	r10 <- mem rsp 648
+	r10 <- r10
+	mem rsp 464 <- r10
+	r10 <- mem rsp 464
+	r10 += 8
+	mem rsp 464 <- r10
+	r10 <- mem rsp 664
+	r10 <- r10
+	mem rsp 504 <- r10
+	r11 <- mem rsp 464
+	r10 <- mem rsp 504
+	r10 += r11
+	mem rsp 504 <- r10
+	r10 <- mem rsp 504
+	r10 <- mem r10 0
+	mem rsp 512 <- r10
+	r10 <- mem rsp 512
+	r10 <- r10
+	mem rsp 120 <- r10
+	r10 <- mem rsp 456
+	r10 <- r10
+	mem rsp 528 <- r10
+	r10 <- mem rsp 528
+	r10 <<= 1
+	mem rsp 528 <- r10
+	r10 <- mem rsp 528
+	r10 <- r10
+	mem rsp 264 <- r10
+	r10 <- mem rsp 264
+	r10 += 1
+	mem rsp 264 <- r10
+	r10 <- mem rsp 264
+	r10 <- r10
+	mem rsp 552 <- r10
+	r10 <- mem rsp 120
+	r11 <- mem rsp 552
+	cjump r10 <= r11 :endBody1_init_global_42_global_10
+	goto :endBody1_init_global_42_global_15
+	:endBody1_init_global_42_global_15
+	r10 <- 3
+	mem rsp 496 <- r10
+	r10 <- 1
+	mem rsp 560 <- r10
+	r10 <- mem rsp 560
+	r10 *= 8
+	mem rsp 560 <- r10
+	r10 <- mem rsp 560
+	r10 <- r10
+	mem rsp 576 <- r10
+	r10 <- mem rsp 576
+	r10 += 8
+	mem rsp 576 <- r10
+	r10 <- mem rsp 664
+	r10 <- r10
+	mem rsp 160 <- r10
+	r10 <- mem rsp 160
+	r11 <- mem rsp 576
+	r10 += r11
+	mem rsp 160 <- r10
+	r10 <- mem rsp 160
+	r10 <- mem r10 0
+	mem rsp 592 <- r10
+	r10 <- mem rsp 592
+	r10 <- r10
+	mem rsp 120 <- r10
+	r10 <- mem rsp 472
+	r10 <- r10
+	mem rsp 600 <- r10
+	r10 <- mem rsp 600
+	r10 <<= 1
+	mem rsp 600 <- r10
+	r10 <- mem rsp 600
+	r10 <- r10
+	mem rsp 616 <- r10
+	r10 <- mem rsp 616
+	r10 += 1
+	mem rsp 616 <- r10
+	r10 <- mem rsp 616
+	r10 <- r10
+	mem rsp 552 <- r10
+	r10 <- mem rsp 120
+	r11 <- mem rsp 552
+	cjump r10 <= r11 :endBody1_init_global_42_global_10
+	goto :endBody1_init_global_42_global_11
+	:endBody1_init_global_42_global_11
+	goto :endBody1_init_global_42_global_9
+	:endBody1_init_global_42_global_10
+	rdi <- 149
+	r10 <- mem rsp 496
+	rsi <- r10
+	r10 <- mem rsp 120
+	rdx <- r10
+	r10 <- mem rsp 552
+	rcx <- r10
+	call tensor-error 4
+	r10 <- rax
+	mem rsp 624 <- r10
+	goto :endBody1_init_global_42_global_9
+	:endBody1_init_global_42_global_9
+	r10 <- mem rsp 664
+	r10 <- r10
+	mem rsp 360 <- r10
+	r10 <- mem rsp 360
+	r10 += 8
+	mem rsp 360 <- r10
+	r10 <- mem rsp 360
+	r10 <- r10
+	mem rsp 632 <- r10
+	r10 <- mem rsp 632
+	r10 <- mem r10 0
+	mem rsp 216 <- r10
+	r10 <- mem rsp 216
+	r10 <- r10
+	mem rsp 480 <- r10
+	r10 <- mem rsp 480
+	r10 <- r10
+	mem rsp 640 <- r10
+	r10 <- mem rsp 640
+	r10 >>= 1
+	mem rsp 640 <- r10
+	r10 <- mem rsp 640
+	r10 <- r10
+	mem rsp 480 <- r10
+	r10 <- mem rsp 632
+	r10 <- r10
+	mem rsp 656 <- r10
+	r10 <- mem rsp 656
+	r10 += 8
+	mem rsp 656 <- r10
+	r10 <- mem rsp 656
+	r10 <- r10
+	mem rsp 632 <- r10
+	r10 <- mem rsp 632
+	r10 <- mem r10 0
+	mem rsp 432 <- r10
+	r10 <- mem rsp 432
+	r10 <- r10
+	mem rsp 440 <- r10
+	r10 <- mem rsp 632
+	r10 <- r10
+	mem rsp 568 <- r10
+	r10 <- mem rsp 568
+	r10 += 8
+	mem rsp 568 <- r10
+	r10 <- mem rsp 568
+	r10 <- r10
+	mem rsp 632 <- r10
+	r10 <- 1
+	mem rsp 672 <- r10
+	r10 <- mem rsp 440
+	r10 <- r10
+	mem rsp 184 <- r10
+	r10 <- mem rsp 184
+	r10 >>= 1
+	mem rsp 184 <- r10
+	r10 <- mem rsp 672
+	r10 <- r10
+	mem rsp 192 <- r10
+	r10 <- mem rsp 184
+	r11 <- mem rsp 192
+	r11 *= r10
+	mem rsp 192 <- r11
+	r10 <- mem rsp 192
+	r10 <- r10
+	mem rsp 384 <- r10
+	r10 <- mem rsp 384
+	r10 *= 8
+	mem rsp 384 <- r10
+	r10 <- mem rsp 384
+	r10 <- r10
+	mem rsp 608 <- r10
+	r10 <- mem rsp 608
+	r10 <- r10
+	mem rsp 680 <- r10
+	r11 <- mem rsp 456
+	r10 <- mem rsp 680
+	r10 *= r11
+	mem rsp 680 <- r10
+	r10 <- mem rsp 680
+	r10 <- r10
+	mem rsp 608 <- r10
+	r10 <- mem rsp 632
+	r10 <- r10
+	mem rsp 688 <- r10
+	r10 <- mem rsp 608
+	r11 <- mem rsp 688
+	r11 += r10
+	mem rsp 688 <- r11
+	r10 <- mem rsp 688
+	r10 <- r10
+	mem rsp 632 <- r10
+	r10 <- mem rsp 672
+	r10 <- r10
+	mem rsp 448 <- r10
+	r10 <- mem rsp 448
+	r10 *= 8
+	mem rsp 448 <- r10
+	r10 <- mem rsp 448
+	r10 <- r10
+	mem rsp 608 <- r10
+	r10 <- mem rsp 608
+	r10 <- r10
+	mem rsp 96 <- r10
+	r11 <- mem rsp 96
+	r10 <- mem rsp 472
+	r11 *= r10
+	mem rsp 96 <- r11
+	r10 <- mem rsp 96
+	r10 <- r10
+	mem rsp 608 <- r10
+	r10 <- mem rsp 632
+	r10 <- r10
+	mem rsp 32 <- r10
+	r11 <- mem rsp 32
+	r10 <- mem rsp 608
+	r11 += r10
+	mem rsp 32 <- r11
+	r10 <- mem rsp 32
+	r10 <- r10
+	mem rsp 632 <- r10
+	r10 <- mem rsp 352
+	r11 <- mem rsp 632
+	mem r11 0 <- r10
+	r10 <- mem rsp 488
+	r10 <- r10
+	mem rsp 416 <- r10
+	r10 <- mem rsp 416
+	r10 >>= 1
+	mem rsp 416 <- r10
+	r10 <- mem rsp 416
+	r10 <- r10
+	mem rsp 24 <- r10
+	r10 <- mem rsp 24
+	r10 += 1
+	mem rsp 24 <- r10
+	r10 <- mem rsp 24
+	r10 <- r10
+	mem rsp 488 <- r10
+	r10 <- mem rsp 488
+	r10 <- r10
+	mem rsp 16 <- r10
+	r10 <- mem rsp 16
+	r10 <<= 1
+	mem rsp 16 <- r10
+	r10 <- mem rsp 16
+	r10 <- r10
+	mem rsp 488 <- r10
+	r10 <- mem rsp 488
+	r10 <- r10
+	mem rsp 208 <- r10
+	r10 <- mem rsp 208
+	r10 += 1
+	mem rsp 208 <- r10
+	r10 <- mem rsp 208
+	r10 <- r10
+	mem rsp 488 <- r10
+	goto :endBody1_init_global_42_global_16
+	:endBody1_init_global_42_global_19
+	r10 <- mem rsp 368
+	r10 <- r10
+	mem rsp 8 <- r10
+	r10 <- mem rsp 8
+	r10 >>= 1
+	mem rsp 8 <- r10
+	r10 <- mem rsp 8
+	r10 <- r10
+	mem rsp 584 <- r10
+	r10 <- mem rsp 584
+	r10 += 1
+	mem rsp 584 <- r10
+	r10 <- mem rsp 584
+	r10 <- r10
+	mem rsp 368 <- r10
+	r10 <- mem rsp 368
+	r10 <- r10
+	mem rsp 336 <- r10
+	r10 <- mem rsp 336
+	r10 <<= 1
+	mem rsp 336 <- r10
+	r10 <- mem rsp 336
+	r10 <- r10
+	mem rsp 368 <- r10
+	r10 <- mem rsp 368
+	r10 <- r10
+	mem rsp 0 <- r10
+	r10 <- mem rsp 0
+	r10 += 1
+	mem rsp 0 <- r10
+	r10 <- mem rsp 0
+	r10 <- r10
+	mem rsp 368 <- r10
+	goto :endBody1_init_global_42_global_13
+	:endBody1_init_global_42_global_18
+	return
+)
+	(@matrixMultiplication 3 347
+	r10 <- rdi
+	mem rsp 816 <- r10
+	r10 <- rsi
+	mem rsp 1312 <- r10
+	r10 <- rdx
+	mem rsp 1184 <- r10
+	:endBody1_init_global_42_global_28
+	r10 <- 1
+	mem rsp 712 <- r10
+	r10 <- 1
+	mem rsp 1624 <- r10
+	r10 <- 1
+	mem rsp 888 <- r10
+	r10 <- 1
+	mem rsp 88 <- r10
+	r10 <- 1
+	mem rsp 920 <- r10
+	r10 <- 1
+	mem rsp 312 <- r10
+	r10 <- 0
+	mem rsp 1136 <- r10
+	r10 <- mem rsp 1136
+	r10 *= 8
+	mem rsp 1136 <- r10
+	r10 <- mem rsp 1136
+	r10 <- r10
+	mem rsp 2712 <- r10
+	r10 <- mem rsp 2712
+	r10 += 8
+	mem rsp 2712 <- r10
+	r10 <- mem rsp 816
+	r10 <- r10
+	mem rsp 1088 <- r10
+	r11 <- mem rsp 1088
+	r10 <- mem rsp 2712
+	r11 += r10
+	mem rsp 1088 <- r11
+	r10 <- mem rsp 1088
+	r10 <- mem r10 0
+	mem rsp 720 <- r10
+	r10 <- mem rsp 720
+	r10 <- r10
+	mem rsp 312 <- r10
+	r10 <- 1
+	mem rsp 1520 <- r10
+	r10 <- mem rsp 1520
+	r10 *= 8
+	mem rsp 1520 <- r10
+	r10 <- mem rsp 1520
+	r10 <- r10
+	mem rsp 1536 <- r10
+	r10 <- mem rsp 1536
+	r10 += 8
+	mem rsp 1536 <- r10
+	r10 <- mem rsp 816
+	r10 <- r10
+	mem rsp 688 <- r10
+	r11 <- mem rsp 688
+	r10 <- mem rsp 1536
+	r11 += r10
+	mem rsp 688 <- r11
+	r10 <- mem rsp 688
+	r10 <- mem r10 0
+	mem rsp 144 <- r10
+	r10 <- mem rsp 144
+	r10 <- r10
+	mem rsp 920 <- r10
+	r10 <- 0
+	mem rsp 1712 <- r10
+	r10 <- mem rsp 1712
+	r10 *= 8
+	mem rsp 1712 <- r10
+	r10 <- mem rsp 1712
+	r10 <- r10
+	mem rsp 864 <- r10
+	r10 <- mem rsp 864
+	r10 += 8
+	mem rsp 864 <- r10
+	r10 <- mem rsp 1312
+	r10 <- r10
+	mem rsp 1232 <- r10
+	r11 <- mem rsp 864
+	r10 <- mem rsp 1232
+	r10 += r11
+	mem rsp 1232 <- r10
+	r10 <- mem rsp 1232
+	r10 <- mem r10 0
+	mem rsp 960 <- r10
+	r10 <- mem rsp 960
+	r10 <- r10
+	mem rsp 88 <- r10
+	r10 <- 1
+	mem rsp 1040 <- r10
+	r10 <- mem rsp 1040
+	r10 *= 8
+	mem rsp 1040 <- r10
+	r10 <- mem rsp 1040
+	r10 <- r10
+	mem rsp 1008 <- r10
+	r10 <- mem rsp 1008
+	r10 += 8
+	mem rsp 1008 <- r10
+	r10 <- mem rsp 1312
+	r10 <- r10
+	mem rsp 656 <- r10
+	r11 <- mem rsp 656
+	r10 <- mem rsp 1008
+	r11 += r10
+	mem rsp 656 <- r11
+	r10 <- mem rsp 656
+	r10 <- mem r10 0
+	mem rsp 1808 <- r10
+	r10 <- mem rsp 1808
+	r10 <- r10
+	mem rsp 888 <- r10
+	r10 <- 0
+	mem rsp 704 <- r10
+	r10 <- mem rsp 704
+	r10 *= 8
+	mem rsp 704 <- r10
+	r10 <- mem rsp 704
+	r10 <- r10
+	mem rsp 640 <- r10
+	r10 <- mem rsp 640
+	r10 += 8
+	mem rsp 640 <- r10
+	r10 <- mem rsp 1184
+	r10 <- r10
+	mem rsp 2512 <- r10
+	r11 <- mem rsp 640
+	r10 <- mem rsp 2512
+	r10 += r11
+	mem rsp 2512 <- r10
+	r10 <- mem rsp 2512
+	r10 <- mem r10 0
+	mem rsp 992 <- r10
+	r10 <- mem rsp 992
+	r10 <- r10
+	mem rsp 1624 <- r10
+	r10 <- 1
+	mem rsp 792 <- r10
+	r10 <- mem rsp 792
+	r10 *= 8
+	mem rsp 792 <- r10
+	r10 <- mem rsp 792
+	r10 <- r10
+	mem rsp 928 <- r10
+	r10 <- mem rsp 928
+	r10 += 8
+	mem rsp 928 <- r10
+	r10 <- mem rsp 1184
+	r10 <- r10
+	mem rsp 456 <- r10
+	r11 <- mem rsp 456
+	r10 <- mem rsp 928
+	r11 += r10
+	mem rsp 456 <- r11
+	r10 <- mem rsp 456
+	r10 <- mem r10 0
+	mem rsp 2728 <- r10
+	r10 <- mem rsp 2728
+	r10 <- r10
+	mem rsp 712 <- r10
+	r10 <- 1
+	mem rsp 1176 <- r10
+	r10 <- mem rsp 920
+	r10 <- r10
+	mem rsp 2424 <- r10
+	r10 <- mem rsp 2424
+	r10 >>= 1
+	mem rsp 2424 <- r10
+	r10 <- mem rsp 88
+	r10 <- r10
+	mem rsp 1392 <- r10
+	r10 <- mem rsp 1392
+	r10 >>= 1
+	mem rsp 1392 <- r10
+	r11 <- mem rsp 1392
+	r10 <- mem rsp 2424
+	r10 <- r10 = r11
+	mem rsp 608 <- r10
+	r10 <- mem rsp 608
+	r10 <- r10
+	mem rsp 1176 <- r10
+	r10 <- mem rsp 1176
+	r10 <- r10
+	mem rsp 1656 <- r10
+	r10 <- mem rsp 1656
+	r10 <<= 1
+	mem rsp 1656 <- r10
+	r10 <- mem rsp 1656
+	r10 <- r10
+	mem rsp 1176 <- r10
+	r10 <- mem rsp 1176
+	r10 <- r10
+	mem rsp 2032 <- r10
+	r10 <- mem rsp 2032
+	r10 += 1
+	mem rsp 2032 <- r10
+	r10 <- mem rsp 2032
+	r10 <- r10
+	mem rsp 1176 <- r10
+	r10 <- mem rsp 1176
+	r10 <- r10
+	mem rsp 2688 <- r10
+	r10 <- mem rsp 2688
+	r10 >>= 1
+	mem rsp 2688 <- r10
+	r10 <- mem rsp 2688
+	cjump r10 = 1 :endBody1_init_global_42_global_21
+	goto :endBody1_init_global_42_global_22
+	:endBody1_init_global_42_global_21
+	r10 <- 1
+	mem rsp 784 <- r10
+	r10 <- mem rsp 1624
+	r10 <- r10
+	mem rsp 1168 <- r10
+	r10 <- mem rsp 1168
+	r10 >>= 1
+	mem rsp 1168 <- r10
+	r10 <- mem rsp 312
+	r10 <- r10
+	mem rsp 824 <- r10
+	r10 <- mem rsp 824
+	r10 >>= 1
+	mem rsp 824 <- r10
+	r11 <- mem rsp 824
+	r10 <- mem rsp 1168
+	r10 <- r10 = r11
+	mem rsp 1424 <- r10
+	r10 <- mem rsp 1424
+	r10 <- r10
+	mem rsp 784 <- r10
+	r10 <- mem rsp 784
+	r10 <- r10
+	mem rsp 1432 <- r10
+	r10 <- mem rsp 1432
+	r10 <<= 1
+	mem rsp 1432 <- r10
+	r10 <- mem rsp 1432
+	r10 <- r10
+	mem rsp 784 <- r10
+	r10 <- mem rsp 784
+	r10 <- r10
+	mem rsp 1376 <- r10
+	r10 <- mem rsp 1376
+	r10 += 1
+	mem rsp 1376 <- r10
+	r10 <- mem rsp 1376
+	r10 <- r10
+	mem rsp 784 <- r10
+	r10 <- mem rsp 784
+	r10 <- r10
+	mem rsp 1752 <- r10
+	r10 <- mem rsp 1752
+	r10 >>= 1
+	mem rsp 1752 <- r10
+	r10 <- mem rsp 1752
+	cjump r10 = 1 :endBody1_init_global_42_global_34
+	goto :endBody1_init_global_42_global_22
+	:endBody1_init_global_42_global_34
+	r10 <- 1
+	mem rsp 1440 <- r10
+	r10 <- mem rsp 712
+	r10 <- r10
+	mem rsp 1384 <- r10
+	r10 <- mem rsp 1384
+	r10 >>= 1
+	mem rsp 1384 <- r10
+	r10 <- mem rsp 888
+	r10 <- r10
+	mem rsp 872 <- r10
+	r10 <- mem rsp 872
+	r10 >>= 1
+	mem rsp 872 <- r10
+	r11 <- mem rsp 872
+	r10 <- mem rsp 1384
+	r10 <- r10 = r11
+	mem rsp 1472 <- r10
+	r10 <- mem rsp 1472
+	r10 <- r10
+	mem rsp 1440 <- r10
+	r10 <- mem rsp 1440
+	r10 <- r10
+	mem rsp 2240 <- r10
+	r10 <- mem rsp 2240
+	r10 <<= 1
+	mem rsp 2240 <- r10
+	r10 <- mem rsp 2240
+	r10 <- r10
+	mem rsp 1440 <- r10
+	r10 <- mem rsp 1440
+	r10 <- r10
+	mem rsp 912 <- r10
+	r10 <- mem rsp 912
+	r10 += 1
+	mem rsp 912 <- r10
+	r10 <- mem rsp 912
+	r10 <- r10
+	mem rsp 1440 <- r10
+	r10 <- mem rsp 1440
+	r10 <- r10
+	mem rsp 1736 <- r10
+	r10 <- mem rsp 1736
+	r10 >>= 1
+	mem rsp 1736 <- r10
+	r10 <- mem rsp 1736
+	cjump r10 = 1 :endBody1_init_global_42_global_32
+	goto :endBody1_init_global_42_global_22
+	:endBody1_init_global_42_global_32
+	r10 <- 1
+	mem rsp 536 <- r10
+	r10 <- 1
+	mem rsp 1032 <- r10
+	r10 <- 1
+	mem rsp 1448 <- r10
+	r10 <- 1
+	mem rsp 1448 <- r10
+	goto :endBody1_init_global_42_global_33
+	:endBody1_init_global_42_global_33
+	r10 <- 1
+	mem rsp 1504 <- r10
+	r10 <- mem rsp 1448
+	r10 <- r10
+	mem rsp 552 <- r10
+	r10 <- mem rsp 552
+	r10 >>= 1
+	mem rsp 552 <- r10
+	r10 <- mem rsp 312
+	r10 <- r10
+	mem rsp 1528 <- r10
+	r10 <- mem rsp 1528
+	r10 >>= 1
+	mem rsp 1528 <- r10
+	r11 <- mem rsp 552
+	r10 <- mem rsp 1528
+	r10 <- r11 < r10
+	mem rsp 672 <- r10
+	r10 <- mem rsp 672
+	r10 <- r10
+	mem rsp 1504 <- r10
+	r10 <- mem rsp 1504
+	r10 <- r10
+	mem rsp 1096 <- r10
+	r10 <- mem rsp 1096
+	r10 <<= 1
+	mem rsp 1096 <- r10
+	r10 <- mem rsp 1096
+	r10 <- r10
+	mem rsp 1504 <- r10
+	r10 <- mem rsp 1504
+	r10 <- r10
+	mem rsp 1272 <- r10
+	r10 <- mem rsp 1272
+	r10 += 1
+	mem rsp 1272 <- r10
+	r10 <- mem rsp 1272
+	r10 <- r10
+	mem rsp 1504 <- r10
+	r10 <- mem rsp 1504
+	r10 <- r10
+	mem rsp 984 <- r10
+	r10 <- mem rsp 984
+	r10 >>= 1
+	mem rsp 984 <- r10
+	r10 <- mem rsp 984
+	cjump r10 = 1 :endBody1_init_global_42_global_24
+	goto :endBody1_init_global_42_global_23
+	:endBody1_init_global_42_global_24
+	r10 <- 1
+	mem rsp 1032 <- r10
+	goto :endBody1_init_global_42_global_25
+	:endBody1_init_global_42_global_25
+	r10 <- 1
+	mem rsp 256 <- r10
+	r10 <- mem rsp 1032
+	r10 <- r10
+	mem rsp 1584 <- r10
+	r10 <- mem rsp 1584
+	r10 >>= 1
+	mem rsp 1584 <- r10
+	r10 <- mem rsp 888
+	r10 <- r10
+	mem rsp 2672 <- r10
+	r10 <- mem rsp 2672
+	r10 >>= 1
+	mem rsp 2672 <- r10
+	r10 <- mem rsp 1584
+	r11 <- mem rsp 2672
+	r10 <- r10 < r11
+	mem rsp 128 <- r10
+	r10 <- mem rsp 128
+	r10 <- r10
+	mem rsp 256 <- r10
+	r10 <- mem rsp 256
+	r10 <- r10
+	mem rsp 208 <- r10
+	r10 <- mem rsp 208
+	r10 <<= 1
+	mem rsp 208 <- r10
+	r10 <- mem rsp 208
+	r10 <- r10
+	mem rsp 256 <- r10
+	r10 <- mem rsp 256
+	r10 <- r10
+	mem rsp 1592 <- r10
+	r10 <- mem rsp 1592
+	r10 += 1
+	mem rsp 1592 <- r10
+	r10 <- mem rsp 1592
+	r10 <- r10
+	mem rsp 256 <- r10
+	r10 <- mem rsp 256
+	r10 <- r10
+	mem rsp 1480 <- r10
+	r10 <- mem rsp 1480
+	r10 >>= 1
+	mem rsp 1480 <- r10
+	r10 <- mem rsp 1480
+	cjump r10 = 1 :endBody1_init_global_42_global_29
+	goto :endBody1_init_global_42_global_30
+	:endBody1_init_global_42_global_29
+	r10 <- 1
+	mem rsp 536 <- r10
+	goto :endBody1_init_global_42_global_31
+	:endBody1_init_global_42_global_31
+	r10 <- 1
+	mem rsp 752 <- r10
+	r10 <- mem rsp 536
+	r10 <- r10
+	mem rsp 2200 <- r10
+	r10 <- mem rsp 2200
+	r10 >>= 1
+	mem rsp 2200 <- r10
+	r10 <- mem rsp 920
+	r10 <- r10
+	mem rsp 1512 <- r10
+	r10 <- mem rsp 1512
+	r10 >>= 1
+	mem rsp 1512 <- r10
+	r11 <- mem rsp 1512
+	r10 <- mem rsp 2200
+	r10 <- r10 < r11
+	mem rsp 1320 <- r10
+	r10 <- mem rsp 1320
+	r10 <- r10
+	mem rsp 752 <- r10
+	r10 <- mem rsp 752
+	r10 <- r10
+	mem rsp 1344 <- r10
+	r10 <- mem rsp 1344
+	r10 <<= 1
+	mem rsp 1344 <- r10
+	r10 <- mem rsp 1344
+	r10 <- r10
+	mem rsp 752 <- r10
+	r10 <- mem rsp 752
+	r10 <- r10
+	mem rsp 944 <- r10
+	r10 <- mem rsp 944
+	r10 += 1
+	mem rsp 944 <- r10
+	r10 <- mem rsp 944
+	r10 <- r10
+	mem rsp 752 <- r10
+	r10 <- mem rsp 752
+	r10 <- r10
+	mem rsp 728 <- r10
+	r10 <- mem rsp 728
+	r10 >>= 1
+	mem rsp 728 <- r10
+	r10 <- mem rsp 728
+	cjump r10 = 1 :endBody1_init_global_42_global_26
+	goto :endBody1_init_global_42_global_27
+	:endBody1_init_global_42_global_26
+	r10 <- mem rsp 1448
+	r10 <- r10
+	mem rsp 616 <- r10
+	r10 <- mem rsp 616
+	r10 >>= 1
+	mem rsp 616 <- r10
+	r10 <- mem rsp 616
+	r10 <- r10
+	mem rsp 1024 <- r10
+	r10 <- mem rsp 1032
+	r10 <- r10
+	mem rsp 1288 <- r10
+	r10 <- mem rsp 1288
+	r10 >>= 1
+	mem rsp 1288 <- r10
+	r10 <- mem rsp 1288
+	r10 <- r10
+	mem rsp 600 <- r10
+	r10 <- mem rsp 1184
+	cjump r10 = 0 :endBody1_init_global_42_global_35
+	goto :endBody1_init_global_42_global_36
+	:endBody1_init_global_42_global_35
+	rdi <- 261
+	call tensor-error 1
+	r10 <- rax
+	mem rsp 1336 <- r10
+	goto :endBody1_init_global_42_global_36
+	:endBody1_init_global_42_global_36
+	r10 <- 1
+	mem rsp 560 <- r10
+	r10 <- 0
+	mem rsp 528 <- r10
+	r10 <- mem rsp 528
+	r10 *= 8
+	mem rsp 528 <- r10
+	r10 <- mem rsp 528
+	r10 <- r10
+	mem rsp 968 <- r10
+	r10 <- mem rsp 968
+	r10 += 8
+	mem rsp 968 <- r10
+	r10 <- mem rsp 1184
+	r10 <- r10
+	mem rsp 904 <- r10
+	r11 <- mem rsp 904
+	r10 <- mem rsp 968
+	r11 += r10
+	mem rsp 904 <- r11
+	r10 <- mem rsp 904
+	r10 <- mem r10 0
+	mem rsp 496 <- r10
+	r10 <- mem rsp 496
+	r10 <- r10
+	mem rsp 624 <- r10
+	r10 <- mem rsp 1024
+	r10 <- r10
+	mem rsp 488 <- r10
+	r10 <- mem rsp 488
+	r10 <<= 1
+	mem rsp 488 <- r10
+	r10 <- mem rsp 488
+	r10 <- r10
+	mem rsp 1576 <- r10
+	r10 <- mem rsp 1576
+	r10 += 1
+	mem rsp 1576 <- r10
+	r10 <- mem rsp 1576
+	r10 <- r10
+	mem rsp 1264 <- r10
+	r11 <- mem rsp 624
+	r10 <- mem rsp 1264
+	cjump r11 <= r10 :endBody1_init_global_42_global_37
+	goto :endBody1_init_global_42_global_38
+	:endBody1_init_global_42_global_38
+	r10 <- 3
+	mem rsp 560 <- r10
+	r10 <- 1
+	mem rsp 952 <- r10
+	r10 <- mem rsp 952
+	r10 *= 8
+	mem rsp 952 <- r10
+	r10 <- mem rsp 952
+	r10 <- r10
+	mem rsp 1256 <- r10
+	r10 <- mem rsp 1256
+	r10 += 8
+	mem rsp 1256 <- r10
+	r10 <- mem rsp 1184
+	r10 <- r10
+	mem rsp 472 <- r10
+	r10 <- mem rsp 472
+	r11 <- mem rsp 1256
+	r10 += r11
+	mem rsp 472 <- r10
+	r10 <- mem rsp 472
+	r10 <- mem r10 0
+	mem rsp 56 <- r10
+	r10 <- mem rsp 56
+	r10 <- r10
+	mem rsp 624 <- r10
+	r10 <- mem rsp 600
+	r10 <- r10
+	mem rsp 976 <- r10
+	r10 <- mem rsp 976
+	r10 <<= 1
+	mem rsp 976 <- r10
+	r10 <- mem rsp 976
+	r10 <- r10
+	mem rsp 1408 <- r10
+	r10 <- mem rsp 1408
+	r10 += 1
+	mem rsp 1408 <- r10
+	r10 <- mem rsp 1408
+	r10 <- r10
+	mem rsp 1264 <- r10
+	r11 <- mem rsp 624
+	r10 <- mem rsp 1264
+	cjump r11 <= r10 :endBody1_init_global_42_global_37
+	goto :endBody1_init_global_42_global_39
+	:endBody1_init_global_42_global_39
+	goto :endBody1_init_global_42_global_40
+	:endBody1_init_global_42_global_37
+	rdi <- 261
+	r10 <- mem rsp 560
+	rsi <- r10
+	r10 <- mem rsp 624
+	rdx <- r10
+	r10 <- mem rsp 1264
+	rcx <- r10
+	call tensor-error 4
+	r10 <- rax
+	mem rsp 448 <- r10
+	goto :endBody1_init_global_42_global_40
+	:endBody1_init_global_42_global_40
+	r10 <- mem rsp 1184
+	r10 <- r10
+	mem rsp 1560 <- r10
+	r10 <- mem rsp 1560
+	r10 += 8
+	mem rsp 1560 <- r10
+	r10 <- mem rsp 1560
+	r10 <- r10
+	mem rsp 1080 <- r10
+	r10 <- mem rsp 1080
+	r10 <- mem r10 0
+	mem rsp 440 <- r10
+	r10 <- mem rsp 440
+	r10 <- r10
+	mem rsp 1928 <- r10
+	r10 <- mem rsp 1928
+	r10 <- r10
+	mem rsp 432 <- r10
+	r10 <- mem rsp 432
+	r10 >>= 1
+	mem rsp 432 <- r10
+	r10 <- mem rsp 432
+	r10 <- r10
+	mem rsp 1928 <- r10
+	r10 <- mem rsp 1080
+	r10 <- r10
+	mem rsp 2160 <- r10
+	r10 <- mem rsp 2160
+	r10 += 8
+	mem rsp 2160 <- r10
+	r10 <- mem rsp 2160
+	r10 <- r10
+	mem rsp 1080 <- r10
+	r10 <- mem rsp 1080
+	r10 <- mem r10 0
+	mem rsp 2432 <- r10
+	r10 <- mem rsp 2432
+	r10 <- r10
+	mem rsp 424 <- r10
+	r10 <- mem rsp 1080
+	r10 <- r10
+	mem rsp 416 <- r10
+	r10 <- mem rsp 416
+	r10 += 8
+	mem rsp 416 <- r10
+	r10 <- mem rsp 416
+	r10 <- r10
+	mem rsp 1080 <- r10
+	r10 <- 1
+	mem rsp 2112 <- r10
+	r10 <- mem rsp 424
+	r10 <- r10
+	mem rsp 400 <- r10
+	r10 <- mem rsp 400
+	r10 >>= 1
+	mem rsp 400 <- r10
+	r10 <- mem rsp 2112
+	r10 <- r10
+	mem rsp 384 <- r10
+	r11 <- mem rsp 384
+	r10 <- mem rsp 400
+	r11 *= r10
+	mem rsp 384 <- r11
+	r10 <- mem rsp 384
+	r10 <- r10
+	mem rsp 936 <- r10
+	r10 <- mem rsp 936
+	r10 *= 8
+	mem rsp 936 <- r10
+	r10 <- mem rsp 936
+	r10 <- r10
+	mem rsp 376 <- r10
+	r10 <- mem rsp 376
+	r10 <- r10
+	mem rsp 344 <- r10
+	r11 <- mem rsp 344
+	r10 <- mem rsp 1024
+	r11 *= r10
+	mem rsp 344 <- r11
+	r10 <- mem rsp 344
+	r10 <- r10
+	mem rsp 376 <- r10
+	r10 <- mem rsp 1080
+	r10 <- r10
+	mem rsp 336 <- r10
+	r11 <- mem rsp 336
+	r10 <- mem rsp 376
+	r11 += r10
+	mem rsp 336 <- r11
+	r10 <- mem rsp 336
+	r10 <- r10
+	mem rsp 1080 <- r10
+	r10 <- mem rsp 2112
+	r10 <- r10
+	mem rsp 584 <- r10
+	r10 <- mem rsp 584
+	r10 *= 8
+	mem rsp 584 <- r10
+	r10 <- mem rsp 584
+	r10 <- r10
+	mem rsp 376 <- r10
+	r10 <- mem rsp 376
+	r10 <- r10
+	mem rsp 1496 <- r10
+	r11 <- mem rsp 600
+	r10 <- mem rsp 1496
+	r10 *= r11
+	mem rsp 1496 <- r10
+	r10 <- mem rsp 1496
+	r10 <- r10
+	mem rsp 376 <- r10
+	r10 <- mem rsp 1080
+	r10 <- r10
+	mem rsp 736 <- r10
+	r10 <- mem rsp 376
+	r11 <- mem rsp 736
+	r11 += r10
+	mem rsp 736 <- r11
+	r10 <- mem rsp 736
+	r10 <- r10
+	mem rsp 1080 <- r10
+	r10 <- mem rsp 1080
+	mem r10 0 <- 1
+	r10 <- mem rsp 536
+	r10 <- r10
+	mem rsp 1224 <- r10
+	r10 <- mem rsp 1224
+	r10 >>= 1
+	mem rsp 1224 <- r10
+	r10 <- mem rsp 1224
+	r10 <- r10
+	mem rsp 592 <- r10
+	r10 <- mem rsp 592
+	r10 += 1
+	mem rsp 592 <- r10
+	r10 <- mem rsp 592
+	r10 <- r10
+	mem rsp 536 <- r10
+	r10 <- mem rsp 536
+	r10 <- r10
+	mem rsp 296 <- r10
+	r10 <- mem rsp 296
+	r10 <<= 1
+	mem rsp 296 <- r10
+	r10 <- mem rsp 296
+	r10 <- r10
+	mem rsp 536 <- r10
+	r10 <- mem rsp 536
+	r10 <- r10
+	mem rsp 280 <- r10
+	r10 <- mem rsp 280
+	r10 += 1
+	mem rsp 280 <- r10
+	r10 <- mem rsp 280
+	r10 <- r10
+	mem rsp 536 <- r10
+	goto :endBody1_init_global_42_global_31
+	:endBody1_init_global_42_global_27
+	r10 <- mem rsp 1032
+	r10 <- r10
+	mem rsp 2288 <- r10
+	r10 <- mem rsp 2288
+	r10 >>= 1
+	mem rsp 2288 <- r10
+	r10 <- mem rsp 2288
+	r10 <- r10
+	mem rsp 248 <- r10
+	r10 <- mem rsp 248
+	r10 += 1
+	mem rsp 248 <- r10
+	r10 <- mem rsp 248
+	r10 <- r10
+	mem rsp 1032 <- r10
+	r10 <- mem rsp 1032
+	r10 <- r10
+	mem rsp 1456 <- r10
+	r10 <- mem rsp 1456
+	r10 <<= 1
+	mem rsp 1456 <- r10
+	r10 <- mem rsp 1456
+	r10 <- r10
+	mem rsp 1032 <- r10
+	r10 <- mem rsp 1032
+	r10 <- r10
+	mem rsp 216 <- r10
+	r10 <- mem rsp 216
+	r10 += 1
+	mem rsp 216 <- r10
+	r10 <- mem rsp 216
+	r10 <- r10
+	mem rsp 1032 <- r10
+	goto :endBody1_init_global_42_global_25
+	:endBody1_init_global_42_global_30
+	r10 <- mem rsp 1448
+	r10 <- r10
+	mem rsp 1328 <- r10
+	r10 <- mem rsp 1328
+	r10 >>= 1
+	mem rsp 1328 <- r10
+	r10 <- mem rsp 1328
+	r10 <- r10
+	mem rsp 200 <- r10
+	r10 <- mem rsp 200
+	r10 += 1
+	mem rsp 200 <- r10
+	r10 <- mem rsp 200
+	r10 <- r10
+	mem rsp 1448 <- r10
+	r10 <- mem rsp 1448
+	r10 <- r10
+	mem rsp 2368 <- r10
+	r10 <- mem rsp 2368
+	r10 <<= 1
+	mem rsp 2368 <- r10
+	r10 <- mem rsp 2368
+	r10 <- r10
+	mem rsp 1448 <- r10
+	r10 <- mem rsp 1448
+	r10 <- r10
+	mem rsp 192 <- r10
+	r10 <- mem rsp 192
+	r10 += 1
+	mem rsp 192 <- r10
+	r10 <- mem rsp 192
+	r10 <- r10
+	mem rsp 1448 <- r10
+	goto :endBody1_init_global_42_global_33
+	:endBody1_init_global_42_global_23
+	r10 <- 1
+	mem rsp 240 <- r10
+	r10 <- 1
+	mem rsp 1152 <- r10
+	r10 <- 1
+	mem rsp 648 <- r10
+	r10 <- 1
+	mem rsp 648 <- r10
+	goto :endBody1_init_global_42_global_43
+	:endBody1_init_global_42_global_43
+	r10 <- 1
+	mem rsp 176 <- r10
+	r10 <- mem rsp 648
+	r10 <- r10
+	mem rsp 96 <- r10
+	r10 <- mem rsp 96
+	r10 >>= 1
+	mem rsp 96 <- r10
+	r10 <- mem rsp 312
+	r10 <- r10
+	mem rsp 1488 <- r10
+	r10 <- mem rsp 1488
+	r10 >>= 1
+	mem rsp 1488 <- r10
+	r11 <- mem rsp 96
+	r10 <- mem rsp 1488
+	r10 <- r11 < r10
+	mem rsp 368 <- r10
+	r10 <- mem rsp 368
+	r10 <- r10
+	mem rsp 176 <- r10
+	r10 <- mem rsp 176
+	r10 <- r10
+	mem rsp 1904 <- r10
+	r10 <- mem rsp 1904
+	r10 <<= 1
+	mem rsp 1904 <- r10
+	r10 <- mem rsp 1904
+	r10 <- r10
+	mem rsp 176 <- r10
+	r10 <- mem rsp 176
+	r10 <- r10
+	mem rsp 168 <- r10
+	r10 <- mem rsp 168
+	r10 += 1
+	mem rsp 168 <- r10
+	r10 <- mem rsp 168
+	r10 <- r10
+	mem rsp 176 <- r10
+	r10 <- mem rsp 176
+	r10 <- r10
+	mem rsp 160 <- r10
+	r10 <- mem rsp 160
+	r10 >>= 1
+	mem rsp 160 <- r10
+	r10 <- mem rsp 160
+	cjump r10 = 1 :endBody1_init_global_42_global_44
+	goto :endBody1_init_global_42_global_22
+	:endBody1_init_global_42_global_44
+	r10 <- 1
+	mem rsp 1152 <- r10
+	goto :endBody1_init_global_42_global_45
+	:endBody1_init_global_42_global_45
+	r10 <- 1
+	mem rsp 2416 <- r10
+	r10 <- mem rsp 1152
+	r10 <- r10
+	mem rsp 1216 <- r10
+	r10 <- mem rsp 1216
+	r10 >>= 1
+	mem rsp 1216 <- r10
+	r10 <- mem rsp 888
+	r10 <- r10
+	mem rsp 1304 <- r10
+	r10 <- mem rsp 1304
+	r10 >>= 1
+	mem rsp 1304 <- r10
+	r10 <- mem rsp 1216
+	r11 <- mem rsp 1304
+	r10 <- r10 < r11
+	mem rsp 288 <- r10
+	r10 <- mem rsp 288
+	r10 <- r10
+	mem rsp 2416 <- r10
+	r10 <- mem rsp 2416
+	r10 <- r10
+	mem rsp 520 <- r10
+	r10 <- mem rsp 520
+	r10 <<= 1
+	mem rsp 520 <- r10
+	r10 <- mem rsp 520
+	r10 <- r10
+	mem rsp 2416 <- r10
+	r10 <- mem rsp 2416
+	r10 <- r10
+	mem rsp 120 <- r10
+	r10 <- mem rsp 120
+	r10 += 1
+	mem rsp 120 <- r10
+	r10 <- mem rsp 120
+	r10 <- r10
+	mem rsp 2416 <- r10
+	r10 <- mem rsp 2416
+	r10 <- r10
+	mem rsp 112 <- r10
+	r10 <- mem rsp 112
+	r10 >>= 1
+	mem rsp 112 <- r10
+	r10 <- mem rsp 112
+	cjump r10 = 1 :endBody1_init_global_42_global_46
+	goto :endBody1_init_global_42_global_47
+	:endBody1_init_global_42_global_46
+	r10 <- 1
+	mem rsp 240 <- r10
+	goto :endBody1_init_global_42_global_48
+	:endBody1_init_global_42_global_48
+	r10 <- 1
+	mem rsp 104 <- r10
+	r10 <- mem rsp 240
+	r10 <- r10
+	mem rsp 1056 <- r10
+	r10 <- mem rsp 1056
+	r10 >>= 1
+	mem rsp 1056 <- r10
+	r10 <- mem rsp 920
+	r10 <- r10
+	mem rsp 2048 <- r10
+	r10 <- mem rsp 2048
+	r10 >>= 1
+	mem rsp 2048 <- r10
+	r10 <- mem rsp 1056
+	r11 <- mem rsp 2048
+	r10 <- r10 < r11
+	mem rsp 856 <- r10
+	r10 <- mem rsp 856
+	r10 <- r10
+	mem rsp 104 <- r10
+	r10 <- mem rsp 104
+	r10 <- r10
+	mem rsp 576 <- r10
+	r10 <- mem rsp 576
+	r10 <<= 1
+	mem rsp 576 <- r10
+	r10 <- mem rsp 576
+	r10 <- r10
+	mem rsp 104 <- r10
+	r10 <- mem rsp 104
+	r10 <- r10
+	mem rsp 1296 <- r10
+	r10 <- mem rsp 1296
+	r10 += 1
+	mem rsp 1296 <- r10
+	r10 <- mem rsp 1296
+	r10 <- r10
+	mem rsp 104 <- r10
+	r10 <- mem rsp 104
+	r10 <- r10
+	mem rsp 2760 <- r10
+	r10 <- mem rsp 2760
+	r10 >>= 1
+	mem rsp 2760 <- r10
+	r10 <- mem rsp 2760
+	cjump r10 = 1 :endBody1_init_global_42_global_49
+	goto :endBody1_init_global_42_global_50
+	:endBody1_init_global_42_global_49
+	r10 <- 1
+	mem rsp 2584 <- r10
+	r10 <- 1
+	mem rsp 72 <- r10
+	r10 <- 1
+	mem rsp 1104 <- r10
+	r10 <- 1
+	mem rsp 80 <- r10
+	r10 <- mem rsp 648
+	r10 <- r10
+	mem rsp 224 <- r10
+	r10 <- mem rsp 224
+	r10 >>= 1
+	mem rsp 224 <- r10
+	r10 <- mem rsp 224
+	r10 <- r10
+	mem rsp 352 <- r10
+	r10 <- mem rsp 240
+	r10 <- r10
+	mem rsp 1768 <- r10
+	r10 <- mem rsp 1768
+	r10 >>= 1
+	mem rsp 1768 <- r10
+	r10 <- mem rsp 1768
+	r10 <- r10
+	mem rsp 1208 <- r10
+	r10 <- mem rsp 816
+	cjump r10 = 0 :endBody1_init_global_42_global_51
+	goto :endBody1_init_global_42_global_52
+	:endBody1_init_global_42_global_51
+	rdi <- 331
+	call tensor-error 1
+	r10 <- rax
+	mem rsp 64 <- r10
+	goto :endBody1_init_global_42_global_52
+	:endBody1_init_global_42_global_52
+	r10 <- 1
+	mem rsp 320 <- r10
+	r10 <- 0
+	mem rsp 1112 <- r10
+	r10 <- mem rsp 1112
+	r10 *= 8
+	mem rsp 1112 <- r10
+	r10 <- mem rsp 1112
+	r10 <- r10
+	mem rsp 632 <- r10
+	r10 <- mem rsp 632
+	r10 += 8
+	mem rsp 632 <- r10
+	r10 <- mem rsp 816
+	r10 <- r10
+	mem rsp 1616 <- r10
+	r11 <- mem rsp 632
+	r10 <- mem rsp 1616
+	r10 += r11
+	mem rsp 1616 <- r10
+	r10 <- mem rsp 1616
+	r10 <- mem r10 0
+	mem rsp 1632 <- r10
+	r10 <- mem rsp 1632
+	r10 <- r10
+	mem rsp 1640 <- r10
+	r10 <- mem rsp 352
+	r10 <- r10
+	mem rsp 2136 <- r10
+	r10 <- mem rsp 2136
+	r10 <<= 1
+	mem rsp 2136 <- r10
+	r10 <- mem rsp 2136
+	r10 <- r10
+	mem rsp 1856 <- r10
+	r10 <- mem rsp 1856
+	r10 += 1
+	mem rsp 1856 <- r10
+	r10 <- mem rsp 1856
+	r10 <- r10
+	mem rsp 1680 <- r10
+	r10 <- mem rsp 1640
+	r11 <- mem rsp 1680
+	cjump r10 <= r11 :endBody1_init_global_42_global_53
+	goto :endBody1_init_global_42_global_54
+	:endBody1_init_global_42_global_54
+	r10 <- 3
+	mem rsp 320 <- r10
+	r10 <- 1
+	mem rsp 664 <- r10
+	r10 <- mem rsp 664
+	r10 *= 8
+	mem rsp 664 <- r10
+	r10 <- mem rsp 664
+	r10 <- r10
+	mem rsp 1688 <- r10
+	r10 <- mem rsp 1688
+	r10 += 8
+	mem rsp 1688 <- r10
+	r10 <- mem rsp 816
+	r10 <- r10
+	mem rsp 1696 <- r10
+	r11 <- mem rsp 1688
+	r10 <- mem rsp 1696
+	r10 += r11
+	mem rsp 1696 <- r10
+	r10 <- mem rsp 1696
+	r10 <- mem r10 0
+	mem rsp 1704 <- r10
+	r10 <- mem rsp 1704
+	r10 <- r10
+	mem rsp 1640 <- r10
+	r10 <- mem rsp 1208
+	r10 <- r10
+	mem rsp 1720 <- r10
+	r10 <- mem rsp 1720
+	r10 <<= 1
+	mem rsp 1720 <- r10
+	r10 <- mem rsp 1720
+	r10 <- r10
+	mem rsp 832 <- r10
+	r10 <- mem rsp 832
+	r10 += 1
+	mem rsp 832 <- r10
+	r10 <- mem rsp 832
+	r10 <- r10
+	mem rsp 1680 <- r10
+	r10 <- mem rsp 1640
+	r11 <- mem rsp 1680
+	cjump r10 <= r11 :endBody1_init_global_42_global_53
+	goto :endBody1_init_global_42_global_55
+	:endBody1_init_global_42_global_55
+	goto :endBody1_init_global_42_global_56
+	:endBody1_init_global_42_global_53
+	rdi <- 331
+	r10 <- mem rsp 320
+	rsi <- r10
+	r10 <- mem rsp 1640
+	rdx <- r10
+	r10 <- mem rsp 1680
+	rcx <- r10
+	call tensor-error 4
+	r10 <- rax
+	mem rsp 1744 <- r10
+	goto :endBody1_init_global_42_global_56
+	:endBody1_init_global_42_global_56
+	r10 <- mem rsp 816
+	r10 <- r10
+	mem rsp 1776 <- r10
+	r10 <- mem rsp 1776
+	r10 += 8
+	mem rsp 1776 <- r10
+	r10 <- mem rsp 1776
+	r10 <- r10
+	mem rsp 1784 <- r10
+	r10 <- mem rsp 1784
+	r10 <- mem r10 0
+	mem rsp 800 <- r10
+	r10 <- mem rsp 800
+	r10 <- r10
+	mem rsp 1128 <- r10
+	r10 <- mem rsp 1128
+	r10 <- r10
+	mem rsp 408 <- r10
+	r10 <- mem rsp 408
+	r10 >>= 1
+	mem rsp 408 <- r10
+	r10 <- mem rsp 408
+	r10 <- r10
+	mem rsp 1128 <- r10
+	r10 <- mem rsp 1784
+	r10 <- r10
+	mem rsp 1944 <- r10
+	r10 <- mem rsp 1944
+	r10 += 8
+	mem rsp 1944 <- r10
+	r10 <- mem rsp 1944
+	r10 <- r10
+	mem rsp 1784 <- r10
+	r10 <- mem rsp 1784
+	r10 <- mem r10 0
+	mem rsp 2392 <- r10
+	r10 <- mem rsp 2392
+	r10 <- r10
+	mem rsp 1664 <- r10
+	r10 <- mem rsp 1784
+	r10 <- r10
+	mem rsp 1144 <- r10
+	r10 <- mem rsp 1144
+	r10 += 8
+	mem rsp 1144 <- r10
+	r10 <- mem rsp 1144
+	r10 <- r10
+	mem rsp 1784 <- r10
+	r10 <- 1
+	mem rsp 2736 <- r10
+	r10 <- mem rsp 1664
+	r10 <- r10
+	mem rsp 1848 <- r10
+	r10 <- mem rsp 1848
+	r10 >>= 1
+	mem rsp 1848 <- r10
+	r10 <- mem rsp 2736
+	r10 <- r10
+	mem rsp 1872 <- r10
+	r10 <- mem rsp 1848
+	r11 <- mem rsp 1872
+	r11 *= r10
+	mem rsp 1872 <- r11
+	r10 <- mem rsp 1872
+	r10 <- r10
+	mem rsp 1792 <- r10
+	r10 <- mem rsp 1792
+	r10 *= 8
+	mem rsp 1792 <- r10
+	r10 <- mem rsp 1792
+	r10 <- r10
+	mem rsp 1880 <- r10
+	r10 <- mem rsp 1880
+	r10 <- r10
+	mem rsp 1896 <- r10
+	r11 <- mem rsp 352
+	r10 <- mem rsp 1896
+	r10 *= r11
+	mem rsp 1896 <- r10
+	r10 <- mem rsp 1896
+	r10 <- r10
+	mem rsp 1880 <- r10
+	r10 <- mem rsp 1784
+	r10 <- r10
+	mem rsp 768 <- r10
+	r11 <- mem rsp 768
+	r10 <- mem rsp 1880
+	r11 += r10
+	mem rsp 768 <- r11
+	r10 <- mem rsp 768
+	r10 <- r10
+	mem rsp 1784 <- r10
+	r10 <- mem rsp 2736
+	r10 <- r10
+	mem rsp 1240 <- r10
+	r10 <- mem rsp 1240
+	r10 *= 8
+	mem rsp 1240 <- r10
+	r10 <- mem rsp 1240
+	r10 <- r10
+	mem rsp 1880 <- r10
+	r10 <- mem rsp 1880
+	r10 <- r10
+	mem rsp 1064 <- r10
+	r11 <- mem rsp 1064
+	r10 <- mem rsp 1208
+	r11 *= r10
+	mem rsp 1064 <- r11
+	r10 <- mem rsp 1064
+	r10 <- r10
+	mem rsp 1880 <- r10
+	r10 <- mem rsp 1784
+	r10 <- r10
+	mem rsp 1728 <- r10
+	r10 <- mem rsp 1728
+	r11 <- mem rsp 1880
+	r10 += r11
+	mem rsp 1728 <- r10
+	r10 <- mem rsp 1728
+	r10 <- r10
+	mem rsp 1784 <- r10
+	r10 <- mem rsp 1784
+	r10 <- mem r10 0
+	mem rsp 1072 <- r10
+	r10 <- mem rsp 1072
+	r10 <- r10
+	mem rsp 80 <- r10
+	r10 <- mem rsp 240
+	r10 <- r10
+	mem rsp 1816 <- r10
+	r10 <- mem rsp 1816
+	r10 >>= 1
+	mem rsp 1816 <- r10
+	r10 <- mem rsp 1816
+	r10 <- r10
+	mem rsp 1912 <- r10
+	r10 <- mem rsp 1152
+	r10 <- r10
+	mem rsp 392 <- r10
+	r10 <- mem rsp 392
+	r10 >>= 1
+	mem rsp 392 <- r10
+	r10 <- mem rsp 392
+	r10 <- r10
+	mem rsp 1920 <- r10
+	r10 <- mem rsp 1312
+	cjump r10 = 0 :endBody1_init_global_42_global_57
+	goto :endBody1_init_global_42_global_58
+	:endBody1_init_global_42_global_57
+	rdi <- 333
+	call tensor-error 1
+	r10 <- rax
+	mem rsp 1936 <- r10
+	goto :endBody1_init_global_42_global_58
+	:endBody1_init_global_42_global_58
+	r10 <- 1
+	mem rsp 1952 <- r10
+	r10 <- 0
+	mem rsp 1960 <- r10
+	r10 <- mem rsp 1960
+	r10 *= 8
+	mem rsp 1960 <- r10
+	r10 <- mem rsp 1960
+	r10 <- r10
+	mem rsp 1976 <- r10
+	r10 <- mem rsp 1976
+	r10 += 8
+	mem rsp 1976 <- r10
+	r10 <- mem rsp 1312
+	r10 <- r10
+	mem rsp 2344 <- r10
+	r10 <- mem rsp 1976
+	r11 <- mem rsp 2344
+	r11 += r10
+	mem rsp 2344 <- r11
+	r10 <- mem rsp 2344
+	r10 <- mem r10 0
+	mem rsp 1016 <- r10
+	r10 <- mem rsp 1016
+	r10 <- r10
+	mem rsp 1984 <- r10
+	r10 <- mem rsp 1912
+	r10 <- r10
+	mem rsp 1992 <- r10
+	r10 <- mem rsp 1992
+	r10 <<= 1
+	mem rsp 1992 <- r10
+	r10 <- mem rsp 1992
+	r10 <- r10
+	mem rsp 2000 <- r10
+	r10 <- mem rsp 2000
+	r10 += 1
+	mem rsp 2000 <- r10
+	r10 <- mem rsp 2000
+	r10 <- r10
+	mem rsp 2008 <- r10
+	r11 <- mem rsp 1984
+	r10 <- mem rsp 2008
+	cjump r11 <= r10 :endBody1_init_global_42_global_59
+	goto :endBody1_init_global_42_global_60
+	:endBody1_init_global_42_global_60
+	r10 <- 3
+	mem rsp 1952 <- r10
+	r10 <- 1
+	mem rsp 2016 <- r10
+	r10 <- mem rsp 2016
+	r10 *= 8
+	mem rsp 2016 <- r10
+	r10 <- mem rsp 2016
+	r10 <- r10
+	mem rsp 2024 <- r10
+	r10 <- mem rsp 2024
+	r10 += 8
+	mem rsp 2024 <- r10
+	r10 <- mem rsp 1312
+	r10 <- r10
+	mem rsp 2040 <- r10
+	r11 <- mem rsp 2024
+	r10 <- mem rsp 2040
+	r10 += r11
+	mem rsp 2040 <- r10
+	r10 <- mem rsp 2040
+	r10 <- mem r10 0
+	mem rsp 2056 <- r10
+	r10 <- mem rsp 2056
+	r10 <- r10
+	mem rsp 1984 <- r10
+	r10 <- mem rsp 1920
+	r10 <- r10
+	mem rsp 2072 <- r10
+	r10 <- mem rsp 2072
+	r10 <<= 1
+	mem rsp 2072 <- r10
+	r10 <- mem rsp 2072
+	r10 <- r10
+	mem rsp 1120 <- r10
+	r10 <- mem rsp 1120
+	r10 += 1
+	mem rsp 1120 <- r10
+	r10 <- mem rsp 1120
+	r10 <- r10
+	mem rsp 2008 <- r10
+	r11 <- mem rsp 1984
+	r10 <- mem rsp 2008
+	cjump r11 <= r10 :endBody1_init_global_42_global_59
+	goto :endBody1_init_global_42_global_61
+	:endBody1_init_global_42_global_61
+	goto :endBody1_init_global_42_global_62
+	:endBody1_init_global_42_global_59
+	rdi <- 333
+	r10 <- mem rsp 1952
+	rsi <- r10
+	r10 <- mem rsp 1984
+	rdx <- r10
+	r10 <- mem rsp 2008
+	rcx <- r10
+	call tensor-error 4
+	r10 <- rax
+	mem rsp 2080 <- r10
+	goto :endBody1_init_global_42_global_62
+	:endBody1_init_global_42_global_62
+	r10 <- mem rsp 1312
+	r10 <- r10
+	mem rsp 840 <- r10
+	r10 <- mem rsp 840
+	r10 += 8
+	mem rsp 840 <- r10
+	r10 <- mem rsp 840
+	r10 <- r10
+	mem rsp 1760 <- r10
+	r10 <- mem rsp 1760
+	r10 <- mem r10 0
+	mem rsp 2096 <- r10
+	r10 <- mem rsp 2096
+	r10 <- r10
+	mem rsp 2104 <- r10
+	r10 <- mem rsp 2104
+	r10 <- r10
+	mem rsp 2544 <- r10
+	r10 <- mem rsp 2544
+	r10 >>= 1
+	mem rsp 2544 <- r10
+	r10 <- mem rsp 2544
+	r10 <- r10
+	mem rsp 2104 <- r10
+	r10 <- mem rsp 1760
+	r10 <- r10
+	mem rsp 2120 <- r10
+	r10 <- mem rsp 2120
+	r10 += 8
+	mem rsp 2120 <- r10
+	r10 <- mem rsp 2120
+	r10 <- r10
+	mem rsp 1760 <- r10
+	r10 <- mem rsp 1760
+	r10 <- mem r10 0
+	mem rsp 504 <- r10
+	r10 <- mem rsp 504
+	r10 <- r10
+	mem rsp 2144 <- r10
+	r10 <- mem rsp 1760
+	r10 <- r10
+	mem rsp 328 <- r10
+	r10 <- mem rsp 328
+	r10 += 8
+	mem rsp 328 <- r10
+	r10 <- mem rsp 328
+	r10 <- r10
+	mem rsp 1760 <- r10
+	r10 <- 1
+	mem rsp 808 <- r10
+	r10 <- mem rsp 2144
+	r10 <- r10
+	mem rsp 2152 <- r10
+	r10 <- mem rsp 2152
+	r10 >>= 1
+	mem rsp 2152 <- r10
+	r10 <- mem rsp 808
+	r10 <- r10
+	mem rsp 2168 <- r10
+	r11 <- mem rsp 2152
+	r10 <- mem rsp 2168
+	r10 *= r11
+	mem rsp 2168 <- r10
+	r10 <- mem rsp 2168
+	r10 <- r10
+	mem rsp 1608 <- r10
+	r10 <- mem rsp 1608
+	r10 *= 8
+	mem rsp 1608 <- r10
+	r10 <- mem rsp 1608
+	r10 <- r10
+	mem rsp 2176 <- r10
+	r10 <- mem rsp 2176
+	r10 <- r10
+	mem rsp 2184 <- r10
+	r11 <- mem rsp 1912
+	r10 <- mem rsp 2184
+	r10 *= r11
+	mem rsp 2184 <- r10
+	r10 <- mem rsp 2184
+	r10 <- r10
+	mem rsp 2176 <- r10
+	r10 <- mem rsp 1760
+	r10 <- r10
+	mem rsp 2208 <- r10
+	r10 <- mem rsp 2176
+	r11 <- mem rsp 2208
+	r11 += r10
+	mem rsp 2208 <- r11
+	r10 <- mem rsp 2208
+	r10 <- r10
+	mem rsp 1760 <- r10
+	r10 <- mem rsp 808
+	r10 <- r10
+	mem rsp 152 <- r10
+	r10 <- mem rsp 152
+	r10 *= 8
+	mem rsp 152 <- r10
+	r10 <- mem rsp 152
+	r10 <- r10
+	mem rsp 2176 <- r10
+	r10 <- mem rsp 2176
+	r10 <- r10
+	mem rsp 2192 <- r10
+	r11 <- mem rsp 1920
+	r10 <- mem rsp 2192
+	r10 *= r11
+	mem rsp 2192 <- r10
+	r10 <- mem rsp 2192
+	r10 <- r10
+	mem rsp 2176 <- r10
+	r10 <- mem rsp 1760
+	r10 <- r10
+	mem rsp 2216 <- r10
+	r10 <- mem rsp 2176
+	r11 <- mem rsp 2216
+	r11 += r10
+	mem rsp 2216 <- r11
+	r10 <- mem rsp 2216
+	r10 <- r10
+	mem rsp 1760 <- r10
+	r10 <- mem rsp 1760
+	r10 <- mem r10 0
+	mem rsp 1600 <- r10
+	r10 <- mem rsp 1600
+	r10 <- r10
+	mem rsp 1104 <- r10
+	r10 <- mem rsp 80
+	r10 <- r10
+	mem rsp 2224 <- r10
+	r10 <- mem rsp 2224
+	r10 >>= 1
+	mem rsp 2224 <- r10
+	r10 <- mem rsp 1104
+	r10 <- r10
+	mem rsp 136 <- r10
+	r10 <- mem rsp 136
+	r10 >>= 1
+	mem rsp 136 <- r10
+	r10 <- mem rsp 2224
+	r10 <- r10
+	mem rsp 2256 <- r10
+	r11 <- mem rsp 136
+	r10 <- mem rsp 2256
+	r10 *= r11
+	mem rsp 2256 <- r10
+	r10 <- mem rsp 2256
+	r10 <- r10
+	mem rsp 72 <- r10
+	r10 <- mem rsp 72
+	r10 <- r10
+	mem rsp 2232 <- r10
+	r10 <- mem rsp 2232
+	r10 <<= 1
+	mem rsp 2232 <- r10
+	r10 <- mem rsp 2232
+	r10 <- r10
+	mem rsp 72 <- r10
+	r10 <- mem rsp 72
+	r10 <- r10
+	mem rsp 2248 <- r10
+	r10 <- mem rsp 2248
+	r10 += 1
+	mem rsp 2248 <- r10
+	r10 <- mem rsp 2248
+	r10 <- r10
+	mem rsp 72 <- r10
+	r10 <- mem rsp 648
+	r10 <- r10
+	mem rsp 2264 <- r10
+	r10 <- mem rsp 2264
+	r10 >>= 1
+	mem rsp 2264 <- r10
+	r10 <- mem rsp 2264
+	r10 <- r10
+	mem rsp 2352 <- r10
+	r10 <- mem rsp 1152
+	r10 <- r10
+	mem rsp 896 <- r10
+	r10 <- mem rsp 896
+	r10 >>= 1
+	mem rsp 896 <- r10
+	r10 <- mem rsp 896
+	r10 <- r10
+	mem rsp 744 <- r10
+	r10 <- mem rsp 1184
+	cjump r10 = 0 :endBody1_init_global_42_global_63
+	goto :endBody1_init_global_42_global_64
+	:endBody1_init_global_42_global_63
+	rdi <- 337
+	call tensor-error 1
+	r10 <- rax
+	mem rsp 2464 <- r10
+	goto :endBody1_init_global_42_global_64
+	:endBody1_init_global_42_global_64
+	r10 <- 1
+	mem rsp 2280 <- r10
+	r10 <- 0
+	mem rsp 2312 <- r10
+	r10 <- mem rsp 2312
+	r10 *= 8
+	mem rsp 2312 <- r10
+	r10 <- mem rsp 2312
+	r10 <- r10
+	mem rsp 2328 <- r10
+	r10 <- mem rsp 2328
+	r10 += 8
+	mem rsp 2328 <- r10
+	r10 <- mem rsp 1184
+	r10 <- r10
+	mem rsp 2656 <- r10
+	r10 <- mem rsp 2328
+	r11 <- mem rsp 2656
+	r11 += r10
+	mem rsp 2656 <- r11
+	r10 <- mem rsp 2656
+	r10 <- mem r10 0
+	mem rsp 2336 <- r10
+	r10 <- mem rsp 2336
+	r10 <- r10
+	mem rsp 272 <- r10
+	r10 <- mem rsp 2352
+	r10 <- r10
+	mem rsp 1048 <- r10
+	r10 <- mem rsp 1048
+	r10 <<= 1
+	mem rsp 1048 <- r10
+	r10 <- mem rsp 1048
+	r10 <- r10
+	mem rsp 2648 <- r10
+	r10 <- mem rsp 2648
+	r10 += 1
+	mem rsp 2648 <- r10
+	r10 <- mem rsp 2648
+	r10 <- r10
+	mem rsp 2360 <- r10
+	r10 <- mem rsp 272
+	r11 <- mem rsp 2360
+	cjump r10 <= r11 :endBody1_init_global_42_global_65
+	goto :endBody1_init_global_42_global_66
+	:endBody1_init_global_42_global_66
+	r10 <- 3
+	mem rsp 2280 <- r10
+	r10 <- 1
+	mem rsp 2376 <- r10
+	r10 <- mem rsp 2376
+	r10 *= 8
+	mem rsp 2376 <- r10
+	r10 <- mem rsp 2376
+	r10 <- r10
+	mem rsp 360 <- r10
+	r10 <- mem rsp 360
+	r10 += 8
+	mem rsp 360 <- r10
+	r10 <- mem rsp 1184
+	r10 <- r10
+	mem rsp 696 <- r10
+	r11 <- mem rsp 360
+	r10 <- mem rsp 696
+	r10 += r11
+	mem rsp 696 <- r10
+	r10 <- mem rsp 696
+	r10 <- mem r10 0
+	mem rsp 2384 <- r10
+	r10 <- mem rsp 2384
+	r10 <- r10
+	mem rsp 272 <- r10
+	r10 <- mem rsp 744
+	r10 <- r10
+	mem rsp 2400 <- r10
+	r10 <- mem rsp 2400
+	r10 <<= 1
+	mem rsp 2400 <- r10
+	r10 <- mem rsp 2400
+	r10 <- r10
+	mem rsp 2408 <- r10
+	r10 <- mem rsp 2408
+	r10 += 1
+	mem rsp 2408 <- r10
+	r10 <- mem rsp 2408
+	r10 <- r10
+	mem rsp 2360 <- r10
+	r10 <- mem rsp 272
+	r11 <- mem rsp 2360
+	cjump r10 <= r11 :endBody1_init_global_42_global_65
+	goto :endBody1_init_global_42_global_67
+	:endBody1_init_global_42_global_67
+	goto :endBody1_init_global_42_global_68
+	:endBody1_init_global_42_global_65
+	rdi <- 337
+	r10 <- mem rsp 2280
+	rsi <- r10
+	r10 <- mem rsp 272
+	rdx <- r10
+	r10 <- mem rsp 2360
+	rcx <- r10
+	call tensor-error 4
+	r10 <- rax
+	mem rsp 2440 <- r10
+	goto :endBody1_init_global_42_global_68
+	:endBody1_init_global_42_global_68
+	r10 <- mem rsp 1184
+	r10 <- r10
+	mem rsp 568 <- r10
+	r10 <- mem rsp 568
+	r10 += 8
+	mem rsp 568 <- r10
+	r10 <- mem rsp 568
+	r10 <- r10
+	mem rsp 2088 <- r10
+	r10 <- mem rsp 2088
+	r10 <- mem r10 0
+	mem rsp 2456 <- r10
+	r10 <- mem rsp 2456
+	r10 <- r10
+	mem rsp 1888 <- r10
+	r10 <- mem rsp 1888
+	r10 <- r10
+	mem rsp 464 <- r10
+	r10 <- mem rsp 464
+	r10 >>= 1
+	mem rsp 464 <- r10
+	r10 <- mem rsp 464
+	r10 <- r10
+	mem rsp 1888 <- r10
+	r10 <- mem rsp 2088
+	r10 <- r10
+	mem rsp 776 <- r10
+	r10 <- mem rsp 776
+	r10 += 8
+	mem rsp 776 <- r10
+	r10 <- mem rsp 776
+	r10 <- r10
+	mem rsp 2088 <- r10
+	r10 <- mem rsp 2088
+	r10 <- mem r10 0
+	mem rsp 2472 <- r10
+	r10 <- mem rsp 2472
+	r10 <- r10
+	mem rsp 2488 <- r10
+	r10 <- mem rsp 2088
+	r10 <- r10
+	mem rsp 2448 <- r10
+	r10 <- mem rsp 2448
+	r10 += 8
+	mem rsp 2448 <- r10
+	r10 <- mem rsp 2448
+	r10 <- r10
+	mem rsp 2088 <- r10
+	r10 <- 1
+	mem rsp 2496 <- r10
+	r10 <- mem rsp 2488
+	r10 <- r10
+	mem rsp 1160 <- r10
+	r10 <- mem rsp 1160
+	r10 >>= 1
+	mem rsp 1160 <- r10
+	r10 <- mem rsp 2496
+	r10 <- r10
+	mem rsp 2504 <- r10
+	r10 <- mem rsp 1160
+	r11 <- mem rsp 2504
+	r11 *= r10
+	mem rsp 2504 <- r11
+	r10 <- mem rsp 2504
+	r10 <- r10
+	mem rsp 304 <- r10
+	r10 <- mem rsp 304
+	r10 *= 8
+	mem rsp 304 <- r10
+	r10 <- mem rsp 304
+	r10 <- r10
+	mem rsp 1000 <- r10
+	r10 <- mem rsp 1000
+	r10 <- r10
+	mem rsp 1416 <- r10
+	r10 <- mem rsp 1416
+	r11 <- mem rsp 2352
+	r10 *= r11
+	mem rsp 1416 <- r10
+	r10 <- mem rsp 1416
+	r10 <- r10
+	mem rsp 1000 <- r10
+	r10 <- mem rsp 2088
+	r10 <- r10
+	mem rsp 2480 <- r10
+	r11 <- mem rsp 1000
+	r10 <- mem rsp 2480
+	r10 += r11
+	mem rsp 2480 <- r10
+	r10 <- mem rsp 2480
+	r10 <- r10
+	mem rsp 2088 <- r10
+	r10 <- mem rsp 2496
+	r10 <- r10
+	mem rsp 2320 <- r10
+	r10 <- mem rsp 2320
+	r10 *= 8
+	mem rsp 2320 <- r10
+	r10 <- mem rsp 2320
+	r10 <- r10
+	mem rsp 1000 <- r10
+	r10 <- mem rsp 1000
+	r10 <- r10
+	mem rsp 1968 <- r10
+	r11 <- mem rsp 744
+	r10 <- mem rsp 1968
+	r10 *= r11
+	mem rsp 1968 <- r10
+	r10 <- mem rsp 1968
+	r10 <- r10
+	mem rsp 1000 <- r10
+	r10 <- mem rsp 2088
+	r10 <- r10
+	mem rsp 1800 <- r10
+	r10 <- mem rsp 1000
+	r11 <- mem rsp 1800
+	r11 += r10
+	mem rsp 1800 <- r11
+	r10 <- mem rsp 1800
+	r10 <- r10
+	mem rsp 2088 <- r10
+	r10 <- mem rsp 2088
+	r10 <- mem r10 0
+	mem rsp 1400 <- r10
+	r10 <- mem rsp 1400
+	r10 <- r10
+	mem rsp 2584 <- r10
+	r10 <- mem rsp 2584
+	r10 <- r10
+	mem rsp 848 <- r10
+	r10 <- mem rsp 848
+	r10 >>= 1
+	mem rsp 848 <- r10
+	r10 <- mem rsp 848
+	r10 <- r10
+	mem rsp 232 <- r10
+	r10 <- mem rsp 232
+	r10 *= 4
+	mem rsp 232 <- r10
+	r10 <- mem rsp 232
+	r10 <- r10
+	mem rsp 2584 <- r10
+	r10 <- mem rsp 2584
+	r10 <- r10
+	mem rsp 2528 <- r10
+	r10 <- mem rsp 2528
+	r10 <<= 1
+	mem rsp 2528 <- r10
+	r10 <- mem rsp 2528
+	r10 <- r10
+	mem rsp 2584 <- r10
+	r10 <- mem rsp 2584
+	r10 <- r10
+	mem rsp 1200 <- r10
+	r10 <- mem rsp 1200
+	r10 += 1
+	mem rsp 1200 <- r10
+	r10 <- mem rsp 1200
+	r10 <- r10
+	mem rsp 2584 <- r10
+	r10 <- mem rsp 2584
+	r10 <- r10
+	mem rsp 1672 <- r10
+	r10 <- mem rsp 1672
+	r10 >>= 1
+	mem rsp 1672 <- r10
+	r10 <- mem rsp 72
+	r10 <- r10
+	mem rsp 1544 <- r10
+	r10 <- mem rsp 1544
+	r10 >>= 1
+	mem rsp 1544 <- r10
+	r10 <- mem rsp 1672
+	r10 <- r10
+	mem rsp 2536 <- r10
+	r10 <- mem rsp 1544
+	r11 <- mem rsp 2536
+	r11 += r10
+	mem rsp 2536 <- r11
+	r10 <- mem rsp 2536
+	r10 <- r10
+	mem rsp 2584 <- r10
+	r10 <- mem rsp 2584
+	r10 <- r10
+	mem rsp 2272 <- r10
+	r10 <- mem rsp 2272
+	r10 <<= 1
+	mem rsp 2272 <- r10
+	r10 <- mem rsp 2272
+	r10 <- r10
+	mem rsp 2584 <- r10
+	r10 <- mem rsp 2584
+	r10 <- r10
+	mem rsp 2552 <- r10
+	r10 <- mem rsp 2552
+	r10 += 1
+	mem rsp 2552 <- r10
+	r10 <- mem rsp 2552
+	r10 <- r10
+	mem rsp 2584 <- r10
+	r10 <- mem rsp 648
+	r10 <- r10
+	mem rsp 2560 <- r10
+	r10 <- mem rsp 2560
+	r10 >>= 1
+	mem rsp 2560 <- r10
+	r10 <- mem rsp 2560
+	r10 <- r10
+	mem rsp 184 <- r10
+	r10 <- mem rsp 1152
+	r10 <- r10
+	mem rsp 2576 <- r10
+	r10 <- mem rsp 2576
+	r10 >>= 1
+	mem rsp 2576 <- r10
+	r10 <- mem rsp 2576
+	r10 <- r10
+	mem rsp 1280 <- r10
+	r10 <- mem rsp 1184
+	cjump r10 = 0 :endBody1_init_global_42_global_41
+	goto :endBody1_init_global_42_global_42
+	:endBody1_init_global_42_global_41
+	rdi <- 343
+	call tensor-error 1
+	r10 <- rax
+	mem rsp 2592 <- r10
+	goto :endBody1_init_global_42_global_42
+	:endBody1_init_global_42_global_42
+	r10 <- 1
+	mem rsp 2064 <- r10
+	r10 <- 0
+	mem rsp 2600 <- r10
+	r10 <- mem rsp 2600
+	r10 *= 8
+	mem rsp 2600 <- r10
+	r10 <- mem rsp 2600
+	r10 <- r10
+	mem rsp 1352 <- r10
+	r10 <- mem rsp 1352
+	r10 += 8
+	mem rsp 1352 <- r10
+	r10 <- mem rsp 1184
+	r10 <- r10
+	mem rsp 1192 <- r10
+	r11 <- mem rsp 1192
+	r10 <- mem rsp 1352
+	r11 += r10
+	mem rsp 1192 <- r11
+	r10 <- mem rsp 1192
+	r10 <- mem r10 0
+	mem rsp 2608 <- r10
+	r10 <- mem rsp 2608
+	r10 <- r10
+	mem rsp 2616 <- r10
+	r10 <- mem rsp 184
+	r10 <- r10
+	mem rsp 2624 <- r10
+	r10 <- mem rsp 2624
+	r10 <<= 1
+	mem rsp 2624 <- r10
+	r10 <- mem rsp 2624
+	r10 <- r10
+	mem rsp 2632 <- r10
+	r10 <- mem rsp 2632
+	r10 += 1
+	mem rsp 2632 <- r10
+	r10 <- mem rsp 2632
+	r10 <- r10
+	mem rsp 2296 <- r10
+	r10 <- mem rsp 2296
+	r11 <- mem rsp 2616
+	cjump r11 <= r10 :endBody1_init_global_42_global_69
+	goto :endBody1_init_global_42_global_70
+	:endBody1_init_global_42_global_70
+	r10 <- 3
+	mem rsp 2064 <- r10
+	r10 <- 1
+	mem rsp 2304 <- r10
+	r10 <- mem rsp 2304
+	r10 *= 8
+	mem rsp 2304 <- r10
+	r10 <- mem rsp 2304
+	r10 <- r10
+	mem rsp 1368 <- r10
+	r10 <- mem rsp 1368
+	r10 += 8
+	mem rsp 1368 <- r10
+	r10 <- mem rsp 1184
+	r10 <- r10
+	mem rsp 2640 <- r10
+	r11 <- mem rsp 1368
+	r10 <- mem rsp 2640
+	r10 += r11
+	mem rsp 2640 <- r10
+	r10 <- mem rsp 2640
+	r10 <- mem r10 0
+	mem rsp 760 <- r10
+	r10 <- mem rsp 760
+	r10 <- r10
+	mem rsp 2616 <- r10
+	r10 <- mem rsp 1280
+	r10 <- r10
+	mem rsp 1360 <- r10
+	r10 <- mem rsp 1360
+	r10 <<= 1
+	mem rsp 1360 <- r10
+	r10 <- mem rsp 1360
+	r10 <- r10
+	mem rsp 1864 <- r10
+	r10 <- mem rsp 1864
+	r10 += 1
+	mem rsp 1864 <- r10
+	r10 <- mem rsp 1864
+	r10 <- r10
+	mem rsp 2296 <- r10
+	r10 <- mem rsp 2296
+	r11 <- mem rsp 2616
+	cjump r11 <= r10 :endBody1_init_global_42_global_69
+	goto :endBody1_init_global_42_global_71
+	:endBody1_init_global_42_global_71
+	goto :endBody1_init_global_42_global_72
+	:endBody1_init_global_42_global_69
+	rdi <- 343
+	r10 <- mem rsp 2064
+	rsi <- r10
+	r10 <- mem rsp 2616
+	rdx <- r10
+	r10 <- mem rsp 2296
+	rcx <- r10
+	call tensor-error 4
+	r10 <- rax
+	mem rsp 2664 <- r10
+	goto :endBody1_init_global_42_global_72
+	:endBody1_init_global_42_global_72
+	r10 <- mem rsp 1184
+	r10 <- r10
+	mem rsp 2680 <- r10
+	r10 <- mem rsp 2680
+	r10 += 8
+	mem rsp 2680 <- r10
+	r10 <- mem rsp 2680
+	r10 <- r10
+	mem rsp 2696 <- r10
+	r10 <- mem rsp 2696
+	r10 <- mem r10 0
+	mem rsp 2520 <- r10
+	r10 <- mem rsp 2520
+	r10 <- r10
+	mem rsp 1552 <- r10
+	r10 <- mem rsp 1552
+	r10 <- r10
+	mem rsp 2704 <- r10
+	r10 <- mem rsp 2704
+	r10 >>= 1
+	mem rsp 2704 <- r10
+	r10 <- mem rsp 2704
+	r10 <- r10
+	mem rsp 1552 <- r10
+	r10 <- mem rsp 2696
+	r10 <- r10
+	mem rsp 1248 <- r10
+	r10 <- mem rsp 1248
+	r10 += 8
+	mem rsp 1248 <- r10
+	r10 <- mem rsp 1248
+	r10 <- r10
+	mem rsp 2696 <- r10
+	r10 <- mem rsp 2696
+	r10 <- mem r10 0
+	mem rsp 480 <- r10
+	r10 <- mem rsp 480
+	r10 <- r10
+	mem rsp 512 <- r10
+	r10 <- mem rsp 2696
+	r10 <- r10
+	mem rsp 2720 <- r10
+	r10 <- mem rsp 2720
+	r10 += 8
+	mem rsp 2720 <- r10
+	r10 <- mem rsp 2720
+	r10 <- r10
+	mem rsp 2696 <- r10
+	r10 <- 1
+	mem rsp 1464 <- r10
+	r10 <- mem rsp 512
+	r10 <- r10
+	mem rsp 880 <- r10
+	r10 <- mem rsp 880
+	r10 >>= 1
+	mem rsp 880 <- r10
+	r10 <- mem rsp 1464
+	r10 <- r10
+	mem rsp 1840 <- r10
+	r11 <- mem rsp 880
+	r10 <- mem rsp 1840
+	r10 *= r11
+	mem rsp 1840 <- r10
+	r10 <- mem rsp 1840
+	r10 <- r10
+	mem rsp 2744 <- r10
+	r10 <- mem rsp 2744
+	r10 *= 8
+	mem rsp 2744 <- r10
+	r10 <- mem rsp 2744
+	r10 <- r10
+	mem rsp 2128 <- r10
+	r10 <- mem rsp 2128
+	r10 <- r10
+	mem rsp 1568 <- r10
+	r11 <- mem rsp 184
+	r10 <- mem rsp 1568
+	r10 *= r11
+	mem rsp 1568 <- r10
+	r10 <- mem rsp 1568
+	r10 <- r10
+	mem rsp 2128 <- r10
+	r10 <- mem rsp 2696
+	r10 <- r10
+	mem rsp 1648 <- r10
+	r11 <- mem rsp 1648
+	r10 <- mem rsp 2128
+	r11 += r10
+	mem rsp 1648 <- r11
+	r10 <- mem rsp 1648
+	r10 <- r10
+	mem rsp 2696 <- r10
+	r10 <- mem rsp 1464
+	r10 <- r10
+	mem rsp 264 <- r10
+	r10 <- mem rsp 264
+	r10 *= 8
+	mem rsp 264 <- r10
+	r10 <- mem rsp 264
+	r10 <- r10
+	mem rsp 2128 <- r10
+	r10 <- mem rsp 2128
+	r10 <- r10
+	mem rsp 1832 <- r10
+	r11 <- mem rsp 1280
+	r10 <- mem rsp 1832
+	r10 *= r11
+	mem rsp 1832 <- r10
+	r10 <- mem rsp 1832
+	r10 <- r10
+	mem rsp 2128 <- r10
+	r10 <- mem rsp 2696
+	r10 <- r10
+	mem rsp 2752 <- r10
+	r11 <- mem rsp 2128
+	r10 <- mem rsp 2752
+	r10 += r11
+	mem rsp 2752 <- r10
+	r10 <- mem rsp 2752
+	r10 <- r10
+	mem rsp 2696 <- r10
+	r11 <- mem rsp 2584
+	r10 <- mem rsp 2696
+	mem r10 0 <- r11
+	r10 <- mem rsp 240
+	r10 <- r10
+	mem rsp 2768 <- r10
+	r10 <- mem rsp 2768
+	r10 >>= 1
+	mem rsp 2768 <- r10
+	r10 <- mem rsp 2768
+	r10 <- r10
+	mem rsp 2568 <- r10
+	r10 <- mem rsp 2568
+	r10 += 1
+	mem rsp 2568 <- r10
+	r10 <- mem rsp 2568
+	r10 <- r10
+	mem rsp 240 <- r10
+	r10 <- mem rsp 240
+	r10 <- r10
+	mem rsp 544 <- r10
+	r10 <- mem rsp 544
+	r10 <<= 1
+	mem rsp 544 <- r10
+	r10 <- mem rsp 544
+	r10 <- r10
+	mem rsp 240 <- r10
+	r10 <- mem rsp 240
+	r10 <- r10
+	mem rsp 48 <- r10
+	r10 <- mem rsp 48
+	r10 += 1
+	mem rsp 48 <- r10
+	r10 <- mem rsp 48
+	r10 <- r10
+	mem rsp 240 <- r10
+	goto :endBody1_init_global_42_global_48
+	:endBody1_init_global_42_global_50
+	r10 <- mem rsp 1152
+	r10 <- r10
+	mem rsp 1824 <- r10
+	r10 <- mem rsp 1824
+	r10 >>= 1
+	mem rsp 1824 <- r10
+	r10 <- mem rsp 1824
+	r10 <- r10
+	mem rsp 40 <- r10
+	r10 <- mem rsp 40
+	r10 += 1
+	mem rsp 40 <- r10
+	r10 <- mem rsp 40
+	r10 <- r10
+	mem rsp 1152 <- r10
+	r10 <- mem rsp 1152
+	r10 <- r10
+	mem rsp 32 <- r10
+	r10 <- mem rsp 32
+	r10 <<= 1
+	mem rsp 32 <- r10
+	r10 <- mem rsp 32
+	r10 <- r10
+	mem rsp 1152 <- r10
+	r10 <- mem rsp 1152
+	r10 <- r10
+	mem rsp 24 <- r10
+	r10 <- mem rsp 24
+	r10 += 1
+	mem rsp 24 <- r10
+	r10 <- mem rsp 24
+	r10 <- r10
+	mem rsp 1152 <- r10
+	goto :endBody1_init_global_42_global_45
+	:endBody1_init_global_42_global_47
+	r10 <- mem rsp 648
+	r10 <- r10
+	mem rsp 16 <- r10
+	r10 <- mem rsp 16
+	r10 >>= 1
+	mem rsp 16 <- r10
+	r10 <- mem rsp 16
+	r10 <- r10
+	mem rsp 8 <- r10
+	r10 <- mem rsp 8
+	r10 += 1
+	mem rsp 8 <- r10
+	r10 <- mem rsp 8
+	r10 <- r10
+	mem rsp 648 <- r10
+	r10 <- mem rsp 648
+	r10 <- r10
+	mem rsp 680 <- r10
+	r10 <- mem rsp 680
+	r10 <<= 1
+	mem rsp 680 <- r10
+	r10 <- mem rsp 680
+	r10 <- r10
+	mem rsp 648 <- r10
+	r10 <- mem rsp 648
+	r10 <- r10
+	mem rsp 0 <- r10
+	r10 <- mem rsp 0
+	r10 += 1
+	mem rsp 0 <- r10
+	r10 <- mem rsp 0
+	r10 <- r10
+	mem rsp 648 <- r10
+	goto :endBody1_init_global_42_global_43
+	:endBody1_init_global_42_global_22
+	return
+)
+	(@totalSum 1 4
+	r10 <- rdi
+	mem rsp 0 <- r10
+	:endBody1_init_global_42_global_73
+	r10 <- 1
+	mem rsp 8 <- r10
+	r10 <- 1
+	mem rsp 16 <- r10
+	r10 <- 1
+	mem rsp 24 <- r10
+	rsi <- 1
+	r10 <- 0
+	r10 *= 8
+	r10 <- r10
+	r10 += 8
+	r11 <- mem rsp 0
+	r11 <- r11
+	r11 += r10
+	r10 <- mem r11 0
+	rsi <- r10
+	r10 <- 1
+	r10 *= 8
+	r11 <- r10
+	r11 += 8
+	r10 <- mem rsp 0
+	r10 <- r10
+	r10 += r11
+	r10 <- mem r10 0
+	r10 <- r10
+	mem rsp 24 <- r10
+	r10 <- 1
+	mem rsp 16 <- r10
+	r10 <- 1
+	mem rsp 8 <- r10
+	goto :endBody1_init_global_42_global_74
+	:endBody1_init_global_42_global_74
+	r10 <- 1
+	r10 <- mem rsp 16
+	r11 <- r10
+	r11 >>= 1
+	r10 <- rsi
+	r10 >>= 1
+	r10 <- r11 < r10
+	r10 <- r10
+	r10 <- r10
+	r10 <<= 1
+	r10 <- r10
+	r10 <- r10
+	r10 += 1
+	r10 <- r10
+	r10 <- r10
+	r10 >>= 1
+	cjump r10 = 1 :endBody1_init_global_42_global_75
+	goto :endBody1_init_global_42_global_76
+	:endBody1_init_global_42_global_75
+	rdx <- 1
+	rdx <- 1
+	goto :endBody1_init_global_42_global_77
+	:endBody1_init_global_42_global_77
+	r10 <- 1
+	r11 <- rdx
+	r11 >>= 1
+	r10 <- mem rsp 24
+	r10 <- r10
+	r10 >>= 1
+	r10 <- r11 < r10
+	r10 <- r10
+	r10 <- r10
+	r10 <<= 1
+	r10 <- r10
+	r10 <- r10
+	r10 += 1
+	r10 <- r10
+	r10 <- r10
+	r10 >>= 1
+	cjump r10 = 1 :endBody1_init_global_42_global_78
+	goto :endBody1_init_global_42_global_79
+	:endBody1_init_global_42_global_78
+	r11 <- 1
+	r10 <- mem rsp 16
+	r10 <- r10
+	r10 >>= 1
+	rdi <- r10
+	r10 <- rdx
+	r10 >>= 1
+	rcx <- r10
+	r10 <- mem rsp 0
+	cjump r10 = 0 :endBody1_init_global_42_global_80
+	goto :endBody1_init_global_42_global_81
+	:endBody1_init_global_42_global_80
+	rdi <- 413
+	call tensor-error 1
+	r10 <- rax
+	goto :endBody1_init_global_42_global_81
+	:endBody1_init_global_42_global_81
+	r11 <- 1
+	r10 <- 0
+	r10 *= 8
+	r8 <- r10
+	r8 += 8
+	r10 <- mem rsp 0
+	r10 <- r10
+	r10 += r8
+	r10 <- mem r10 0
+	r8 <- r10
+	r10 <- rdi
+	r10 <<= 1
+	r10 <- r10
+	r10 += 1
+	r10 <- r10
+	cjump r8 <= r10 :endBody1_init_global_42_global_82
+	goto :endBody1_init_global_42_global_83
+	:endBody1_init_global_42_global_83
+	r11 <- 3
+	r10 <- 1
+	r10 *= 8
+	r8 <- r10
+	r8 += 8
+	r10 <- mem rsp 0
+	r10 <- r10
+	r10 += r8
+	r10 <- mem r10 0
+	r8 <- r10
+	r10 <- rcx
+	r10 <<= 1
+	r10 <- r10
+	r10 += 1
+	r10 <- r10
+	cjump r8 <= r10 :endBody1_init_global_42_global_82
+	goto :endBody1_init_global_42_global_84
+	:endBody1_init_global_42_global_84
+	goto :endBody1_init_global_42_global_85
+	:endBody1_init_global_42_global_82
+	rdi <- 413
+	rsi <- r11
+	rdx <- r8
+	rcx <- r10
+	call tensor-error 4
+	r10 <- rax
+	goto :endBody1_init_global_42_global_85
+	:endBody1_init_global_42_global_85
+	r10 <- mem rsp 0
+	r10 <- r10
+	r10 += 8
+	r9 <- r10
+	r10 <- mem r9 0
+	r10 <- r10
+	r10 <- r10
+	r10 >>= 1
+	r10 <- r10
+	r10 <- r9
+	r10 += 8
+	r9 <- r10
+	r10 <- mem r9 0
+	r10 <- r10
+	r11 <- r9
+	r11 += 8
+	r9 <- r11
+	r8 <- 1
+	r11 <- r10
+	r11 >>= 1
+	r10 <- r8
+	r10 *= r11
+	r10 <- r10
+	r10 *= 8
+	r10 <- r10
+	r10 <- r10
+	r10 *= rdi
+	r10 <- r10
+	r11 <- r9
+	r11 += r10
+	r9 <- r11
+	r10 <- r8
+	r10 *= 8
+	r10 <- r10
+	r10 <- r10
+	r10 *= rcx
+	r10 <- r10
+	r11 <- r9
+	r11 += r10
+	r9 <- r11
+	r10 <- mem r9 0
+	r11 <- r10
+	r10 <- mem rsp 8
+	r10 <- r10
+	r10 >>= 1
+	r11 <- r11
+	r11 >>= 1
+	r10 <- r10
+	r10 += r11
+	r10 <- r10
+	mem rsp 8 <- r10
+	r10 <- mem rsp 8
+	r10 <- r10
+	r10 <<= 1
+	r10 <- r10
+	mem rsp 8 <- r10
+	r10 <- mem rsp 8
+	r10 <- r10
+	r10 += 1
+	r10 <- r10
+	mem rsp 8 <- r10
+	r10 <- rdx
+	r10 >>= 1
+	r10 <- r10
+	r10 += 1
+	rdx <- r10
+	r10 <- rdx
+	r10 <<= 1
+	rdx <- r10
+	r10 <- rdx
+	r10 += 1
+	rdx <- r10
+	goto :endBody1_init_global_42_global_77
+	:endBody1_init_global_42_global_79
+	r10 <- mem rsp 16
+	r10 <- r10
+	r10 >>= 1
+	r10 <- r10
+	r10 += 1
+	r10 <- r10
+	mem rsp 16 <- r10
+	r10 <- mem rsp 16
+	r10 <- r10
+	r10 <<= 1
+	r10 <- r10
+	mem rsp 16 <- r10
+	r10 <- mem rsp 16
+	r10 <- r10
+	r10 += 1
+	r10 <- r10
+	mem rsp 16 <- r10
+	goto :endBody1_init_global_42_global_74
+	:endBody1_init_global_42_global_76
+	r10 <- mem rsp 8
+	rax <- r10
+	return
 )
 )

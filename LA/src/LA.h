@@ -165,6 +165,7 @@ namespace LA
       Arrele_item();
       std::string print()override;
       Arrele_item(Item* b,std::vector<Item*>& e);
+      Arrele_item(Item* b,std::vector<Item*>& e,ll line);
       Arrele_item* copy()override;
   };
   class NewArr_item :public Item

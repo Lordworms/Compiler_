@@ -1,0 +1,747 @@
+define void @main (){
+	:endBody1_init_global_42
+	int64[][] %newVar0m3
+	%newVar0m3 <- 0
+	int64[][] %newVar0m2
+	%newVar0m2 <- 0
+	int64[][] %newVar0m1
+	%newVar0m1 <- 0
+	int64 %newVar0dim
+	%newVar0dim <- 1
+	%newVar0dim <- 601
+	%newVar0m1 <- new Array(%newVar0dim,%newVar0dim)
+	%newVar0m2 <- new Array(%newVar0dim,%newVar0dim)
+	%newVar0m3 <- new Array(%newVar0dim,%newVar0dim)
+	int64 %newVar1max2
+	%newVar1max2 <- 1
+	int64 %newVar1max1
+	%newVar1max1 <- 1
+	int64 %newVar1index2
+	%newVar1index2 <- 1
+	int64 %newVar1index1
+	%newVar1index1 <- 1
+	%newVar1max1 <- 9
+	%newVar1max2 <- 9
+	%newVar1index1 <- 1
+	br :new_label0
+	:new_label0
+	int64 %newVar_ciao_0
+	%newVar_ciao_0 <- 1
+	int64 %newVar2valueToStore_global_0
+	%newVar2valueToStore_global_0 <- %newVar1index1 >> 1
+	int64 %newVar2valueToStore_global_1
+	%newVar2valueToStore_global_1 <- %newVar1max1 >> 1
+	%newVar_ciao_0 <- %newVar2valueToStore_global_0 < %newVar2valueToStore_global_1
+	%newVar_ciao_0 <- %newVar_ciao_0 << 1
+	%newVar_ciao_0 <- %newVar_ciao_0 + 1
+	int64 %newVar2valueToStore_global_2
+	%newVar2valueToStore_global_2 <- %newVar_ciao_0 >> 1
+	br %newVar2valueToStore_global_2 :body1 :leave
+	:body1
+	%newVar1index2 <- 1
+	br :new_label1
+	:new_label1
+	int64 %newVar_ciao_1
+	%newVar_ciao_1 <- 1
+	int64 %newVar2valueToStore_global_3
+	%newVar2valueToStore_global_3 <- %newVar1index2 >> 1
+	int64 %newVar2valueToStore_global_4
+	%newVar2valueToStore_global_4 <- %newVar1max2 >> 1
+	%newVar_ciao_1 <- %newVar2valueToStore_global_3 < %newVar2valueToStore_global_4
+	%newVar_ciao_1 <- %newVar_ciao_1 << 1
+	%newVar_ciao_1 <- %newVar_ciao_1 + 1
+	int64 %newVar2valueToStore_global_5
+	%newVar2valueToStore_global_5 <- %newVar_ciao_1 >> 1
+	br %newVar2valueToStore_global_5 :body2 :endBody1
+	:body2
+	call @computeAndPrint(%newVar0m1,%newVar0m2,%newVar0m3,%newVar1index1,%newVar1index2)
+	int64 %newVar2valueToStore_global_6
+	%newVar2valueToStore_global_6 <- %newVar1index2 >> 1
+	%newVar1index2 <- %newVar2valueToStore_global_6 + 1
+	%newVar1index2 <- %newVar1index2 << 1
+	%newVar1index2 <- %newVar1index2 + 1
+	br :new_label1
+	:endBody1
+	int64 %newVar2valueToStore_global_7
+	%newVar2valueToStore_global_7 <- %newVar1index1 >> 1
+	%newVar1index1 <- %newVar2valueToStore_global_7 + 1
+	%newVar1index1 <- %newVar1index1 << 1
+	%newVar1index1 <- %newVar1index1 + 1
+	br :new_label0
+	:leave
+	return
+}
+define void @computeAndPrint (int64[][] %m1,int64[][] %m2,int64[][] %m3,int64 %v1,int64 %v2){
+	:endBody1_init_global_43
+	call @initMatrix(%m1,%v1)
+	call @initMatrix(%m2,%v2)
+	call @matrixMultiplication(%m1,%m2,%m3)
+	int64 %newVar0t
+	%newVar0t <- 1
+	%newVar0t <- call @totalSum(%m1)
+	call print(%newVar0t)
+	%newVar0t <- call @totalSum(%m2)
+	call print(%newVar0t)
+	%newVar0t <- call @totalSum(%m3)
+	call print(%newVar0t)
+	return
+}
+define void @initMatrix (int64[][] %m,int64 %initValue){
+	:endBody1_init_global_44
+	int64 %newVar0index1
+	%newVar0index1 <- 1
+	int64 %newVar0l2
+	%newVar0l2 <- 1
+	int64 %newVar0l1
+	%newVar0l1 <- 1
+	%newVar0l1 <- length %m 0
+	%newVar0l2 <- length %m 1
+	%newVar0index1 <- 1
+	br :new_label0
+	:new_label0
+	int64 %newVar_ciao_0
+	%newVar_ciao_0 <- 1
+	int64 %newVar2valueToStore_global_8
+	%newVar2valueToStore_global_8 <- %newVar0index1 >> 1
+	int64 %newVar2valueToStore_global_9
+	%newVar2valueToStore_global_9 <- %newVar0l1 >> 1
+	%newVar_ciao_0 <- %newVar2valueToStore_global_8 < %newVar2valueToStore_global_9
+	%newVar_ciao_0 <- %newVar_ciao_0 << 1
+	%newVar_ciao_0 <- %newVar_ciao_0 + 1
+	int64 %newVar2valueToStore_global_10
+	%newVar2valueToStore_global_10 <- %newVar_ciao_0 >> 1
+	br %newVar2valueToStore_global_10 :outerBody :leave
+	:outerBody
+	int64 %newVar1index2
+	%newVar1index2 <- 1
+	%newVar1index2 <- 1
+	br :new_label1
+	:new_label1
+	int64 %newVar_ciao_1
+	%newVar_ciao_1 <- 1
+	int64 %newVar2valueToStore_global_11
+	%newVar2valueToStore_global_11 <- %newVar1index2 >> 1
+	int64 %newVar2valueToStore_global_12
+	%newVar2valueToStore_global_12 <- %newVar0l2 >> 1
+	%newVar_ciao_1 <- %newVar2valueToStore_global_11 < %newVar2valueToStore_global_12
+	%newVar_ciao_1 <- %newVar_ciao_1 << 1
+	%newVar_ciao_1 <- %newVar_ciao_1 + 1
+	int64 %newVar2valueToStore_global_13
+	%newVar2valueToStore_global_13 <- %newVar_ciao_1 >> 1
+	br %newVar2valueToStore_global_13 :innerBody :endOuterBody
+	:innerBody
+	int64 %newVar2valueToStore
+	%newVar2valueToStore <- 1
+	int64 %newVar2valueToStore_global_14
+	%newVar2valueToStore_global_14 <- %initValue >> 1
+	int64 %newVar2valueToStore_global_15
+	%newVar2valueToStore_global_15 <- %newVar0index1 >> 1
+	%newVar2valueToStore <- %newVar2valueToStore_global_14 + %newVar2valueToStore_global_15
+	%newVar2valueToStore <- %newVar2valueToStore << 1
+	%newVar2valueToStore <- %newVar2valueToStore + 1
+	int64 %newVar2valueToStore_global_16
+	%newVar2valueToStore_global_16 <- %newVar2valueToStore >> 1
+	int64 %newVar2valueToStore_global_17
+	%newVar2valueToStore_global_17 <- %newVar1index2 >> 1
+	%newVar2valueToStore <- %newVar2valueToStore_global_16 + %newVar2valueToStore_global_17
+	%newVar2valueToStore <- %newVar2valueToStore << 1
+	%newVar2valueToStore <- %newVar2valueToStore + 1
+	int64 %newVar2valueToStore_global_18
+	%newVar2valueToStore_global_18 <- %newVar0index1 >> 1
+	int64 %newVar2valueToStore_global_19
+	%newVar2valueToStore_global_19 <- %newVar1index2 >> 1
+	int64 %newVar2valueToStore_global_82
+	%newVar2valueToStore_global_82 <- %m = 0
+	br %newVar2valueToStore_global_82 :endBody1_init_global_0 :endBody1_init_global_1
+	:endBody1_init_global_0
+	call tensor-error(149)
+	br :endBody1_init_global_1
+	:endBody1_init_global_1
+	int64 %newVar2valueToStore_global_83
+	int64 %newVar2valueToStore_global_84
+	int64 %newVar2valueToStore_global_85
+	int64 %newVar2valueToStore_global_86
+	%newVar2valueToStore_global_83 <- 1
+	%newVar2valueToStore_global_84 <- length %m 0
+	int64 %newVar2valueToStore_global_87
+	%newVar2valueToStore_global_87 <- %newVar2valueToStore_global_18 << 1
+	%newVar2valueToStore_global_87 <- %newVar2valueToStore_global_87 + 1
+	%newVar2valueToStore_global_86 <- %newVar2valueToStore_global_87
+	%newVar2valueToStore_global_85 <- %newVar2valueToStore_global_86 >= %newVar2valueToStore_global_84
+	br %newVar2valueToStore_global_85 :endBody1_init_global_3 :endBody1_init_global_4
+	:endBody1_init_global_4
+	%newVar2valueToStore_global_83 <- 3
+	%newVar2valueToStore_global_84 <- length %m 1
+	int64 %newVar2valueToStore_global_88
+	%newVar2valueToStore_global_88 <- %newVar2valueToStore_global_19 << 1
+	%newVar2valueToStore_global_88 <- %newVar2valueToStore_global_88 + 1
+	%newVar2valueToStore_global_86 <- %newVar2valueToStore_global_88
+	%newVar2valueToStore_global_85 <- %newVar2valueToStore_global_86 >= %newVar2valueToStore_global_84
+	br %newVar2valueToStore_global_85 :endBody1_init_global_3 :endBody1_init_global_5
+	:endBody1_init_global_5
+	br :endBody1_init_global_2
+	:endBody1_init_global_3
+	call tensor-error(149,%newVar2valueToStore_global_83,%newVar2valueToStore_global_84,%newVar2valueToStore_global_86)
+	br :endBody1_init_global_2
+	:endBody1_init_global_2
+	%m[%newVar2valueToStore_global_18][%newVar2valueToStore_global_19] <- %newVar2valueToStore
+	int64 %newVar2valueToStore_global_20
+	%newVar2valueToStore_global_20 <- %newVar1index2 >> 1
+	%newVar1index2 <- %newVar2valueToStore_global_20 + 1
+	%newVar1index2 <- %newVar1index2 << 1
+	%newVar1index2 <- %newVar1index2 + 1
+	br :new_label1
+	:endOuterBody
+	int64 %newVar2valueToStore_global_21
+	%newVar2valueToStore_global_21 <- %newVar0index1 >> 1
+	%newVar0index1 <- %newVar2valueToStore_global_21 + 1
+	%newVar0index1 <- %newVar0index1 << 1
+	%newVar0index1 <- %newVar0index1 + 1
+	br :new_label0
+	:leave
+	return
+}
+define void @matrixMultiplication (int64[][] %m1,int64[][] %m2,int64[][] %m3){
+	:endBody1_init_global_45
+	int64 %newVar0m3_l2
+	%newVar0m3_l2 <- 1
+	int64 %newVar0m3_l1
+	%newVar0m3_l1 <- 1
+	int64 %newVar0m2_l2
+	%newVar0m2_l2 <- 1
+	int64 %newVar0m2_l1
+	%newVar0m2_l1 <- 1
+	int64 %newVar0m1_l2
+	%newVar0m1_l2 <- 1
+	int64 %newVar0m1_l1
+	%newVar0m1_l1 <- 1
+	%newVar0m1_l1 <- length %m1 0
+	%newVar0m1_l2 <- length %m1 1
+	%newVar0m2_l1 <- length %m2 0
+	%newVar0m2_l2 <- length %m2 1
+	%newVar0m3_l1 <- length %m3 0
+	%newVar0m3_l2 <- length %m3 1
+	int64 %newVar_ciao_0
+	%newVar_ciao_0 <- 1
+	int64 %newVar2valueToStore_global_22
+	%newVar2valueToStore_global_22 <- %newVar0m1_l2 >> 1
+	int64 %newVar2valueToStore_global_23
+	%newVar2valueToStore_global_23 <- %newVar0m2_l1 >> 1
+	%newVar_ciao_0 <- %newVar2valueToStore_global_22 = %newVar2valueToStore_global_23
+	%newVar_ciao_0 <- %newVar_ciao_0 << 1
+	%newVar_ciao_0 <- %newVar_ciao_0 + 1
+	int64 %newVar2valueToStore_global_24
+	%newVar2valueToStore_global_24 <- %newVar_ciao_0 >> 1
+	br %newVar2valueToStore_global_24 :go1 :leave
+	:go1
+	int64 %newVar_ciao_1
+	%newVar_ciao_1 <- 1
+	int64 %newVar2valueToStore_global_25
+	%newVar2valueToStore_global_25 <- %newVar0m3_l1 >> 1
+	int64 %newVar2valueToStore_global_26
+	%newVar2valueToStore_global_26 <- %newVar0m1_l1 >> 1
+	%newVar_ciao_1 <- %newVar2valueToStore_global_25 = %newVar2valueToStore_global_26
+	%newVar_ciao_1 <- %newVar_ciao_1 << 1
+	%newVar_ciao_1 <- %newVar_ciao_1 + 1
+	int64 %newVar2valueToStore_global_27
+	%newVar2valueToStore_global_27 <- %newVar_ciao_1 >> 1
+	br %newVar2valueToStore_global_27 :go2 :leave
+	:go2
+	int64 %newVar_ciao_2
+	%newVar_ciao_2 <- 1
+	int64 %newVar2valueToStore_global_28
+	%newVar2valueToStore_global_28 <- %newVar0m3_l2 >> 1
+	int64 %newVar2valueToStore_global_29
+	%newVar2valueToStore_global_29 <- %newVar0m2_l2 >> 1
+	%newVar_ciao_2 <- %newVar2valueToStore_global_28 = %newVar2valueToStore_global_29
+	%newVar_ciao_2 <- %newVar_ciao_2 << 1
+	%newVar_ciao_2 <- %newVar_ciao_2 + 1
+	int64 %newVar2valueToStore_global_30
+	%newVar2valueToStore_global_30 <- %newVar_ciao_2 >> 1
+	br %newVar2valueToStore_global_30 :go :leave
+	:go
+	int64 %newVar1k
+	%newVar1k <- 1
+	int64 %newVar1j
+	%newVar1j <- 1
+	int64 %newVar1i
+	%newVar1i <- 1
+	%newVar1i <- 1
+	br :new_label0
+	:new_label0
+	int64 %newVar_ciao_3
+	%newVar_ciao_3 <- 1
+	int64 %newVar2valueToStore_global_31
+	%newVar2valueToStore_global_31 <- %newVar1i >> 1
+	int64 %newVar2valueToStore_global_32
+	%newVar2valueToStore_global_32 <- %newVar0m1_l1 >> 1
+	%newVar_ciao_3 <- %newVar2valueToStore_global_31 < %newVar2valueToStore_global_32
+	%newVar_ciao_3 <- %newVar_ciao_3 << 1
+	%newVar_ciao_3 <- %newVar_ciao_3 + 1
+	int64 %newVar2valueToStore_global_33
+	%newVar2valueToStore_global_33 <- %newVar_ciao_3 >> 1
+	br %newVar2valueToStore_global_33 :body1_init :done_init
+	:body1_init
+	%newVar1j <- 1
+	br :new_label1
+	:new_label1
+	int64 %newVar_ciao_4
+	%newVar_ciao_4 <- 1
+	int64 %newVar2valueToStore_global_34
+	%newVar2valueToStore_global_34 <- %newVar1j >> 1
+	int64 %newVar2valueToStore_global_35
+	%newVar2valueToStore_global_35 <- %newVar0m2_l2 >> 1
+	%newVar_ciao_4 <- %newVar2valueToStore_global_34 < %newVar2valueToStore_global_35
+	%newVar_ciao_4 <- %newVar_ciao_4 << 1
+	%newVar_ciao_4 <- %newVar_ciao_4 + 1
+	int64 %newVar2valueToStore_global_36
+	%newVar2valueToStore_global_36 <- %newVar_ciao_4 >> 1
+	br %newVar2valueToStore_global_36 :body2_init :endBody1_init
+	:body2_init
+	%newVar1k <- 1
+	br :new_label2
+	:new_label2
+	int64 %newVar_ciao_5
+	%newVar_ciao_5 <- 1
+	int64 %newVar2valueToStore_global_37
+	%newVar2valueToStore_global_37 <- %newVar1k >> 1
+	int64 %newVar2valueToStore_global_38
+	%newVar2valueToStore_global_38 <- %newVar0m1_l2 >> 1
+	%newVar_ciao_5 <- %newVar2valueToStore_global_37 < %newVar2valueToStore_global_38
+	%newVar_ciao_5 <- %newVar_ciao_5 << 1
+	%newVar_ciao_5 <- %newVar_ciao_5 + 1
+	int64 %newVar2valueToStore_global_39
+	%newVar2valueToStore_global_39 <- %newVar_ciao_5 >> 1
+	br %newVar2valueToStore_global_39 :body3_init :endBody2_init
+	:body3_init
+	int64 %newVar2valueToStore_global_40
+	%newVar2valueToStore_global_40 <- %newVar1i >> 1
+	int64 %newVar2valueToStore_global_41
+	%newVar2valueToStore_global_41 <- %newVar1j >> 1
+	int64 %newVar2valueToStore_global_89
+	%newVar2valueToStore_global_89 <- %m3 = 0
+	br %newVar2valueToStore_global_89 :endBody1_init_global_6 :endBody1_init_global_7
+	:endBody1_init_global_6
+	call tensor-error(261)
+	br :endBody1_init_global_7
+	:endBody1_init_global_7
+	int64 %newVar2valueToStore_global_90
+	int64 %newVar2valueToStore_global_91
+	int64 %newVar2valueToStore_global_92
+	int64 %newVar2valueToStore_global_93
+	%newVar2valueToStore_global_90 <- 1
+	%newVar2valueToStore_global_91 <- length %m3 0
+	int64 %newVar2valueToStore_global_94
+	%newVar2valueToStore_global_94 <- %newVar2valueToStore_global_40 << 1
+	%newVar2valueToStore_global_94 <- %newVar2valueToStore_global_94 + 1
+	%newVar2valueToStore_global_93 <- %newVar2valueToStore_global_94
+	%newVar2valueToStore_global_92 <- %newVar2valueToStore_global_93 >= %newVar2valueToStore_global_91
+	br %newVar2valueToStore_global_92 :endBody1_init_global_9 :endBody1_init_global_10
+	:endBody1_init_global_10
+	%newVar2valueToStore_global_90 <- 3
+	%newVar2valueToStore_global_91 <- length %m3 1
+	int64 %newVar2valueToStore_global_95
+	%newVar2valueToStore_global_95 <- %newVar2valueToStore_global_41 << 1
+	%newVar2valueToStore_global_95 <- %newVar2valueToStore_global_95 + 1
+	%newVar2valueToStore_global_93 <- %newVar2valueToStore_global_95
+	%newVar2valueToStore_global_92 <- %newVar2valueToStore_global_93 >= %newVar2valueToStore_global_91
+	br %newVar2valueToStore_global_92 :endBody1_init_global_9 :endBody1_init_global_11
+	:endBody1_init_global_11
+	br :endBody1_init_global_8
+	:endBody1_init_global_9
+	call tensor-error(261,%newVar2valueToStore_global_90,%newVar2valueToStore_global_91,%newVar2valueToStore_global_93)
+	br :endBody1_init_global_8
+	:endBody1_init_global_8
+	%m3[%newVar2valueToStore_global_40][%newVar2valueToStore_global_41] <- 1
+	int64 %newVar2valueToStore_global_42
+	%newVar2valueToStore_global_42 <- %newVar1k >> 1
+	%newVar1k <- %newVar2valueToStore_global_42 + 1
+	%newVar1k <- %newVar1k << 1
+	%newVar1k <- %newVar1k + 1
+	br :new_label2
+	:endBody2_init
+	int64 %newVar2valueToStore_global_43
+	%newVar2valueToStore_global_43 <- %newVar1j >> 1
+	%newVar1j <- %newVar2valueToStore_global_43 + 1
+	%newVar1j <- %newVar1j << 1
+	%newVar1j <- %newVar1j + 1
+	br :new_label1
+	:endBody1_init
+	int64 %newVar2valueToStore_global_44
+	%newVar2valueToStore_global_44 <- %newVar1i >> 1
+	%newVar1i <- %newVar2valueToStore_global_44 + 1
+	%newVar1i <- %newVar1i << 1
+	%newVar1i <- %newVar1i + 1
+	br :new_label0
+	:done_init
+	int64 %newVar0k
+	%newVar0k <- 1
+	int64 %newVar0j
+	%newVar0j <- 1
+	int64 %newVar0i
+	%newVar0i <- 1
+	%newVar0i <- 1
+	br :new_label3
+	:new_label3
+	int64 %newVar_ciao_6
+	%newVar_ciao_6 <- 1
+	int64 %newVar2valueToStore_global_45
+	%newVar2valueToStore_global_45 <- %newVar0i >> 1
+	int64 %newVar2valueToStore_global_46
+	%newVar2valueToStore_global_46 <- %newVar0m1_l1 >> 1
+	%newVar_ciao_6 <- %newVar2valueToStore_global_45 < %newVar2valueToStore_global_46
+	%newVar_ciao_6 <- %newVar_ciao_6 << 1
+	%newVar_ciao_6 <- %newVar_ciao_6 + 1
+	int64 %newVar2valueToStore_global_47
+	%newVar2valueToStore_global_47 <- %newVar_ciao_6 >> 1
+	br %newVar2valueToStore_global_47 :body1 :leave
+	:body1
+	%newVar0j <- 1
+	br :new_label4
+	:new_label4
+	int64 %newVar_ciao_7
+	%newVar_ciao_7 <- 1
+	int64 %newVar2valueToStore_global_48
+	%newVar2valueToStore_global_48 <- %newVar0j >> 1
+	int64 %newVar2valueToStore_global_49
+	%newVar2valueToStore_global_49 <- %newVar0m2_l2 >> 1
+	%newVar_ciao_7 <- %newVar2valueToStore_global_48 < %newVar2valueToStore_global_49
+	%newVar_ciao_7 <- %newVar_ciao_7 << 1
+	%newVar_ciao_7 <- %newVar_ciao_7 + 1
+	int64 %newVar2valueToStore_global_50
+	%newVar2valueToStore_global_50 <- %newVar_ciao_7 >> 1
+	br %newVar2valueToStore_global_50 :body2 :endBody1
+	:body2
+	%newVar0k <- 1
+	br :new_label5
+	:new_label5
+	int64 %newVar_ciao_8
+	%newVar_ciao_8 <- 1
+	int64 %newVar2valueToStore_global_51
+	%newVar2valueToStore_global_51 <- %newVar0k >> 1
+	int64 %newVar2valueToStore_global_52
+	%newVar2valueToStore_global_52 <- %newVar0m1_l2 >> 1
+	%newVar_ciao_8 <- %newVar2valueToStore_global_51 < %newVar2valueToStore_global_52
+	%newVar_ciao_8 <- %newVar_ciao_8 << 1
+	%newVar_ciao_8 <- %newVar_ciao_8 + 1
+	int64 %newVar2valueToStore_global_53
+	%newVar2valueToStore_global_53 <- %newVar_ciao_8 >> 1
+	br %newVar2valueToStore_global_53 :body3 :endBody2
+	:body3
+	int64 %newVar3D
+	%newVar3D <- 1
+	int64 %newVar3C
+	%newVar3C <- 1
+	int64 %newVar3B
+	%newVar3B <- 1
+	int64 %newVar3A
+	%newVar3A <- 1
+	int64 %newVar2valueToStore_global_54
+	%newVar2valueToStore_global_54 <- %newVar0i >> 1
+	int64 %newVar2valueToStore_global_55
+	%newVar2valueToStore_global_55 <- %newVar0k >> 1
+	int64 %newVar2valueToStore_global_96
+	%newVar2valueToStore_global_96 <- %m1 = 0
+	br %newVar2valueToStore_global_96 :endBody1_init_global_12 :endBody1_init_global_13
+	:endBody1_init_global_12
+	call tensor-error(331)
+	br :endBody1_init_global_13
+	:endBody1_init_global_13
+	int64 %newVar2valueToStore_global_97
+	int64 %newVar2valueToStore_global_98
+	int64 %newVar2valueToStore_global_99
+	int64 %newVar2valueToStore_global_100
+	%newVar2valueToStore_global_97 <- 1
+	%newVar2valueToStore_global_98 <- length %m1 0
+	int64 %newVar2valueToStore_global_101
+	%newVar2valueToStore_global_101 <- %newVar2valueToStore_global_54 << 1
+	%newVar2valueToStore_global_101 <- %newVar2valueToStore_global_101 + 1
+	%newVar2valueToStore_global_100 <- %newVar2valueToStore_global_101
+	%newVar2valueToStore_global_99 <- %newVar2valueToStore_global_100 >= %newVar2valueToStore_global_98
+	br %newVar2valueToStore_global_99 :endBody1_init_global_15 :endBody1_init_global_16
+	:endBody1_init_global_16
+	%newVar2valueToStore_global_97 <- 3
+	%newVar2valueToStore_global_98 <- length %m1 1
+	int64 %newVar2valueToStore_global_102
+	%newVar2valueToStore_global_102 <- %newVar2valueToStore_global_55 << 1
+	%newVar2valueToStore_global_102 <- %newVar2valueToStore_global_102 + 1
+	%newVar2valueToStore_global_100 <- %newVar2valueToStore_global_102
+	%newVar2valueToStore_global_99 <- %newVar2valueToStore_global_100 >= %newVar2valueToStore_global_98
+	br %newVar2valueToStore_global_99 :endBody1_init_global_15 :endBody1_init_global_17
+	:endBody1_init_global_17
+	br :endBody1_init_global_14
+	:endBody1_init_global_15
+	call tensor-error(331,%newVar2valueToStore_global_97,%newVar2valueToStore_global_98,%newVar2valueToStore_global_100)
+	br :endBody1_init_global_14
+	:endBody1_init_global_14
+	%newVar3A <- %m1[%newVar2valueToStore_global_54][%newVar2valueToStore_global_55]
+	int64 %newVar2valueToStore_global_56
+	%newVar2valueToStore_global_56 <- %newVar0k >> 1
+	int64 %newVar2valueToStore_global_57
+	%newVar2valueToStore_global_57 <- %newVar0j >> 1
+	int64 %newVar2valueToStore_global_103
+	%newVar2valueToStore_global_103 <- %m2 = 0
+	br %newVar2valueToStore_global_103 :endBody1_init_global_18 :endBody1_init_global_19
+	:endBody1_init_global_18
+	call tensor-error(333)
+	br :endBody1_init_global_19
+	:endBody1_init_global_19
+	int64 %newVar2valueToStore_global_104
+	int64 %newVar2valueToStore_global_105
+	int64 %newVar2valueToStore_global_106
+	int64 %newVar2valueToStore_global_107
+	%newVar2valueToStore_global_104 <- 1
+	%newVar2valueToStore_global_105 <- length %m2 0
+	int64 %newVar2valueToStore_global_108
+	%newVar2valueToStore_global_108 <- %newVar2valueToStore_global_56 << 1
+	%newVar2valueToStore_global_108 <- %newVar2valueToStore_global_108 + 1
+	%newVar2valueToStore_global_107 <- %newVar2valueToStore_global_108
+	%newVar2valueToStore_global_106 <- %newVar2valueToStore_global_107 >= %newVar2valueToStore_global_105
+	br %newVar2valueToStore_global_106 :endBody1_init_global_21 :endBody1_init_global_22
+	:endBody1_init_global_22
+	%newVar2valueToStore_global_104 <- 3
+	%newVar2valueToStore_global_105 <- length %m2 1
+	int64 %newVar2valueToStore_global_109
+	%newVar2valueToStore_global_109 <- %newVar2valueToStore_global_57 << 1
+	%newVar2valueToStore_global_109 <- %newVar2valueToStore_global_109 + 1
+	%newVar2valueToStore_global_107 <- %newVar2valueToStore_global_109
+	%newVar2valueToStore_global_106 <- %newVar2valueToStore_global_107 >= %newVar2valueToStore_global_105
+	br %newVar2valueToStore_global_106 :endBody1_init_global_21 :endBody1_init_global_23
+	:endBody1_init_global_23
+	br :endBody1_init_global_20
+	:endBody1_init_global_21
+	call tensor-error(333,%newVar2valueToStore_global_104,%newVar2valueToStore_global_105,%newVar2valueToStore_global_107)
+	br :endBody1_init_global_20
+	:endBody1_init_global_20
+	%newVar3B <- %m2[%newVar2valueToStore_global_56][%newVar2valueToStore_global_57]
+	int64 %newVar2valueToStore_global_58
+	%newVar2valueToStore_global_58 <- %newVar3A >> 1
+	int64 %newVar2valueToStore_global_59
+	%newVar2valueToStore_global_59 <- %newVar3B >> 1
+	%newVar3C <- %newVar2valueToStore_global_58 * %newVar2valueToStore_global_59
+	%newVar3C <- %newVar3C << 1
+	%newVar3C <- %newVar3C + 1
+	int64 %newVar2valueToStore_global_60
+	%newVar2valueToStore_global_60 <- %newVar0i >> 1
+	int64 %newVar2valueToStore_global_61
+	%newVar2valueToStore_global_61 <- %newVar0j >> 1
+	int64 %newVar2valueToStore_global_110
+	%newVar2valueToStore_global_110 <- %m3 = 0
+	br %newVar2valueToStore_global_110 :endBody1_init_global_24 :endBody1_init_global_25
+	:endBody1_init_global_24
+	call tensor-error(337)
+	br :endBody1_init_global_25
+	:endBody1_init_global_25
+	int64 %newVar2valueToStore_global_111
+	int64 %newVar2valueToStore_global_112
+	int64 %newVar2valueToStore_global_113
+	int64 %newVar2valueToStore_global_114
+	%newVar2valueToStore_global_111 <- 1
+	%newVar2valueToStore_global_112 <- length %m3 0
+	int64 %newVar2valueToStore_global_115
+	%newVar2valueToStore_global_115 <- %newVar2valueToStore_global_60 << 1
+	%newVar2valueToStore_global_115 <- %newVar2valueToStore_global_115 + 1
+	%newVar2valueToStore_global_114 <- %newVar2valueToStore_global_115
+	%newVar2valueToStore_global_113 <- %newVar2valueToStore_global_114 >= %newVar2valueToStore_global_112
+	br %newVar2valueToStore_global_113 :endBody1_init_global_27 :endBody1_init_global_28
+	:endBody1_init_global_28
+	%newVar2valueToStore_global_111 <- 3
+	%newVar2valueToStore_global_112 <- length %m3 1
+	int64 %newVar2valueToStore_global_116
+	%newVar2valueToStore_global_116 <- %newVar2valueToStore_global_61 << 1
+	%newVar2valueToStore_global_116 <- %newVar2valueToStore_global_116 + 1
+	%newVar2valueToStore_global_114 <- %newVar2valueToStore_global_116
+	%newVar2valueToStore_global_113 <- %newVar2valueToStore_global_114 >= %newVar2valueToStore_global_112
+	br %newVar2valueToStore_global_113 :endBody1_init_global_27 :endBody1_init_global_29
+	:endBody1_init_global_29
+	br :endBody1_init_global_26
+	:endBody1_init_global_27
+	call tensor-error(337,%newVar2valueToStore_global_111,%newVar2valueToStore_global_112,%newVar2valueToStore_global_114)
+	br :endBody1_init_global_26
+	:endBody1_init_global_26
+	%newVar3D <- %m3[%newVar2valueToStore_global_60][%newVar2valueToStore_global_61]
+	int64 %newVar2valueToStore_global_62
+	%newVar2valueToStore_global_62 <- %newVar3D >> 1
+	%newVar3D <- %newVar2valueToStore_global_62 * 4
+	%newVar3D <- %newVar3D << 1
+	%newVar3D <- %newVar3D + 1
+	int64 %newVar2valueToStore_global_63
+	%newVar2valueToStore_global_63 <- %newVar3D >> 1
+	int64 %newVar2valueToStore_global_64
+	%newVar2valueToStore_global_64 <- %newVar3C >> 1
+	%newVar3D <- %newVar2valueToStore_global_63 + %newVar2valueToStore_global_64
+	%newVar3D <- %newVar3D << 1
+	%newVar3D <- %newVar3D + 1
+	int64 %newVar2valueToStore_global_65
+	%newVar2valueToStore_global_65 <- %newVar0i >> 1
+	int64 %newVar2valueToStore_global_66
+	%newVar2valueToStore_global_66 <- %newVar0j >> 1
+	int64 %newVar2valueToStore_global_117
+	%newVar2valueToStore_global_117 <- %m3 = 0
+	br %newVar2valueToStore_global_117 :endBody1_init_global_30 :endBody1_init_global_31
+	:endBody1_init_global_30
+	call tensor-error(343)
+	br :endBody1_init_global_31
+	:endBody1_init_global_31
+	int64 %newVar2valueToStore_global_118
+	int64 %newVar2valueToStore_global_119
+	int64 %newVar2valueToStore_global_120
+	int64 %newVar2valueToStore_global_121
+	%newVar2valueToStore_global_118 <- 1
+	%newVar2valueToStore_global_119 <- length %m3 0
+	int64 %newVar2valueToStore_global_122
+	%newVar2valueToStore_global_122 <- %newVar2valueToStore_global_65 << 1
+	%newVar2valueToStore_global_122 <- %newVar2valueToStore_global_122 + 1
+	%newVar2valueToStore_global_121 <- %newVar2valueToStore_global_122
+	%newVar2valueToStore_global_120 <- %newVar2valueToStore_global_121 >= %newVar2valueToStore_global_119
+	br %newVar2valueToStore_global_120 :endBody1_init_global_33 :endBody1_init_global_34
+	:endBody1_init_global_34
+	%newVar2valueToStore_global_118 <- 3
+	%newVar2valueToStore_global_119 <- length %m3 1
+	int64 %newVar2valueToStore_global_123
+	%newVar2valueToStore_global_123 <- %newVar2valueToStore_global_66 << 1
+	%newVar2valueToStore_global_123 <- %newVar2valueToStore_global_123 + 1
+	%newVar2valueToStore_global_121 <- %newVar2valueToStore_global_123
+	%newVar2valueToStore_global_120 <- %newVar2valueToStore_global_121 >= %newVar2valueToStore_global_119
+	br %newVar2valueToStore_global_120 :endBody1_init_global_33 :endBody1_init_global_35
+	:endBody1_init_global_35
+	br :endBody1_init_global_32
+	:endBody1_init_global_33
+	call tensor-error(343,%newVar2valueToStore_global_118,%newVar2valueToStore_global_119,%newVar2valueToStore_global_121)
+	br :endBody1_init_global_32
+	:endBody1_init_global_32
+	%m3[%newVar2valueToStore_global_65][%newVar2valueToStore_global_66] <- %newVar3D
+	int64 %newVar2valueToStore_global_67
+	%newVar2valueToStore_global_67 <- %newVar0k >> 1
+	%newVar0k <- %newVar2valueToStore_global_67 + 1
+	%newVar0k <- %newVar0k << 1
+	%newVar0k <- %newVar0k + 1
+	br :new_label5
+	:endBody2
+	int64 %newVar2valueToStore_global_68
+	%newVar2valueToStore_global_68 <- %newVar0j >> 1
+	%newVar0j <- %newVar2valueToStore_global_68 + 1
+	%newVar0j <- %newVar0j << 1
+	%newVar0j <- %newVar0j + 1
+	br :new_label4
+	:endBody1
+	int64 %newVar2valueToStore_global_69
+	%newVar2valueToStore_global_69 <- %newVar0i >> 1
+	%newVar0i <- %newVar2valueToStore_global_69 + 1
+	%newVar0i <- %newVar0i << 1
+	%newVar0i <- %newVar0i + 1
+	br :new_label3
+	:leave
+	return
+}
+define int64 @totalSum (int64[][] %m){
+	:endBody1_init_global_46
+	int64 %newVar0sum
+	%newVar0sum <- 1
+	int64 %newVar0index1
+	%newVar0index1 <- 1
+	int64 %newVar0l2
+	%newVar0l2 <- 1
+	int64 %newVar0l1
+	%newVar0l1 <- 1
+	%newVar0l1 <- length %m 0
+	%newVar0l2 <- length %m 1
+	%newVar0index1 <- 1
+	%newVar0sum <- 1
+	br :new_label0
+	:new_label0
+	int64 %newVar_ciao_0
+	%newVar_ciao_0 <- 1
+	int64 %newVar2valueToStore_global_70
+	%newVar2valueToStore_global_70 <- %newVar0index1 >> 1
+	int64 %newVar2valueToStore_global_71
+	%newVar2valueToStore_global_71 <- %newVar0l1 >> 1
+	%newVar_ciao_0 <- %newVar2valueToStore_global_70 < %newVar2valueToStore_global_71
+	%newVar_ciao_0 <- %newVar_ciao_0 << 1
+	%newVar_ciao_0 <- %newVar_ciao_0 + 1
+	int64 %newVar2valueToStore_global_72
+	%newVar2valueToStore_global_72 <- %newVar_ciao_0 >> 1
+	br %newVar2valueToStore_global_72 :outerBody :leave
+	:outerBody
+	int64 %newVar1index2
+	%newVar1index2 <- 1
+	%newVar1index2 <- 1
+	br :new_label1
+	:new_label1
+	int64 %newVar_ciao_1
+	%newVar_ciao_1 <- 1
+	int64 %newVar2valueToStore_global_73
+	%newVar2valueToStore_global_73 <- %newVar1index2 >> 1
+	int64 %newVar2valueToStore_global_74
+	%newVar2valueToStore_global_74 <- %newVar0l2 >> 1
+	%newVar_ciao_1 <- %newVar2valueToStore_global_73 < %newVar2valueToStore_global_74
+	%newVar_ciao_1 <- %newVar_ciao_1 << 1
+	%newVar_ciao_1 <- %newVar_ciao_1 + 1
+	int64 %newVar2valueToStore_global_75
+	%newVar2valueToStore_global_75 <- %newVar_ciao_1 >> 1
+	br %newVar2valueToStore_global_75 :innerBody :endOuterBody
+	:innerBody
+	int64 %newVar2temp
+	%newVar2temp <- 1
+	int64 %newVar2valueToStore_global_76
+	%newVar2valueToStore_global_76 <- %newVar0index1 >> 1
+	int64 %newVar2valueToStore_global_77
+	%newVar2valueToStore_global_77 <- %newVar1index2 >> 1
+	int64 %newVar2valueToStore_global_124
+	%newVar2valueToStore_global_124 <- %m = 0
+	br %newVar2valueToStore_global_124 :endBody1_init_global_36 :endBody1_init_global_37
+	:endBody1_init_global_36
+	call tensor-error(413)
+	br :endBody1_init_global_37
+	:endBody1_init_global_37
+	int64 %newVar2valueToStore_global_125
+	int64 %newVar2valueToStore_global_126
+	int64 %newVar2valueToStore_global_127
+	int64 %newVar2valueToStore_global_128
+	%newVar2valueToStore_global_125 <- 1
+	%newVar2valueToStore_global_126 <- length %m 0
+	int64 %newVar2valueToStore_global_129
+	%newVar2valueToStore_global_129 <- %newVar2valueToStore_global_76 << 1
+	%newVar2valueToStore_global_129 <- %newVar2valueToStore_global_129 + 1
+	%newVar2valueToStore_global_128 <- %newVar2valueToStore_global_129
+	%newVar2valueToStore_global_127 <- %newVar2valueToStore_global_128 >= %newVar2valueToStore_global_126
+	br %newVar2valueToStore_global_127 :endBody1_init_global_39 :endBody1_init_global_40
+	:endBody1_init_global_40
+	%newVar2valueToStore_global_125 <- 3
+	%newVar2valueToStore_global_126 <- length %m 1
+	int64 %newVar2valueToStore_global_130
+	%newVar2valueToStore_global_130 <- %newVar2valueToStore_global_77 << 1
+	%newVar2valueToStore_global_130 <- %newVar2valueToStore_global_130 + 1
+	%newVar2valueToStore_global_128 <- %newVar2valueToStore_global_130
+	%newVar2valueToStore_global_127 <- %newVar2valueToStore_global_128 >= %newVar2valueToStore_global_126
+	br %newVar2valueToStore_global_127 :endBody1_init_global_39 :endBody1_init_global_41
+	:endBody1_init_global_41
+	br :endBody1_init_global_38
+	:endBody1_init_global_39
+	call tensor-error(413,%newVar2valueToStore_global_125,%newVar2valueToStore_global_126,%newVar2valueToStore_global_128)
+	br :endBody1_init_global_38
+	:endBody1_init_global_38
+	%newVar2temp <- %m[%newVar2valueToStore_global_76][%newVar2valueToStore_global_77]
+	int64 %newVar2valueToStore_global_78
+	%newVar2valueToStore_global_78 <- %newVar0sum >> 1
+	int64 %newVar2valueToStore_global_79
+	%newVar2valueToStore_global_79 <- %newVar2temp >> 1
+	%newVar0sum <- %newVar2valueToStore_global_78 + %newVar2valueToStore_global_79
+	%newVar0sum <- %newVar0sum << 1
+	%newVar0sum <- %newVar0sum + 1
+	int64 %newVar2valueToStore_global_80
+	%newVar2valueToStore_global_80 <- %newVar1index2 >> 1
+	%newVar1index2 <- %newVar2valueToStore_global_80 + 1
+	%newVar1index2 <- %newVar1index2 << 1
+	%newVar1index2 <- %newVar1index2 + 1
+	br :new_label1
+	:endOuterBody
+	int64 %newVar2valueToStore_global_81
+	%newVar2valueToStore_global_81 <- %newVar0index1 >> 1
+	%newVar0index1 <- %newVar2valueToStore_global_81 + 1
+	%newVar0index1 <- %newVar0index1 << 1
+	%newVar0index1 <- %newVar0index1 + 1
+	br :new_label0
+	:leave
+	return %newVar0sum
+}

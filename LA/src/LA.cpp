@@ -162,6 +162,13 @@ namespace LA
         this->base=b;
         this->eles=e;
     }
+    Arrele_item::Arrele_item(Item* b,std::vector<Item*>& e,ll line)
+    {
+        this->type=iType::arr_ele_item;
+        this->base=b;
+        this->eles=e;
+        this->line_number=line;
+    }
     Call_item::Call_item()
     {
         this->type=iType::call_item;
@@ -268,7 +275,7 @@ namespace LA
     std::string Label_item::print()
     {
         std::string res;
-        if(GEN_IR)
+        if(GEN_IR&&this->label_name[0]!=':')
         {
             res+=':';
         }
@@ -339,7 +346,10 @@ namespace LA
         std::string res;
         if(GEN_IR)
         {
-            res+="@";
+            if(!(this->fname=="print"||this->fname=="input"||this->fname=="tensor-error"||this->fname=="code"))
+            {
+                res+='@';
+            }
         }
         res+=this->fname;
         return res;
@@ -470,6 +480,7 @@ namespace LA
     Instruction_call::Instruction_call()
     {
         this->type=InsType::ins_call;
+        this->var_ret=nullptr;
     }
     Instruction_declare::Instruction_declare(Item* type,Item* v)
     {
@@ -480,12 +491,14 @@ namespace LA
     Instruction_call::Instruction_call(bool isRuntime,Item* var_ret)
     {
         this->type=InsType::ins_call;
-        this->caller=var_ret;
+        this->var_ret=var_ret;
+        this->caller=nullptr;
     }
     Instruction_call::Instruction_call(Item* caller)
     {
         this->type=InsType::ins_call;
         this->caller=caller;
+        this->var_ret=nullptr;
     }
     Instruction_branch_condi::Instruction_branch_condi()
     {
@@ -558,8 +571,10 @@ namespace LA
             res+=' ';
         }
         res+=this->location1->print();
-        res+=':';
-        res+=this->location2->print();
+        auto loc2=this->location2->print();
+        if(loc2[0]!=':')res+=':';
+        res+=" ";
+        res+=loc2;
         res+='\n';
         return res;
     }
