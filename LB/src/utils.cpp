@@ -297,10 +297,11 @@ void CodeVisitor::visit(Instruction_call* ins)
 }
 void CodeVisitor::visit(Instruction_declare* ins)
 {
+    //OUT<<'\t'<<ins->anno_type->print()<<' ';
     for(auto var_raw:ins->vars)
     {
         auto var=dynamic_cast<Var_item*>(var_raw);
-        OUT<<'\t'<<var->anno->print()<<' '<<var->print()<<'\n';
+        OUT<<'\t'<<ins->anno_type->print()<<' '<<var->print()<<'\n';
     }
 }
 }

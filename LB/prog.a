@@ -1,19 +1,17 @@
 void main (){
 
-	int64 i_global_0
-	i_global_0 <- 0
-	i_global_1
-	int64 i_global_2
-	i_global_0 < 10 <- i_global_2
-	br :whil :wend
-
-	i_global_0 <- 1
-	:whil
-	print(i_global_0)
-	i_global_0 <- i_global_0 + 1
-	br i_global_1
-
-	:wend
+int64 v3_global_2
+int64 v3_global_1
+int64 v3_global_0
+	v3_global_2 <- 1
+	v3_global_1 <- 2
+	v3_global_0 <- v3_global_2 + v3_global_1
+int64 v3_global_3
+	v3_global_3 <- v3_global_0 > 1
+	br v3_global_3 :true :false
+	:true
+	print(v3_global_0)
+	:false
 	return
 
 }
