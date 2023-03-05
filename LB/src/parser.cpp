@@ -682,9 +682,9 @@ namespace LB {
         pegtl::seq<pegtl::at<Instruction_while_rule>                      , Instruction_while_rule>,
         pegtl::seq< pegtl::at<Instruction_if_rule>                      , Instruction_if_rule             >,
         
-        pegtl::seq<pegtl::at<Instruction_continue_rule>                  , Instruction_range_rule>,
-        pegtl::seq<pegtl::at<Instruction_break_rule>                 , Instruction_range_rule>,
-        pegtl::seq< pegtl::at<Instruction_goto_rule>                  , Instruction_branch_rule              >,
+        pegtl::seq<pegtl::at<Instruction_continue_rule>                  , Instruction_continue_rule>,
+        pegtl::seq<pegtl::at<Instruction_break_rule>                 , Instruction_break_rule>,
+        pegtl::seq< pegtl::at<Instruction_goto_rule>                  , Instruction_goto_rule              >,
         pegtl::seq<pegtl::at<Instruction_range_rule>                   , Instruction_range_rule>
     > {};
 

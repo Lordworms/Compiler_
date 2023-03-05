@@ -540,6 +540,7 @@ namespace LB
         this->location1=loc1;
         this->location2=loc2;
         this->scope=scope;
+        this->condition=condition;
     }
     Instruction_continue::Instruction_continue(Instruction_range* scope)
     {

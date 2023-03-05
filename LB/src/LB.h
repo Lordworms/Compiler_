@@ -12,7 +12,7 @@
 namespace LB
 {
   static bool dflag=true;
-  static bool GEN_IR=true;
+  static bool GEN_IR=false;
   #define debug if(dflag)std::cout
   inline static bool isPrint=false;
   using ll=long long;

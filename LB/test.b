@@ -1,14 +1,17 @@
-void main ( ){
-  int64 v1
+void main() {
+  int64 i
+  i <- 0
 
-  v1 <- 1
+  while (i < 10) :whil :wend {
+    i <- 1
+    :whil
 
-  if (v1 <= 1) :false :true
+    print(i)
 
-  :true
-   print(v1)
+    i <- i + 1
+    continue
+  }
 
-  :false
+  :wend
   return
-
 }
