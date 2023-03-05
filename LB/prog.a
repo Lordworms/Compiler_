@@ -1,0 +1,13 @@
+void main (){
+
+	int64 %v1_global_0
+	%v1_global_0 <- 1
+	int64 %v1_global_1
+	%v1_global_1 <- %v1_global_0 <= 1
+	br %v1_global_1 :false :true
+	:true
+	call print(%v1_global_0)
+	:false
+	return
+
+}
