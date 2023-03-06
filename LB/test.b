@@ -1,16 +1,20 @@
-void main ( ){
-  int64 v1, v2, v3
+void main (){
+  myF(21)
+  return 
+}
 
-  v1 <- 1
-  v2 <- 2
-  v3 <- v1 + v2
-
-  if (v3 > 1) :true :false
-
-  :true
-   print(v3)
-
-  :false
-  return
-
+void myF (int64 p){
+   int64 v
+   v <- p
+   {
+      int64 v
+      v <- p * 2
+      {
+         int64 v
+         v <- 5 
+      }
+      print(v)
+   }
+   print(v)
+   return
 }

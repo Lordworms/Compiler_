@@ -1,17 +1,287 @@
 void main (){
 
-int64 v3_global_2
-int64 v3_global_1
-int64 v3_global_0
-	v3_global_2 <- 1
-	v3_global_1 <- 2
-	v3_global_0 <- v3_global_2 + v3_global_1
-int64 v3_global_3
-	v3_global_3 <- v3_global_0 > 1
-	br v3_global_3 :true :false
-	:true
-	print(v3_global_0)
-	:false
+	int64[][] valueToStore_global_2
+	int64[][] valueToStore_global_3
+	int64[][] valueToStore_global_1
+	int64 valueToStore_global_0
+	valueToStore_global_0 <- 300
+	valueToStore_global_2 <- new Array(valueToStore_global_0,valueToStore_global_0)
+	valueToStore_global_3 <- new Array(valueToStore_global_0,valueToStore_global_0)
+	valueToStore_global_1 <- new Array(valueToStore_global_0,valueToStore_global_0)
+	computeAndPrint(valueToStore_global_2,valueToStore_global_3,valueToStore_global_1,0)
 	return
+
+}
+void computeAndPrint (int64[][] m1,int64[][] m2,int64[][] m3,int64 v1){
+
+	initMatrix(m1,v1)
+	initMatrix(m2,v1)
+	matrixMultiplication(m1,m2,m3)
+	int64 valueToStore_global_4
+	valueToStore_global_4 <- totalSum(m1)
+	print(valueToStore_global_4)
+	valueToStore_global_4 <- totalSum(m2)
+	print(valueToStore_global_4)
+	valueToStore_global_4 <- totalSum(m3)
+	print(valueToStore_global_4)
+	return
+
+}
+void initMatrix (int64[][] m,int64 initValue){
+
+	int64 valueToStore_global_6
+	int64 valueToStore_global_7
+	int64 valueToStore_global_5
+	valueToStore_global_6 <- length m 0
+	valueToStore_global_7 <- length m 1
+	valueToStore_global_5 <- 0
+	:endBody2_init_global_0
+	int64 valueToStore_global_40
+	valueToStore_global_40 <- valueToStore_global_5 < valueToStore_global_6
+	br valueToStore_global_40 :outerBody :leave
+
+	:outerBody
+	int64 valueToStore_global_8
+	valueToStore_global_8 <- 0
+	:endBody2_init_global_1
+	int64 valueToStore_global_41
+	valueToStore_global_41 <- valueToStore_global_8 < valueToStore_global_7
+	br valueToStore_global_41 :innerBody :endOuterBody
+
+	:innerBody
+	int64 valueToStore_global_9
+	valueToStore_global_9 <- initValue + valueToStore_global_5
+	valueToStore_global_9 <- valueToStore_global_9 + valueToStore_global_8
+	m[valueToStore_global_5][valueToStore_global_8] <- valueToStore_global_9
+	valueToStore_global_8 <- valueToStore_global_8 + 1
+	br :endBody2_init_global_1
+
+	:endOuterBody
+	valueToStore_global_5 <- valueToStore_global_5 + 1
+	br :endBody2_init_global_0
+
+	:leave
+	return
+
+}
+void matrixMultiplication (int64[][] m1,int64[][] m2,int64[][] m3){
+
+	int64 valueToStore_global_17
+	int64 valueToStore_global_14
+	int64 valueToStore_global_15
+	int64 valueToStore_global_18
+	int64 valueToStore_global_16
+	int64 valueToStore_global_19
+	valueToStore_global_17 <- length m1 0
+	valueToStore_global_14 <- length m1 1
+	valueToStore_global_15 <- length m2 0
+	valueToStore_global_18 <- length m2 1
+	valueToStore_global_16 <- length m3 0
+	valueToStore_global_19 <- length m3 1
+	int64 valueToStore_global_42
+	valueToStore_global_42 <- valueToStore_global_14 = valueToStore_global_15
+	br valueToStore_global_42 :go1 :leave
+	:go1
+	int64 valueToStore_global_43
+	valueToStore_global_43 <- valueToStore_global_16 = valueToStore_global_17
+	br valueToStore_global_43 :go2 :leave
+	:go2
+	int64 valueToStore_global_44
+	valueToStore_global_44 <- valueToStore_global_19 = valueToStore_global_18
+	br valueToStore_global_44 :go :leave
+	:go
+
+	int64 valueToStore_global_21
+	int64 valueToStore_global_22
+	int64 valueToStore_global_20
+	valueToStore_global_21 <- 0
+	:endBody2_init_global_2
+	int64 valueToStore_global_45
+	valueToStore_global_45 <- valueToStore_global_21 < valueToStore_global_17
+	br valueToStore_global_45 :body1_init :done_init
+
+	:body1_init
+	valueToStore_global_22 <- 0
+	:endBody2_init_global_3
+	int64 valueToStore_global_46
+	valueToStore_global_46 <- valueToStore_global_22 < valueToStore_global_18
+	br valueToStore_global_46 :body2_init :endBody1_init
+
+	:body2_init
+	valueToStore_global_20 <- 0
+	:endBody2_init_global_4
+	int64 valueToStore_global_47
+	valueToStore_global_47 <- valueToStore_global_20 < valueToStore_global_14
+	br valueToStore_global_47 :body3_init :endBody2_init
+
+	:body3_init
+	int64 valueToStore_global_23
+	valueToStore_global_23 <- 1
+	valueToStore_global_23 <- valueToStore_global_23 * 4
+	valueToStore_global_23 <- valueToStore_global_23 + 2
+	valueToStore_global_23 <- valueToStore_global_23 * 8
+	m3[valueToStore_global_21][valueToStore_global_22] <- 0
+	valueToStore_global_23 <- m3[valueToStore_global_21][valueToStore_global_22]
+	valueToStore_global_23 <- valueToStore_global_23 + 4
+	m3[valueToStore_global_21][valueToStore_global_22] <- valueToStore_global_23
+	valueToStore_global_23 <- m3[valueToStore_global_21][valueToStore_global_22]
+	valueToStore_global_23 <- valueToStore_global_23 * 4
+	m3[valueToStore_global_21][valueToStore_global_22] <- valueToStore_global_23
+	valueToStore_global_20 <- valueToStore_global_20 + 1
+	br :endBody2_init_global_4
+
+	:endBody2_init
+	valueToStore_global_22 <- valueToStore_global_22 + 1
+	br :endBody2_init_global_3
+
+	:endBody1_init
+	valueToStore_global_21 <- valueToStore_global_21 + 1
+	br :endBody2_init_global_2
+
+	:done_init
+
+	int64 valueToStore_global_13
+	int64 valueToStore_global_12
+	int64 valueToStore_global_11
+	int64 valueToStore_global_10
+	valueToStore_global_12 <- 0
+	valueToStore_global_13 <- 0
+	:endBody2_init_global_5
+	int64 valueToStore_global_48
+	valueToStore_global_48 <- valueToStore_global_12 < valueToStore_global_17
+	br valueToStore_global_48 :body1 :leave
+
+	:body1
+	valueToStore_global_11 <- 0
+	:endBody2_init_global_6
+	int64 valueToStore_global_49
+	valueToStore_global_49 <- valueToStore_global_11 < valueToStore_global_18
+	br valueToStore_global_49 :body2 :endBody1
+
+	:body2
+	valueToStore_global_10 <- 0
+	:endBody2_init_global_7
+	int64 valueToStore_global_50
+	valueToStore_global_50 <- valueToStore_global_10 < valueToStore_global_14
+	br valueToStore_global_50 :body3 :endBody2
+
+	:body3
+	int64 valueToStore_global_29
+	int64 valueToStore_global_28
+	int64 valueToStore_global_30
+	int64 valueToStore_global_31
+	int64 valueToStore_global_32
+	int64 valueToStore_global_33
+	valueToStore_global_29 <- m1[valueToStore_global_12][valueToStore_global_10]
+	valueToStore_global_28 <- m2[valueToStore_global_10][valueToStore_global_11]
+	valueToStore_global_30 <- valueToStore_global_29 * valueToStore_global_28
+	valueToStore_global_31 <- m3[valueToStore_global_12][valueToStore_global_11]
+	valueToStore_global_32 <- valueToStore_global_31 * 4
+	valueToStore_global_33 <- valueToStore_global_32 + 2
+	m3[valueToStore_global_12][valueToStore_global_11] <- valueToStore_global_33
+	int64 valueToStore_global_27
+	valueToStore_global_27 <- valueToStore_global_33 * 1
+	m3[valueToStore_global_12][valueToStore_global_11] <- valueToStore_global_27
+	valueToStore_global_27 <- valueToStore_global_33 + 0
+	m3[valueToStore_global_12][valueToStore_global_11] <- valueToStore_global_27
+	valueToStore_global_27 <- valueToStore_global_33 * 1
+	m3[valueToStore_global_12][valueToStore_global_11] <- valueToStore_global_27
+	valueToStore_global_27 <- valueToStore_global_33 + 0
+	m3[valueToStore_global_12][valueToStore_global_11] <- valueToStore_global_27
+	int64 valueToStore_global_26
+	valueToStore_global_26 <- valueToStore_global_27
+	valueToStore_global_26 <- valueToStore_global_26 * 4
+	valueToStore_global_26 <- valueToStore_global_26 + 2
+	valueToStore_global_26 <- valueToStore_global_26 * 8
+	valueToStore_global_26 <- valueToStore_global_26 * 4
+	valueToStore_global_26 <- valueToStore_global_26 + 2
+	valueToStore_global_26 <- valueToStore_global_26 * 8
+	valueToStore_global_26 <- valueToStore_global_26 * 4
+	valueToStore_global_26 <- valueToStore_global_26 + 2
+	valueToStore_global_26 <- valueToStore_global_26 * 8
+	valueToStore_global_26 <- valueToStore_global_26 * 4
+	valueToStore_global_26 <- valueToStore_global_26 + 2
+	valueToStore_global_26 <- valueToStore_global_26 * 8
+	valueToStore_global_26 <- valueToStore_global_26 * 4
+	valueToStore_global_26 <- valueToStore_global_26 + 2
+	valueToStore_global_26 <- valueToStore_global_26 * 8
+	valueToStore_global_26 <- valueToStore_global_26 * 4
+	valueToStore_global_26 <- valueToStore_global_26 + 2
+	valueToStore_global_26 <- valueToStore_global_26 * 8
+	valueToStore_global_26 <- valueToStore_global_26 << 2
+	valueToStore_global_26 <- valueToStore_global_26 + 2
+	valueToStore_global_26 <- valueToStore_global_26 * 8
+	valueToStore_global_26 <- valueToStore_global_26 * 4
+	valueToStore_global_26 <- valueToStore_global_26 << 2
+	valueToStore_global_26 <- valueToStore_global_26 + 2
+	valueToStore_global_26 <- valueToStore_global_26 * 8
+	valueToStore_global_26 <- valueToStore_global_26 * 4
+	valueToStore_global_26 <- valueToStore_global_26 << 4
+	valueToStore_global_26 <- valueToStore_global_26 + 2
+	valueToStore_global_26 <- valueToStore_global_26 >> 2
+	valueToStore_global_26 <- valueToStore_global_26 * 8
+	valueToStore_global_26 <- valueToStore_global_26 * 4
+	valueToStore_global_26 <- valueToStore_global_26 + 2
+	valueToStore_global_26 <- valueToStore_global_26 * 8
+	valueToStore_global_26 <- valueToStore_global_26 * 4
+	valueToStore_global_26 <- valueToStore_global_26 + 2
+	valueToStore_global_26 <- valueToStore_global_26 * 8
+	int64 valueToStore_global_24
+	int64 valueToStore_global_25
+	valueToStore_global_24 <- valueToStore_global_13 * 4
+	valueToStore_global_25 <- valueToStore_global_24 + 2
+	valueToStore_global_13 <- valueToStore_global_13
+	valueToStore_global_10 <- valueToStore_global_10 + 1
+	br :endBody2_init_global_7
+
+	:endBody2
+	valueToStore_global_11 <- valueToStore_global_11 + 1
+	br :endBody2_init_global_6
+
+	:endBody1
+	valueToStore_global_12 <- valueToStore_global_12 + 1
+	br :endBody2_init_global_5
+
+	:leave
+	return
+
+}
+int64 totalSum (int64[][] m){
+
+	int64 valueToStore_global_35
+	int64 valueToStore_global_37
+	int64 valueToStore_global_34
+	int64 valueToStore_global_36
+	valueToStore_global_37 <- length m 0
+	valueToStore_global_34 <- length m 1
+	valueToStore_global_36 <- 0
+	valueToStore_global_35 <- 0
+	:endBody2_init_global_8
+	int64 valueToStore_global_51
+	valueToStore_global_51 <- valueToStore_global_36 < valueToStore_global_37
+	br valueToStore_global_51 :outerBody :leave
+
+	:outerBody
+	int64 valueToStore_global_38
+	valueToStore_global_38 <- 0
+	:endBody2_init_global_9
+	int64 valueToStore_global_52
+	valueToStore_global_52 <- valueToStore_global_38 < valueToStore_global_34
+	br valueToStore_global_52 :innerBody :endOuterBody
+
+	:innerBody
+	int64 valueToStore_global_39
+	valueToStore_global_39 <- m[valueToStore_global_36][valueToStore_global_38]
+	valueToStore_global_35 <- valueToStore_global_35 + valueToStore_global_39
+	valueToStore_global_38 <- valueToStore_global_38 + 1
+	br :endBody2_init_global_9
+
+	:endOuterBody
+	valueToStore_global_36 <- valueToStore_global_36 + 1
+	br :endBody2_init_global_8
+
+	:leave
+	return valueToStore_global_35
+	return valueToStore_global_35
 
 }

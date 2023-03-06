@@ -144,7 +144,7 @@ void Var_Label_transformer::get_new_condi_label_scope(Instruction_range* scope,s
         if(inst->type==InsType::ins_while)
         {
             auto while_inst=dynamic_cast<Instruction_while*>(inst);
-            auto label=new Label_item(this->new_var_name(""));
+            auto label=new Label_item(this->new_label_name(""));
             while_label[while_inst]=label;
         }
         if(inst->type==InsType::ins_range)
@@ -212,7 +212,7 @@ void CodeVisitor::visit(Instruction_var_ret* ins)
 }
 void CodeVisitor::visit(Instruction_goto* ins)
 {
-    OUT<<'\t'<<"br:"<<ins->dst->print()<<'\n';
+    OUT<<'\t'<<"br"<<ins->dst->print()<<'\n';
 }
 void CodeVisitor::visit(Instruction_if* ins)
 {
@@ -256,10 +256,10 @@ void CodeVisitor::visit(Instruction_while* ins)
     auto declare=new Instruction_declare(&LB::int64_anno_ex,vars,nullptr);
     declare->apply(*this);
 
-    auto assign=new Instruction_assignment(new_var,ins->condition,nullptr);
+    auto assign=new Instruction_assignment(ins->condition,new_var,nullptr);
     assign->apply(*this);
 
-    OUT<<'\t'<<"br "<<ins->location1->print()<<' '<<ins->location2->print()<<'\n';
+    OUT<<'\t'<<"br "<<new_var->print()<<' '<<ins->location1->print()<<' '<<ins->location2->print()<<'\n';
 }
 void CodeVisitor::visit(Instruction_continue* ins)
 {

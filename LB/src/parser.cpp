@@ -674,8 +674,8 @@ namespace LB {
         pegtl::seq< pegtl::at<Instruction_label_rule>                   , Instruction_label_rule                >,
 
         pegtl::seq< pegtl::at<Instruction_call_rule>                    , Instruction_call_rule            >,
-        pegtl::seq< pegtl::at<Instruction_assignment_rule>              , Instruction_assignment_rule           >,
         pegtl::seq< pegtl::at<Instruction_declare_rule>                 , Instruction_declare_rule            >,
+        pegtl::seq< pegtl::at<Instruction_assignment_rule>              , Instruction_assignment_rule           >,
         pegtl::seq< pegtl::at<Instruction_return_rule>                  , Instruction_return_rule               >,
         
 
@@ -864,31 +864,32 @@ namespace LB {
     }
   };
   
-  // template<> struct action < var_src_rule > {
-  // template< typename Input >
-  // static void apply( const Input & in, Program & p){
-  //       auto var_name=in.string();
-  //       auto F=p.functions.back();
-  //       if(F->name_var_map.find(var_name)!=F->name_var_map.end())
-  //       {
-  //           parsed_items.push_back(F->name_var_map[var_name]);
-  //       }
-  //       else
-  //       {
-  //          Fname_item* fname;
-  //          if(str_fname_mp.find(var_name)!=str_fname_mp.end())
-  //          {  
-  //             fname=str_fname_mp[var_name];
-  //          }
-  //          else
-  //          {
-  //             fname=new Fname_item(var_name);
-  //             str_fname_mp[var_name]=fname;
-  //          }
-  //          parsed_items.push_back(fname);
-  //       }
-  //   }
-  // };
+  template<> struct action < var_src_rule > {
+  template< typename Input >
+  static void apply( const Input & in, Program & p){
+        auto var_name=in.string();
+        auto F=p.functions.back();
+        auto var=get_var(var_name,p);
+        if(var!=nullptr)
+        {
+            parsed_items.push_back(var);
+        }
+        else
+        {
+          Fname_item* fname;
+          if(str_fname_mp.find(var_name)!=str_fname_mp.end())
+          {
+            fname=str_fname_mp[var_name];
+          }
+          else
+          {
+            fname=new Fname_item(var_name);
+            str_fname_mp[var_name]=fname;
+          }
+          parsed_items.push_back(fname);
+        }
+    }
+  };
   template<> struct action < function_name > {
   template< typename Input >
   static void apply( const Input & in, Program & p)
@@ -1025,14 +1026,14 @@ namespace LB {
  template<> struct action < variable_decalre > {
   template< typename Input >
   static void apply( const Input & in, Program & p){
-      auto F=p.functions.back();
-      auto anno=parsed_items.back();
-      auto scope=scope_st.top();
-      auto new_var=new Var_item(in.string(),anno);
-      auto var_name=in.string();
-      scope->var_ptr_map[var_name]=new_var;
-      F->var_set.insert(new_var);
-      parsed_items.push_back(new_var);
+     auto F=p.functions.back();
+     auto scope=scope_st.top();
+     auto type=parsed_items.front();
+     auto var_name=in.string();
+     auto var=new Var_item(var_name,type);
+     scope->var_ptr_map[var_name]=var;
+     F->var_set.insert(var);
+     parsed_items.push_back(var);
   }
   };
 
